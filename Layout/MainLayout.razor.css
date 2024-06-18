@@ -12,6 +12,16 @@ header {
     padding: 1rem;
 }
 
+/* Logo Style */
+
+.logo-img {
+    height: 50px; /* Adjust the height as needed */
+    width: auto; /* Maintain the aspect ratio */
+    margin-right: 10px; /* Add some spacing if needed */
+}
+
+
+
 /* Main content area should grow to fill the remaining space */
 main {
     flex: 1;
