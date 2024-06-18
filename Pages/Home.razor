@@ -1,0 +1,30 @@
+﻿@page "/"
+@using Microsoft.AspNetCore.Components.Web
+
+<div class="container text-center">
+    <h1>Welcome to the Converter Application</h1>
+    <p class="lead">Your one-stop solution for unit conversions.</p>
+    <p>Convert between various units of measurement quickly and easily.</p>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Popular Conversions</h2>
+            <ul class="list-group">
+                <li class="list-group-item disabled">Length</li>
+                <li class="list-group-item disabled">Weight</li>
+                <li class="list-group-item disabled">Temperature</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <h2>How to Use</h2>
+            <ol class="list-unstyled">
+                <li>Select the type of units you want to convert.</li>
+                <li>Enter the value you want to convert.</li>
+                <li>Select the units for conversion.</li>
+                <li>Click the convert button to see the result.</li>
+            </ol>
+        </div>
+    </div>
+
+    <button class="btn btn-primary mt-4">Start Converting</button>
+</div>
