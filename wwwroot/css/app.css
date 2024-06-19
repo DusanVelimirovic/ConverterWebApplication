@@ -1,3 +1,4 @@
+/* Global styles */
 /* Reset some basic margin and padding to avoid extra space */
 body, html {
     margin: 0;
@@ -50,6 +51,8 @@ a, .btn-link {
 .validation-message {
     color: red;
 }
+
+/* Default Blazor style */
 
 #blazor-error-ui {
     background: lightyellow;

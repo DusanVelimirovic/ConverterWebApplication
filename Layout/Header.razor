@@ -1,11 +1,16 @@
 ﻿<nav class="navbar navbar-expand-md navbar-dark bg-dark position-relative">
     <a class="navbar-brand" href="/">
+        <!-- Logo -->
         <img src="images/logo.png" alt="ConverterApp Logo" class="logo-img" />
     </a>
+
+    <!-- Navbar button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Nav links -->
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item">
@@ -14,6 +19,8 @@
             <li class="nav-item">
                 <NavLink class="nav-link" href="/units">Units</NavLink>
             </li>
+
+            <!-- Dropdown language menu -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,6 +35,7 @@
     </div>
 </nav>
 
+<!-- Custom code to handle language preferences -->
 @code {
     private void SetLanguage(string language)
     {
