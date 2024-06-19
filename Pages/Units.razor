@@ -1,0 +1,73 @@
+﻿@page "/units"
+
+<h1>Length Page</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="measurement">Measurement</label>
+                <input type="number" id="measurement" @bind="value" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Units</label>
+                <div class="unit-list">
+                    @foreach (var unit in fromUnits)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="fromUnit" id="fromUnit-@unit" value="@unit">
+                            <label class="form-check-label" for="fromUnit-@unit">@unit</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>&nbsp;</label> <!-- To align with Units label -->
+                <div class="unit-list">
+                    @foreach (var unit in toUnits)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="toUnit" id="toUnit-@unit" value="@unit">
+                            <label class="form-check-label" for="toUnit-@unit">@unit</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-primary" @onclick="ConvertUnits">Convert</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label>Result</label>
+                <output>@convertedValue</output>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private double value;
+    private double convertedValue;
+    private string fromUnit = "Meters";
+    private string toUnit = "Kilometers";
+    private List<string> fromUnits = new List<string> { "Meters (m)", "Decameters (dam)", "Hectometers (hm)", "Kilometers (km)", "Megameters (Mm)", "Gigameters (Gm)", "Terameters (Tm)", "Petameters (Pm)", "Exameters (Em)" };
+    private List<string> toUnits = new List<string> { "Nautical Miles (nmi)", "US Cable Lengths (cb)", "Imperial Cable Lengths", "Fathoms (fth)", "Miles (mi)", "Yards (yd)", "Feet (ft, or ')'", "Inches (in, or '')", "Mils, or Thou (mil)", "Leagues (lea)" };
+
+    private void ConvertUnits()
+    {
+        // Conversion logic
+        // This is a placeholder for the actual conversion logic
+        convertedValue = value * 3.28084; // Sample conversion, e.g., meters to feet
+    }
+}

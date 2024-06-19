@@ -1,0 +1,39 @@
+﻿/* Units.razor.css */
+
+.container {
+    padding: 20px;
+}
+
+.unit-list {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    height: 250px;
+    overflow-y: auto;
+}
+
+.form-check-label {
+    display: block;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-group output {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.btn {
+    margin-top: 20px;
+    width: 100%;
+}
