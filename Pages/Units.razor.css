@@ -5,7 +5,7 @@
 
 /* Navigation Menu Styles */
 .nav {
-    width: 200px;
+    width: 100%;
     padding: 15px;
     background-color: #f8f9fa;
     border-right: 1px solid #e7e7e7;
@@ -56,9 +56,27 @@ h1 {
         border-color: #004085;
     }
 
-.mt-3 {
-    margin-top: 1rem;
+/* Flexbox container to arrange the unit selectors */
+.unit-selectors {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
+
+    .unit-selectors .from-unit,
+    .unit-selectors .to-unit {
+        flex: 1;
+    }
+
+    .unit-selectors .from-unit {
+        order: 2;
+        margin-left: 10px; /* Adjust spacing between the selects if necessary */
+    }
+
+    .unit-selectors .to-unit {
+        order: 1;
+        margin-right: 10px; /* Adjust spacing between the selects if necessary */
+    }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
@@ -71,4 +89,14 @@ h1 {
     .col-md-10 {
         width: 100%;
     }
+
+    .unit-selectors {
+        flex-direction: column;
+    }
+
+        .unit-selectors .from-unit,
+        .unit-selectors .to-unit {
+            order: unset;
+            margin: 0;
+        }
 }
