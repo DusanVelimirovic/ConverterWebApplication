@@ -2,6 +2,7 @@
 @page "/units"
 
 @inject NavigationManager Navigation
+@inject Converter_Web_Application.Service.ConversionManagerService ConversionManagerService
 
 <PageTitle>Unit Converter</PageTitle>
 
@@ -18,24 +19,26 @@
                 <input type="number" id="inputValue" @bind="value" class="form-control" />
             </div>
 
-            <div class="form-group">
-                <label>From Unit</label>
-                <select @bind="fromUnit" class="form-control">
-                    @foreach (var unit in availableUnits)
-                    {
-                        <option value="@unit">@unit</option>
-                    }
-                </select>
-            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>From Unit</label>
+                    <select @bind="fromUnit" class="form-control">
+                        @foreach (var unit in availableUnits)
+                        {
+                            <option value="@unit">@unit</option>
+                        }
+                    </select>
+                </div>
 
-            <div class="form-group">
-                <label>To Unit</label>
-                <select @bind="toUnit" class="form-control">
-                    @foreach (var unit in availableUnits)
-                    {
-                        <option value="@unit">@unit</option>
-                    }
-                </select>
+                <div class="form-group col-md-6">
+                    <label>To Unit</label>
+                    <select @bind="toUnit" class="form-control">
+                        @foreach (var unit in availableUnits)
+                        {
+                            <option value="@unit">@unit</option>
+                        }
+                    </select>
+                </div>
             </div>
 
             <button class="btn btn-primary" @onclick="ConvertUnits">Convert</button>
@@ -82,15 +85,17 @@
     private void ConvertUnits()
     {
         // Conversion logic based on the selected units and value
-        // This is a placeholder example; actual conversion logic will vary
-        if (fromUnit == toUnit)
+        var conversion = ConversionManagerService.GetAllConversions()
+            .FirstOrDefault(c => c.FromUnit.Equals(fromUnit, StringComparison.OrdinalIgnoreCase) &&
+                                 c.ToUnit.Equals(toUnit, StringComparison.OrdinalIgnoreCase));
+        if (conversion != null)
         {
-            convertedValue = value;
+            convertedValue = conversion.Convert(value);
         }
         else
         {
-            // Add your conversion logic here
-            convertedValue = value * 1.234; // Placeholder conversion factor
+            // Handle conversion not found scenario
+            convertedValue = double.NaN; // or any other appropriate error handling
         }
     }
 }
