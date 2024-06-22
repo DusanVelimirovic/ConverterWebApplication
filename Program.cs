@@ -15,7 +15,10 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     var service = new ConversionManagerService();
     // Register conversions
     service.RegisterConversion(new MetersToKilometers());
-    service.RegisterConversion(new MetersToCentimeters());
+    service.RegisterConversion(new KilometersToMeters());
+    service.RegisterConversion(new MetersToMiles());
+    service.RegisterConversion(new MilesToMeters());
+
     // Add more conversions here if needed
     return service;
 });

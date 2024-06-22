@@ -1,7 +1,14 @@
-﻿@page "/units/{type}"
+﻿<!-- Enable handling URLs requests and receving paramaters-->
+@* used to determine the type of measurement (e.g., length, weight, volume) the user wants to convert *@
+@page "/units/{type}" 
 @page "/units"
 
+<!-- provides navigation capabilities, allowing the component 
+to navigate to different pages or get information about the 
+current page -->
 @inject NavigationManager Navigation
+
+<!-- Provides the conversion logic, allowing the component to perform conversions based on user input -->
 @inject Converter_Web_Application.Service.ConversionManagerService ConversionManagerService
 
 <PageTitle>Unit Converter</PageTitle>
@@ -13,7 +20,7 @@
         </div>
         <div class="col-md-10">
             <h1>@(Type ?? "Select a Measurement Type") Page</h1>
-
+            <!-- Implemented two way data binding -->
             <div class="form-group">
                 <label for="inputValue">Value to Convert</label>
                 <input type="number" id="inputValue" @bind="value" class="form-control" />
@@ -60,6 +67,7 @@
     private string toUnit;
     private List<string> availableUnits = new List<string>();
 
+    // Assigning user conversion choose to a List
     protected override void OnParametersSet()
     {
         switch (Type?.ToLower())
@@ -78,13 +86,14 @@
                 availableUnits = new List<string>();
                 break;
         }
-        fromUnit = availableUnits.FirstOrDefault();
-        toUnit = availableUnits.FirstOrDefault();
+        fromUnit = availableUnits.FirstOrDefault(); // Assign a first unit from the list or default unit
+        toUnit = availableUnits.FirstOrDefault(); // Assign a first unit from the list or default unit
     }
 
     private void ConvertUnits()
     {
         // Conversion logic based on the selected units and value
+        // Gethering result if selected units conversion has developed dedicated coversion logic
         var conversion = ConversionManagerService.GetAllConversions()
             .FirstOrDefault(c => c.FromUnit.Equals(fromUnit, StringComparison.OrdinalIgnoreCase) &&
                                  c.ToUnit.Equals(toUnit, StringComparison.OrdinalIgnoreCase));
