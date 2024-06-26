@@ -13,7 +13,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddSingleton<ConversionManagerService>(sp =>
 {
     var service = new ConversionManagerService();
-    // Register conversions
+    // Register Lenght conversions
 
     // Meters
     service.RegisterConversion(new MetersToKilometers());
@@ -124,6 +124,40 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     service.RegisterConversion(new LeaguesToFeet());
     service.RegisterConversion(new LeaguesToInches());
     service.RegisterConversion(new LeaguesToMiles());
+
+    // Register Weight conversions
+
+    // Grams
+    service.RegisterConversion(new GramsToKilograms());
+    service.RegisterConversion(new GramsToOunces());
+    service.RegisterConversion(new GramsToPoundes());
+    service.RegisterConversion(new GramsToStones());
+
+    // Kilograms
+    service.RegisterConversion(new KilogramsToGrams());
+    service.RegisterConversion(new KilogramsToOunces());
+    service.RegisterConversion(new KilogramsToPounds());
+    service.RegisterConversion(new KilogramsToStones());
+
+    // Ounces
+    service.RegisterConversion(new OuncesToGrams());
+    service.RegisterConversion(new OuncesToKilograms());
+    service.RegisterConversion(new OuncesToPounds());
+    service.RegisterConversion(new OuncesToStones());
+
+    // Pounds
+    service.RegisterConversion(new PoundsToGrams());
+    service.RegisterConversion(new PoundsToKilograms());
+    service.RegisterConversion(new PoundsToOunces());
+    service.RegisterConversion(new PoundsToStones());
+
+    // Stones
+    service.RegisterConversion(new StonesToGrams());
+    service.RegisterConversion(new StonesToKilograms());
+    service.RegisterConversion(new StonesToOunces());
+    service.RegisterConversion(new StonesToPoundes());
+
+
 
     // Add more conversions here if needed
     return service;
