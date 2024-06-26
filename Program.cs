@@ -25,15 +25,15 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
 
 
     service.RegisterConversion(new MetersToFeet());
-    service.RegisterConversion(new FeetToMeters());
-    service.RegisterConversion(new InchesToCentimeters());
+
+
 
     service.RegisterConversion(new MetersToYards());
-    service.RegisterConversion(new YardsToMeters());
 
-    service.RegisterConversion(new NauticalMilesToKilometers());
 
-    service.RegisterConversion(new LeaguesToKilometers());
+
+
+
 
     // Kilometers
     service.RegisterConversion(new KilometersToMiles());
@@ -73,6 +73,55 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     service.RegisterConversion(new MillimetersToYards());
     service.RegisterConversion(new MillimetersToFeet());
     service.RegisterConversion(new MillimetersToNauticalMiles());
+
+    // Nautical miles
+    service.RegisterConversion(new NauticalMilesToKilometers());
+    service.RegisterConversion(new NauticalMilesToMeters());
+    service.RegisterConversion(new NauticalMilesToCentimeters());
+    service.RegisterConversion(new NauticalMilesToMillimeters());
+    service.RegisterConversion(new NauticalMilesToYards());
+    service.RegisterConversion(new NauticalMilesToFeet());
+    service.RegisterConversion(new NauticalMilesToInches());
+
+    // Yards
+    service.RegisterConversion(new YardsToMeters());
+    service.RegisterConversion(new YardsToKilometers());
+    service.RegisterConversion(new YardsToMiles());
+    service.RegisterConversion(new YardsToCentimeters());
+    service.RegisterConversion(new YardsToMillimeters());
+    service.RegisterConversion(new YardsToNauticalMiles());
+    service.RegisterConversion(new YardsToInches());
+
+    // Feets
+    service.RegisterConversion(new FeetToMeters());
+    service.RegisterConversion(new FeetToKilometers());
+    service.RegisterConversion(new FeetToMiles());
+    service.RegisterConversion(new FeetToCentimeters());
+    service.RegisterConversion(new FeetToMillimeters());
+    service.RegisterConversion(new FeetToNauticalMiles());
+    service.RegisterConversion(new FeetToYards());
+
+    // Inches
+    service.RegisterConversion(new InchesToCentimeters());
+    service.RegisterConversion(new InchesToMeters());
+    service.RegisterConversion(new InchesToKilometers());
+    service.RegisterConversion(new InchesToMiles());
+    service.RegisterConversion(new InchesToMillimeters());
+    service.RegisterConversion(new InchesToNauticalMiles());
+    service.RegisterConversion(new InchesToYards());
+    service.RegisterConversion(new InchesToFeet());
+    
+
+    // Leagues
+    service.RegisterConversion(new LeaguesToKilometers());
+    service.RegisterConversion(new LeaguesToMeters());
+    service.RegisterConversion(new LeaguesToCentimeters());
+    service.RegisterConversion(new LeaguesToMillimeters());
+    service.RegisterConversion(new LeaguesToNauticalMiles());
+    service.RegisterConversion(new LeaguesToYards());
+    service.RegisterConversion(new LeaguesToFeet());
+    service.RegisterConversion(new LeaguesToInches());
+
 
 
     // Add more conversions here if needed
