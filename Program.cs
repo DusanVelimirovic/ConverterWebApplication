@@ -189,6 +189,14 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     service.RegisterConversion(new MillilitersToLiters());
     service.RegisterConversion(new MillilitersToCubicCentimeters());
 
+    // Register Temperature conversions
+    service.RegisterConversion(new CelsiusToFahrenheit());
+    service.RegisterConversion(new CelsiusToKelvin());
+    service.RegisterConversion(new FahrenheitToCelsius());
+    service.RegisterConversion(new FahrenheitToKelvin());
+    service.RegisterConversion(new KelvinToCelsius());
+    service.RegisterConversion(new KelvinToFahrenheit());
+
 
     // Add more conversions here if needed
     return service;
