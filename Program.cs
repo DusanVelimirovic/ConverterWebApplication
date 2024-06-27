@@ -163,6 +163,7 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     service.RegisterConversion(new CubicCentimetersToCubicInches());
     service.RegisterConversion(new CubicCentimetersToCubicMeters());
     service.RegisterConversion(new CubicCentimetersToLiters());
+    service.RegisterConversion(new CubicCentimetersToMilliliters());
 
     // Cubic Inches
     service.RegisterConversion(new CubicInchesToCubicCentimeters());
@@ -186,7 +187,7 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     service.RegisterConversion(new MillilitersToCubicInches());
     service.RegisterConversion(new MillilitersToCubicMeters());
     service.RegisterConversion(new MillilitersToLiters());
-
+    service.RegisterConversion(new MillilitersToCubicCentimeters());
 
 
     // Add more conversions here if needed

@@ -43,11 +43,24 @@ namespace Converter_Web_Application.Service
             return value / 1000;
         }
     }
+    public class CubicCentimetersToMilliliters : IConversion
+    {
+        public int Id => 4;
+
+        public string FromUnit => "cubic centimeters";
+
+        public string ToUnit => "milliliters";
+
+        public double Convert(double value)
+        {
+            return value;
+        }
+    }
 
     // Cubic Inches
     public class CubicInchesToCubicCentimeters : IConversion
     {
-        public int Id => 4;
+        public int Id => 5;
 
         public string FromUnit => "cubic inches";
 
@@ -60,7 +73,7 @@ namespace Converter_Web_Application.Service
     }
     public class CubicInchesToCubicMeters : IConversion
     {
-        public int Id => 5;
+        public int Id => 6;
 
         public string FromUnit => "cubic inches";
 
@@ -73,7 +86,7 @@ namespace Converter_Web_Application.Service
     }
     public class CubicInchesToLiters : IConversion
     {
-        public int Id => 6;
+        public int Id => 7;
 
         public string FromUnit => "cubic inches";
 
@@ -86,7 +99,7 @@ namespace Converter_Web_Application.Service
     }
     public class CubicInchesToMilliliters : IConversion
     {
-        public int Id => 7;
+        public int Id => 8;
 
         public string FromUnit => "cubic inches";
 
@@ -101,7 +114,7 @@ namespace Converter_Web_Application.Service
     // Cubic Meters
     public class CubicMetersToCubicCentimeters : IConversion
     {
-        public int Id => 8;
+        public int Id => 9;
 
         public string FromUnit => "cubic meters";
 
@@ -114,11 +127,11 @@ namespace Converter_Web_Application.Service
     }
     public class CubicMetersToCubicInches : IConversion
     {
-        public int Id => 9;
+        public int Id => 10;
 
         public string FromUnit => "cubic meters";
 
-        public string ToUnit => "cubic centimeters";
+        public string ToUnit => "cubic inches";
 
         public double Convert(double value)
         {
@@ -127,7 +140,7 @@ namespace Converter_Web_Application.Service
     }
     public class CubicMetersToLiters : IConversion
     {
-        public int Id => 10;
+        public int Id => 11;
 
         public string FromUnit => "cubic meters";
 
@@ -140,7 +153,7 @@ namespace Converter_Web_Application.Service
     }
     public class CubicMetersToMilliliters : IConversion
     {
-        public int Id => 11;
+        public int Id => 12;
 
         public string FromUnit => "cubic meters";
 
@@ -155,7 +168,7 @@ namespace Converter_Web_Application.Service
     // Liters
     public class LitersToCubicCentimeters : IConversion
     {
-        public int Id => 12;
+        public int Id => 13;
 
         public string FromUnit => "liters";
 
@@ -168,7 +181,7 @@ namespace Converter_Web_Application.Service
     }
     public class LitersToCubicInches : IConversion
     {
-        public int Id => 13;
+        public int Id => 14;
 
         public string FromUnit => "liters";
 
@@ -181,7 +194,7 @@ namespace Converter_Web_Application.Service
     }
     public class LitersToCubicMeters : IConversion
     {
-        public int Id => 14;
+        public int Id => 15;
 
         public string FromUnit => "liters";
 
@@ -194,7 +207,7 @@ namespace Converter_Web_Application.Service
     }
     public class LitersToMilliliters : IConversion
     {
-        public int Id => 15;
+        public int Id => 16;
 
         public string FromUnit => "liters";
 
@@ -209,7 +222,7 @@ namespace Converter_Web_Application.Service
     // Milliliters
     public class MillilitersToCubicInches : IConversion
     {
-        public int Id => 16;
+        public int Id => 17;
 
         public string FromUnit => "milliliters";
 
@@ -222,7 +235,7 @@ namespace Converter_Web_Application.Service
     }
     public class MillilitersToCubicMeters : IConversion
     {
-        public int Id => 17;
+        public int Id => 18;
 
         public string FromUnit => "milliliters";
 
@@ -235,7 +248,7 @@ namespace Converter_Web_Application.Service
     }
     public class MillilitersToLiters : IConversion
     {
-        public int Id => 18;
+        public int Id => 19;
 
         public string FromUnit => "milliliters";
 
@@ -244,6 +257,19 @@ namespace Converter_Web_Application.Service
         public double Convert(double value)
         {
             return value / 1000;
+        }
+    }
+    public class MillilitersToCubicCentimeters : IConversion
+    {
+        public int Id => 20;
+
+        public string FromUnit => "milliliters";
+
+        public string ToUnit => "cubic centimeters";
+
+        public double Convert(double value)
+        {
+            return value;
         }
     }
 
