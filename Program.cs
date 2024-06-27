@@ -197,6 +197,82 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     service.RegisterConversion(new KelvinToCelsius());
     service.RegisterConversion(new KelvinToFahrenheit());
 
+    // Register Area conversions
+
+    // Square meters
+    service.RegisterConversion(new SquaremetersToSquareFeet());
+    service.RegisterConversion(new SquaremetersToSquareYards());
+    service.RegisterConversion(new SquaremetersToSquareMiles());
+    service.RegisterConversion(new SquaremetersToSquareKilometers());
+    service.RegisterConversion(new SquaremetersToAcres());
+    service.RegisterConversion(new SquaremetersToHectares());
+
+
+    // Square feet
+    service.RegisterConversion(new SquareFeetToSquereMeters());
+    service.RegisterConversion(new SquareFeetToSquereYards());
+    service.RegisterConversion(new SquareFeetToSquereMiles());
+    service.RegisterConversion(new SquareFeetToSquereKilometers());
+    service.RegisterConversion(new SquareFeetToAcres());
+    service.RegisterConversion(new SquareFeetToHectares());
+
+    // Square yards
+    service.RegisterConversion(new SquareYardsToSquareMeters());
+    service.RegisterConversion(new SquareYardsToSquareFeet());
+    service.RegisterConversion(new SquareYardsToSquareMiles());
+    service.RegisterConversion(new SquareYardsToSquareKilometers());
+    service.RegisterConversion(new SquareYardsToAcres());
+    service.RegisterConversion(new SquareYardsToHectares());
+
+    // Square miles
+    service.RegisterConversion(new SquareMilesToSquereMeters());
+    service.RegisterConversion(new SquareMilesToSquereFeet());
+    service.RegisterConversion(new SquareMilesToSquereYards());
+    service.RegisterConversion(new SquareMilesToSquereKilometers());
+    service.RegisterConversion(new SquareMilesToAcres());
+    service.RegisterConversion(new SquareMilesToHectares());
+
+    // Square kilometers
+    service.RegisterConversion(new SquareKilometersToSquereMeters());
+    service.RegisterConversion(new SquareKilometersToSquereFeet());
+    service.RegisterConversion(new SquareKilometersToSquereYards());
+    service.RegisterConversion(new SquareKilometersToSquereMiles());
+    service.RegisterConversion(new SquareKilometersToAcres());
+    service.RegisterConversion(new SquareKilometersToHectares());
+
+    // Acres
+    service.RegisterConversion(new AcresToMeters());
+    service.RegisterConversion(new AcresToSquereFeet());
+    service.RegisterConversion(new AcresToSquereYards());
+    service.RegisterConversion(new AcresToSquereMiles());
+    service.RegisterConversion(new AcresToSquereKilometers());
+    service.RegisterConversion(new AcresToHectares());
+
+    // Hectares
+    service.RegisterConversion(new HectaresToSquereMeters());
+    service.RegisterConversion(new HectaresToSquereFeet());
+    service.RegisterConversion(new HectaresToSquereYards());
+    service.RegisterConversion(new HectaresToSquereMiles());
+    service.RegisterConversion(new HectaresToSquereKilometers());
+    service.RegisterConversion(new HectaresToAcres());
+
+    // Square centimeters
+    service.RegisterConversion(new SquereCentimetersToSquereInches());
+    service.RegisterConversion(new SquereCentimetersToSquereMillimeters());
+
+    // Square inches
+    service.RegisterConversion(new SquereInchesToSquereCentimeters());
+    service.RegisterConversion(new SquereInchesToSquereMillimeters());
+
+    // Square millimeters
+    service.RegisterConversion(new SquereMillimetersToSquereInches());
+    service.RegisterConversion(new SquereMillimetersToSquereCentimeters());
+
+
+
+
+
+
 
     // Add more conversions here if needed
     return service;
