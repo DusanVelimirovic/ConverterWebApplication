@@ -52,7 +52,7 @@ current page -->
 
             <div class="form-group mt-3">
                 <label for="resultValue">Result</label>
-                <input type="text" id="resultValue" @bind="formattedConvertedValue" class="form-control" readonly />
+                <input type="text" id="resultValue" @bind="writeLine" class="form-control" readonly />
             </div>
         </div>
     </div>
@@ -67,6 +67,7 @@ current page -->
     private string? toUnit;
     private List<string> availableUnits = new List<string>();
     private string? formattedConvertedValue;
+    private string? writeLine;
 
     // Assigning user conversion choose to a List
     protected override void OnParametersSet()
@@ -116,12 +117,22 @@ current page -->
         if (conversion != null)
         {
             convertedValue = conversion.Convert(value);
-            formattedConvertedValue = convertedValue.ToString("N12"); // Format the result
+            // Adjust formatting to handle both very small and very large numbers more clearly
+            if (convertedValue < 1.0)
+            {
+                formattedConvertedValue = convertedValue.ToString("0.############"); // Up to 12 decimal places without trailing zeros
+            }
+            else
+            {
+                formattedConvertedValue = convertedValue.ToString("N12").TrimEnd('0').TrimEnd('.'); // Format and trim unnecessary zeroes
+            }
+            writeLine = $"{value} {fromUnit} is equal to {formattedConvertedValue} {toUnit}";
         }
         else
         {
             // Handle conversion not found scenario
             formattedConvertedValue = "Invalid conversion choice."; // or any other appropriate error handling
+            writeLine = formattedConvertedValue;
         }
     }
 }
