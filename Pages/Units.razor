@@ -59,12 +59,12 @@ current page -->
 </div>
 
 @code {
-    [Parameter] public string Type { get; set; }
+    [Parameter] public string? Type { get; set; }
 
     private double value;
     private double convertedValue;
-    private string fromUnit;
-    private string toUnit;
+    private string? fromUnit;
+    private string? toUnit;
     private List<string> availableUnits = new List<string>();
 
     // Assigning user conversion choose to a List

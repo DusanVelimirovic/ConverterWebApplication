@@ -13,7 +13,7 @@ namespace Converter_Web_Application.Service
             _conversions.Add(conversion);
         }
 
-        public IConversion GetConversion(int id)
+        public IConversion? GetConversion(int id)
         {
             return _conversions.FirstOrDefault(c => c.Id == id);
         }
