@@ -29,7 +29,7 @@ current page -->
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>From Unit</label>
-                    <select @bind="fromUnit" class="form-control" @onkeydown="HandleKeyDown">
+                    <select @bind="fromUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
                             <option value="@unit">@unit</option>
@@ -39,7 +39,7 @@ current page -->
 
                 <div class="form-group col-md-6">
                     <label>To Unit</label>
-                    <select @bind="toUnit" class="form-control" @onkeydown="HandleKeyDown">
+                    <select @bind="toUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
                             <option value="@unit">@unit</option>
@@ -75,6 +75,7 @@ current page -->
     // Assigning user conversion choose to a List
     protected override void OnParametersSet()
     {
+        ResetFields(); // Reset fields when parameters are set
         switch (Type?.ToLower())
         {
             case "length":
@@ -146,5 +147,14 @@ current page -->
         {
             ConvertUnits();
         }
+    }
+
+    // Reset value and result fields when conversion units change
+    private void ResetFields()
+    {
+        value = 0;
+        convertedValue = 0;
+        formattedConvertedValue = string.Empty;
+        writeLine = string.Empty;
     }
 }
