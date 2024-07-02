@@ -13,13 +13,13 @@ current page -->
 
 <PageTitle>Unit Converter</PageTitle>
 
-<div class="container-fluid">
+<div class="container-fluid" @onkeydown="HandleKeyDown">
     <div class="row">
         <div class="col-md-2">
             <NavMenu />
         </div>
         <div class="col-md-10">
-            <h1>@(Type ?? "Select a Measurement Type") Page</h1>
+            <h1>@(FormatType(Type) ?? "Select a Measurement Type") Conversion</h1>
             <!-- Implemented two way data binding -->
             <div class="form-group">
                 <label for="inputValue">Value to Convert</label>
@@ -96,7 +96,7 @@ current page -->
             case "time":
                 availableUnits = new List<string> { "Seconds", "Minutes", "Hours", "Days", "Weeks", "Months", "Years" };
                 break;
-            case "digitalstorage":
+            case "digital_storage":
                 availableUnits = new List<string> { "Bits", "Bytes", "Kilobits", "Kilobytes", "Megabits", "Megabytes", "Gigabits", "Gigabytes", "Terabits", "Terabytes" };
                 break;
             case "speed":
@@ -156,5 +156,21 @@ current page -->
         convertedValue = 0;
         formattedConvertedValue = string.Empty;
         writeLine = string.Empty;
+    }
+    // Format type string to capitalize the first letter of each word and replace underscores with spaces
+    private string FormatType(string? type)
+    {
+        if (string.IsNullOrEmpty(type))
+        {
+            return string.Empty;
+        }
+
+        // Split the type by underscores and capitalize the first letter of each word
+        var words = type.Split(new char[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
+        for (int i = 0; i < words.Length; i++)
+        {
+            words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1);
+        }
+        return string.Join(' ', words);
     }
 }
