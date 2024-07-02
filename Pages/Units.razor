@@ -23,13 +23,13 @@ current page -->
             <!-- Implemented two way data binding -->
             <div class="form-group">
                 <label for="inputValue">Value to Convert</label>
-                <input type="number" id="inputValue" @bind="value" class="form-control" />
+                <input type="number" id="inputValue" @bind="value" class="form-control" @onkeydown="HandleKeyDown" />
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label>From Unit</label>
-                    <select @bind="fromUnit" class="form-control">
+                    <select @bind="fromUnit" class="form-control" @onkeydown="HandleKeyDown">
                         @foreach (var unit in availableUnits)
                         {
                             <option value="@unit">@unit</option>
@@ -39,7 +39,7 @@ current page -->
 
                 <div class="form-group col-md-6">
                     <label>To Unit</label>
-                    <select @bind="toUnit" class="form-control">
+                    <select @bind="toUnit" class="form-control" @onkeydown="HandleKeyDown">
                         @foreach (var unit in availableUnits)
                         {
                             <option value="@unit">@unit</option>
@@ -48,7 +48,10 @@ current page -->
                 </div>
             </div>
 
-            <button class="btn btn-primary" @onclick="ConvertUnits">Convert</button>
+            <button class="btn btn-primary" 
+                @onclick="ConvertUnits">
+                Convert
+            </button>
 
             <div class="form-group mt-3">
                 <label for="resultValue">Result</label>
@@ -133,6 +136,15 @@ current page -->
             // Handle conversion not found scenario
             formattedConvertedValue = "Invalid conversion choice."; // or any other appropriate error handling
             writeLine = formattedConvertedValue;
+        }
+    }
+    // Handle keyboard event - user press enter
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        // Check if the Enter key is pressed
+        if (e.Key == "Enter")
+        {
+            ConvertUnits();
         }
     }
 }
