@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Components.Web
+@inject NavigationManager Navigation
 
 <div class="container text-center">
     <h1>Welcome to the Converter Application</h1>
@@ -10,9 +11,10 @@
         <div class="col-md-6">
             <h2>Popular Conversions</h2>
             <ul class="list-group">
-                <li class="list-group-item disabled">Length</li>
-                <li class="list-group-item disabled">Weight</li>
-                <li class="list-group-item disabled">Temperature</li>
+                <li class="list-group-item" @onclick='() => NavigateToUnits("length")'>Length</li>
+                <li class="list-group-item" @onclick='() => NavigateToUnits("weight")'>Weight</li>
+                <li class="list-group-item" @onclick='() => NavigateToUnits("temperature")'>Temperature</li>
+
             </ul>
         </div>
         <div class="col-md-6">
@@ -29,3 +31,10 @@
     <!-- Action button -->
     <NavLink class="btn btn-primary mt-4" href="/units">Start Converting</NavLink>
 </div>
+
+@code {
+    private void NavigateToUnits(string type)
+    {
+        Navigation.NavigateTo($"/units/{type}");
+    }
+}
