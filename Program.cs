@@ -3,12 +3,24 @@ using Converter_Web_Application.Service;
 using Converter_Web_Application.Service.Implementations;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using System.Globalization;
+using System.Threading.Tasks;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+
+
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+// Register translation service
+builder.Services.AddScoped<TranslationService>();
+
+
 
 // Register ConversionManagerService as a singleton
 builder.Services.AddSingleton<ConversionManagerService>(sp =>
@@ -517,5 +529,15 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     // Add more conversions here if needed
     return service;
 });
+
+
+
+var host = builder.Build();
+
+//Initialize TranslationService
+var translationService = host.Services.GetRequiredService<TranslationService>();
+await translationService.InitializeAsync();
+
+await host.RunAsync();
 
 await builder.Build().RunAsync();
