@@ -157,4 +157,14 @@
         }
         return string.Join(' ', words);
     }
+
+    protected override void OnInitialized()
+    {
+        TranslationService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        TranslationService.OnLanguageChanged -= StateHasChanged;
+    }
 }

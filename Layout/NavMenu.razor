@@ -19,3 +19,17 @@
         padding: 15px;
     }
 </style>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        TranslationService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        TranslationService.OnLanguageChanged -= StateHasChanged;
+    }
+
+}

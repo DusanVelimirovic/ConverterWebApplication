@@ -7,6 +7,7 @@ namespace Converter_Web_Application.Service
     {
         private readonly HttpClient _httpClient;
         private readonly Dictionary<string, Dictionary<string, string>> _translations;
+        public event Action OnLanguageChanged;
 
         public TranslationService(HttpClient httpClient)
         {
@@ -16,7 +17,7 @@ namespace Converter_Web_Application.Service
 
         public async Task InitializeAsync()
         {
-            var translationFiles = new[] { "en.json", "fr.json", "it.json", "ru.json", "sr.json" };
+            var translationFiles = new[] { "en.json", "fr.json", "it.json", "ru.json", "sr.json", "de.json" };
             foreach (var file in translationFiles)
             {
                 var culture = Path.GetFileNameWithoutExtension(file);
@@ -25,6 +26,18 @@ namespace Converter_Web_Application.Service
                 var translations = JsonSerializer.Deserialize<Dictionary<string, string>>(content);
                 _translations[culture] = translations;
             }
+        }
+
+        public async Task SetLanguageAsync(string language)
+        {
+            var culture = new CultureInfo(language);
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+            // Reinitialize translations for the new culture
+            await InitializeAsync();
+
+            OnLanguageChanged?.Invoke();
         }
 
         public string Translate(string key, string culture = null)

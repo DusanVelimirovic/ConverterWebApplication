@@ -34,8 +34,20 @@
 </div>
 
 @code {
+
+    protected override void OnInitialized()
+    {
+        TranslationService.OnLanguageChanged += StateHasChanged;
+    }
+
     private void NavigateToUnits(string type)
     {
         Navigation.NavigateTo($"/units/{type}");
     }
+
+    public void Dispose()
+    {
+        TranslationService.OnLanguageChanged -= StateHasChanged;
+    }
+
 }
