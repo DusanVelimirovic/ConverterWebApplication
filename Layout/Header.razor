@@ -1,4 +1,5 @@
-﻿@inject Converter_Web_Application.Service.TranslationService TranslationService
+﻿@using System.Globalization;
+@inject Converter_Web_Application.Service.TranslationService TranslationService
 @inject NavigationManager Navigation
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark position-relative">
@@ -20,7 +21,7 @@
                 <NavLink class="nav-link" href="/">@TranslationService.Translate("Home")</NavLink>
             </li>
             <li class="nav-item">
-                <NavLink class="nav-link" href="/units">Units</NavLink>
+                <NavLink class="nav-link" href="/units">@TranslationService.Translate("Units")</NavLink>
             </li>
 
             <!-- Dropdown language menu -->
@@ -30,8 +31,9 @@
                     @TranslationService.Translate("Language")
                 </a>
                 <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                    <a class="dropdown-item">@TranslationService.Translate("English")</a>
-                    <a class="dropdown-item">@TranslationService.Translate("French")</a>
+                    <a class="dropdown-item" href="javascript:void(0);" @onclick='() => SetLanguage("en")'>@TranslationService.Translate("English")</a>
+                    <a class="dropdown-item" href="javascript:void(0);" @onclick='() => SetLanguage("fr")'>@TranslationService.Translate("French")</a>
+                    <!-- Add more languages as needed -->
                 </div>
             </li>
         </ul>
@@ -41,10 +43,9 @@
 @code {
     private void SetLanguage(string language)
     {
-        /*
         var culture = new CultureInfo(language);
         CultureInfo.DefaultThreadCurrentCulture = culture;
         CultureInfo.DefaultThreadCurrentUICulture = culture;
-        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);*/
+        Navigation.NavigateTo(Navigation.Uri, forceLoad: false);
     }
 }

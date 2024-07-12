@@ -16,7 +16,7 @@ namespace Converter_Web_Application.Service
 
         public async Task InitializeAsync()
         {
-            var translationFiles = new[] { "en.json" };
+            var translationFiles = new[] { "en.json", "fr.json" };
             foreach (var file in translationFiles)
             {
                 var culture = Path.GetFileNameWithoutExtension(file);
