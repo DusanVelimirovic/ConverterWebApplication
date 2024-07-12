@@ -1,35 +1,36 @@
 ﻿@page "/"
+@inject Converter_Web_Application.Service.TranslationService TranslationService
 @using Microsoft.AspNetCore.Components.Web
 @inject NavigationManager Navigation
 
 <div class="container text-center">
-    <h1>Welcome to the Converter Application</h1>
-    <p class="lead">Your one-stop solution for unit conversions.</p>
-    <p>Convert between various units of measurement quickly and easily.</p>
+    <h1>@TranslationService.Translate("Home_Title")</h1>
+    <p class="lead">@TranslationService.Translate("Home_Lead")</p>
+    <p>@TranslationService.Translate("Home_Description")</p>
 
     <div class="row mt-5">
         <div class="col-md-6">
-            <h2>Popular Conversions</h2>
+            <h2>@TranslationService.Translate("Popular_Conversions")</h2>
             <ul class="list-group">
-                <li class="list-group-item" @onclick='() => NavigateToUnits("length")'>Length</li>
-                <li class="list-group-item" @onclick='() => NavigateToUnits("weight")'>Weight</li>
-                <li class="list-group-item" @onclick='() => NavigateToUnits("temperature")'>Temperature</li>
+                <li class="list-group-item" @onclick='() => NavigateToUnits("length")'>@TranslationService.Translate("Length")</li>
+                <li class="list-group-item" @onclick='() => NavigateToUnits("weight")'>@TranslationService.Translate("Weight")</li>
+                <li class="list-group-item" @onclick='() => NavigateToUnits("temperature")'>@TranslationService.Translate("Temperature")</li>
 
             </ul>
         </div>
         <div class="col-md-6">
-            <h2>How to Use</h2>
+            <h2>@TranslationService.Translate("How_To_Use")</h2>
             <ol class="list-unstyled">
-                <li>Select the type of units you want to convert.</li>
-                <li>Enter the value you want to convert.</li>
-                <li>Select the units for conversion.</li>
-                <li>Click the convert button to see the result.</li>
+                <li>@TranslationService.Translate("Select_Type")</li>
+                <li>@TranslationService.Translate("Enter_Value")</li>
+                <li>@TranslationService.Translate("Select_Units")</li>
+                <li>@TranslationService.Translate("Click_Convert")</li>
             </ol>
         </div>
     </div>
 
     <!-- Action button -->
-    <NavLink class="btn btn-primary mt-4" href="/units">Start Converting</NavLink>
+    <NavLink class="btn btn-primary mt-4" href="/units">@TranslationService.Translate("Start_Converting")</NavLink>
 </div>
 
 @code {

@@ -1,15 +1,12 @@
-﻿<!-- Enable handling URLs requests and receving paramaters-->
-@* used to determine the type of measurement (e.g., length, weight, volume) the user wants to convert *@
-@page "/units/{type}" 
+﻿@page "/units/{type}"
 @page "/units"
 
-<!-- provides navigation capabilities, allowing the component 
-to navigate to different pages or get information about the 
-current page -->
-@inject NavigationManager Navigation
+@using Microsoft.AspNetCore.Components.Web
+@using Converter_Web_Application.Service
 
-<!-- Provides the conversion logic, allowing the component to perform conversions based on user input -->
-@inject Converter_Web_Application.Service.ConversionManagerService ConversionManagerService
+@inject NavigationManager Navigation
+@inject ConversionManagerService ConversionManagerService
+@inject TranslationService TranslationService
 
 <PageTitle>Unit Converter</PageTitle>
 
@@ -20,15 +17,14 @@ current page -->
         </div>
         <div class="col-md-10">
             <h1>@(FormatType(Type) ?? "Select a Measurement Type") Conversion</h1>
-            <!-- Implemented two way data binding -->
             <div class="form-group">
-                <label for="inputValue">Value to Convert</label>
+                <label for="inputValue">@TranslationService.Translate("Value_to_Convert")</label>
                 <input type="number" id="inputValue" @bind="value" class="form-control" @onkeydown="HandleKeyDown" />
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label>From Unit</label>
+                    <label>@TranslationService.Translate("From_Unit")</label>
                     <select @bind="fromUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
@@ -38,7 +34,7 @@ current page -->
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label>To Unit</label>
+                    <label>@TranslationService.Translate("To_Unit")</label>
                     <select @bind="toUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
@@ -48,13 +44,10 @@ current page -->
                 </div>
             </div>
 
-            <button class="btn btn-primary" 
-                @onclick="ConvertUnits">
-                Convert
-            </button>
+            <button class="btn btn-primary" @onclick="ConvertUnits">@TranslationService.Translate("Convert")</button>
 
             <div class="form-group mt-3">
-                <label for="resultValue">Result</label>
+                <label for="resultValue">@TranslationService.Translate("Result")</label>
                 <input type="text" id="resultValue" @bind="writeLine" class="form-control" readonly />
             </div>
         </div>
@@ -72,10 +65,9 @@ current page -->
     private string? formattedConvertedValue;
     private string? writeLine;
 
-    // Assigning user conversion choose to a List
     protected override void OnParametersSet()
     {
-        ResetFields(); // Reset fields when parameters are set
+        ResetFields();
         switch (Type?.ToLower())
         {
             case "length":
@@ -102,54 +94,47 @@ current page -->
             case "speed":
                 availableUnits = new List<string> { "Meters per Second", "Kilometers Per Hour", "Miles per Hour", "Feet Per Second", "Knots" };
                 break;
-            // Add more cases for other measurements
             default:
                 availableUnits = new List<string>();
                 break;
         }
-        fromUnit = availableUnits.FirstOrDefault(); // Assign a first unit from the list or default unit
-        toUnit = availableUnits.FirstOrDefault(); // Assign a first unit from the list or default unit
+        fromUnit = availableUnits.FirstOrDefault();
+        toUnit = availableUnits.FirstOrDefault();
     }
 
     private void ConvertUnits()
     {
-        // Conversion logic based on the selected units and value
-        // Gethering result if selected units conversion has developed dedicated coversion logic
         var conversion = ConversionManagerService.GetAllConversions()
             .FirstOrDefault(c => c.FromUnit.Equals(fromUnit, StringComparison.OrdinalIgnoreCase) &&
                                  c.ToUnit.Equals(toUnit, StringComparison.OrdinalIgnoreCase));
         if (conversion != null)
         {
             convertedValue = conversion.Convert(value);
-            // Adjust formatting to handle both very small and very large numbers more clearly
             if (convertedValue < 1.0)
             {
-                formattedConvertedValue = convertedValue.ToString("0.############"); // Up to 12 decimal places without trailing zeros
+                formattedConvertedValue = convertedValue.ToString("0.############");
             }
             else
             {
-                formattedConvertedValue = convertedValue.ToString("N12").TrimEnd('0').TrimEnd('.'); // Format and trim unnecessary zeroes
+                formattedConvertedValue = convertedValue.ToString("N12").TrimEnd('0').TrimEnd('.');
             }
             writeLine = $"{value} {fromUnit} is equal to {formattedConvertedValue} {toUnit}";
         }
         else
         {
-            // Handle conversion not found scenario
-            formattedConvertedValue = "Invalid conversion choice."; // or any other appropriate error handling
+            formattedConvertedValue = "Invalid conversion choice.";
             writeLine = formattedConvertedValue;
         }
     }
-    // Handle keyboard event - user press enter
+
     private void HandleKeyDown(KeyboardEventArgs e)
     {
-        // Check if the Enter key is pressed
         if (e.Key == "Enter")
         {
             ConvertUnits();
         }
     }
 
-    // Reset value and result fields when conversion units change
     private void ResetFields()
     {
         value = 0;
@@ -157,7 +142,7 @@ current page -->
         formattedConvertedValue = string.Empty;
         writeLine = string.Empty;
     }
-    // Format type string to capitalize the first letter of each word and replace underscores with spaces
+
     private string FormatType(string? type)
     {
         if (string.IsNullOrEmpty(type))
@@ -165,7 +150,6 @@ current page -->
             return string.Empty;
         }
 
-        // Split the type by underscores and capitalize the first letter of each word
         var words = type.Split(new char[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
         for (int i = 0; i < words.Length; i++)
         {

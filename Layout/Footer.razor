@@ -1,5 +1,7 @@
-﻿<footer class="footer bg-dark text-white mt-auto py-3">
+﻿@inject Converter_Web_Application.Service.TranslationService TranslationService
+
+<footer class="footer bg-dark text-white mt-auto py-3">
     <div class="container">
-        <span class="text-muted">© 2024 Converter Web Application</span>
+        <span class="text-muted">@TranslationService.Translate("Footer_Text")</span>
     </div>
 </footer>
