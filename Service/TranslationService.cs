@@ -17,11 +17,14 @@ namespace Converter_Web_Application.Service
 
         public async Task InitializeAsync()
         {
-            var translationFiles = new[] { "en.json", "fr.json", "it.json", "de.json", "ru.json", "sr.json" };
+            var translationFiles = new[] { "en.json", "fr.json", "it.json", "de.json", "ru.json", "sr.json", "es.json" };
+            var cacheBuster = DateTime.Now.Ticks.ToString(); // Unique cache-busting query parameter
+
             foreach (var file in translationFiles)
             {
                 var culture = Path.GetFileNameWithoutExtension(file);
-                var response = await _httpClient.GetAsync($"translations/{file}");
+               // var response = await _httpClient.GetAsync($"translations/{file}");
+                var response = await _httpClient.GetAsync($"translations/{file}?v={cacheBuster}");
                 var content = await response.Content.ReadAsStringAsync();
                 var translations = JsonSerializer.Deserialize<Dictionary<string, string>>(content);
                 _translations[culture] = translations;
