@@ -1,4 +1,5 @@
 {
+  "Select_a_Measurement_Type": "Sélectionnez un type de mesure",
   "Home_Title": "Bienvenue dans l'application de conversion",
   "Home_Lead": "Votre solution tout-en-un pour les conversions d'unités.",
   "Home_Description": "Convertissez rapidement et facilement entre diverses unités de mesure.",
@@ -30,5 +31,6 @@
   "Is_Equal_To": "est égal à",
   "Invalid_Conversion_Choice": "Choix de conversion invalide.",
   "Select_Measurement_Type": "Sélectionnez un type de mesure",
-  "Footer_Text": "© 2024 Application Web de Conversion"
+  "Footer_Text": "© 2024 Application Web de Conversion",
+  "Convert_button": "Convertir"
 }

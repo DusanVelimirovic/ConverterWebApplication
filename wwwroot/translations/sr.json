@@ -30,5 +30,6 @@
   "Is_Equal_To": "је једнако",
   "Invalid_Conversion_Choice": "Неважећи избор конверзије.",
   "Select_Measurement_Type": "Изаберите врсту мерења",
-  "Footer_Text": "© 2024 Веб апликација конвертера"
+  "Footer_Text": "© 2024 Веб апликација конвертера",
+  "Convert_button":  "Конвертуј"
 }

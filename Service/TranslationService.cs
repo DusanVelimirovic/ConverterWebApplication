@@ -17,7 +17,7 @@ namespace Converter_Web_Application.Service
 
         public async Task InitializeAsync()
         {
-            var translationFiles = new[] { "en.json", "fr.json", "it.json", "ru.json", "sr.json", "de.json" };
+            var translationFiles = new[] { "en.json", "fr.json", "it.json", "de.json", "ru.json", "sr.json" };
             foreach (var file in translationFiles)
             {
                 var culture = Path.GetFileNameWithoutExtension(file);
@@ -28,19 +28,7 @@ namespace Converter_Web_Application.Service
             }
         }
 
-        public async Task SetLanguageAsync(string language)
-        {
-            var culture = new CultureInfo(language);
-            CultureInfo.DefaultThreadCurrentCulture = culture;
-            CultureInfo.DefaultThreadCurrentUICulture = culture;
-
-            // Reinitialize translations for the new culture
-            await InitializeAsync();
-
-            OnLanguageChanged?.Invoke();
-        }
-
-        public string Translate(string key, string culture = null)
+        public string Translate(string key, string? culture = null)
         {
             culture ??= CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
             if (_translations.ContainsKey(culture) && _translations[culture].ContainsKey(key))
@@ -48,6 +36,13 @@ namespace Converter_Web_Application.Service
                 return _translations[culture][key];
             }
             return key; // Fallback to key if translation is missing
+        }
+
+        public void SetLanguage(string culture)
+        {
+            CultureInfo.CurrentCulture = new CultureInfo(culture);
+            CultureInfo.CurrentUICulture = new CultureInfo(culture);
+            OnLanguageChanged?.Invoke();
         }
     }
 }

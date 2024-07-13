@@ -16,9 +16,18 @@
             <NavMenu />
         </div>
         <div class="col-md-10">
-            <h1>@(FormatType(Type) ?? "Select a Measurement Type") Conversion</h1>
+<h1>
+    @if (!string.IsNullOrEmpty(FormatType(Type)))
+    {
+        @TranslationService.Translate(FormatType(Type))
+    }
+    else
+    {
+        @TranslationService.Translate("Select_Measurement_Type")
+    }
+</h1>
             <div class="form-group">
-                <label for="inputValue">@TranslationService.Translate("Value_to_Convert")</label>
+                <label for="inputValue">@TranslationService.Translate("Conversion")</label>
                 <input type="number" id="inputValue" @bind="value" class="form-control" @onkeydown="HandleKeyDown" />
             </div>
 
@@ -28,7 +37,7 @@
                     <select @bind="fromUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
-                            <option value="@unit">@unit</option>
+                            <option value="@unit">@TranslationService.Translate(unit)</option>
                         }
                     </select>
                 </div>
@@ -38,13 +47,13 @@
                     <select @bind="toUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
-                            <option value="@unit">@unit</option>
+                            <option value="@unit">@TranslationService.Translate(unit)</option>
                         }
                     </select>
                 </div>
             </div>
 
-            <button class="btn btn-primary" @onclick="ConvertUnits">@TranslationService.Translate("Convert")</button>
+            <button class="btn btn-primary" @onclick="ConvertUnits">@TranslationService.Translate("Click_Convert")</button>
 
             <div class="form-group mt-3">
                 <label for="resultValue">@TranslationService.Translate("Result")</label>

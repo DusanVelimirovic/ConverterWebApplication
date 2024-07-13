@@ -45,9 +45,9 @@
 </nav>
 
 @code {
-    private async Task SetLanguage(string language)
+    private void SetLanguage(string language)
     {
-        await TranslationService.SetLanguageAsync(language);
+        TranslationService.SetLanguage(language);
 
         var culture = new CultureInfo(language);
         CultureInfo.DefaultThreadCurrentCulture = culture;

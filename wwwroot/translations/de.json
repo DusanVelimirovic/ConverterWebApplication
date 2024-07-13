@@ -30,5 +30,6 @@
   "Is_Equal_To": "ist gleich",
   "Invalid_Conversion_Choice": "Ungültige Konvertierungswahl.",
   "Select_Measurement_Type": "Wählen Sie einen Messtyp aus",
-  "Footer_Text": "© 2024 Konverter-Webanwendung"
+  "Footer_Text": "© 2024 Konverter-Webanwendung",
+  "Convert_button": "Konvertieren"
 }

@@ -30,5 +30,6 @@
   "Is_Equal_To": "равно",
   "Invalid_Conversion_Choice": "Недопустимый выбор преобразования.",
   "Select_Measurement_Type": "Выберите тип измерения",
-  "Footer_Text": "© 2024 Веб-приложение конвертера"
+  "Footer_Text": "© 2024 Веб-приложение конвертера",
+  "Convert_button": "Конвертировать"
 }
