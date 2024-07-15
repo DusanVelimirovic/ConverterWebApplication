@@ -526,7 +526,140 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     service.RegisterConversion(new KnotsToFeetPerSecond());
 
 
-    // Add more conversions here if needed
+    // Register a Cooking conversions
+
+    // Sugar Conversions
+    service.RegisterConversion(new CupOfSugarToGrams());
+    service.RegisterConversion(new CupOfSugarToKilograms());
+    service.RegisterConversion(new CupOfSugarToOunces());
+    service.RegisterConversion(new CupOfSugarToPounds());
+    service.RegisterConversion(new TablespoonOfSugarToGrams());
+    service.RegisterConversion(new TablespoonOfSugarToKilograms());
+    service.RegisterConversion(new TablespoonOfSugarToOunces());
+    service.RegisterConversion(new TablespoonOfSugarToPounds());
+    service.RegisterConversion(new TeaspoonOfSugarToGrams());
+    service.RegisterConversion(new TeaspoonOfSugarToKilograms());
+    service.RegisterConversion(new TeaspoonOfSugarToOunces());
+    service.RegisterConversion(new TeaspoonOfSugarToPounds());
+    service.RegisterConversion(new GramsToCupsOfSugar());
+    service.RegisterConversion(new KilogramsToCupsOfSugar());
+    service.RegisterConversion(new OuncesToCupsOfSugar());
+    service.RegisterConversion(new PoundsToCupsOfSugar());
+    service.RegisterConversion(new GramsToTablespoonsOfSugar());
+    service.RegisterConversion(new KilogramsToTablespoonsOfSugar());
+    service.RegisterConversion(new OuncesToTablespoonsOfSugar());
+    service.RegisterConversion(new PoundsToTablespoonsOfSugar());
+    service.RegisterConversion(new GramsToTeaspoonsOfSugar());
+    service.RegisterConversion(new KilogramsToTeaspoonsOfSugar());
+    service.RegisterConversion(new OuncesToTeaspoonsOfSugar());
+    service.RegisterConversion(new PoundsToTeaspoonsOfSugar());
+
+    // Flour Conversions
+    service.RegisterConversion(new CupOfFlourToGrams());
+    service.RegisterConversion(new CupOfFlourToKilograms());
+    service.RegisterConversion(new CupOfFlourToOunces());
+    service.RegisterConversion(new CupOfFlourToPounds());
+    service.RegisterConversion(new TablespoonOfFlourToGrams());
+    service.RegisterConversion(new TablespoonOfFlourToKilograms());
+    service.RegisterConversion(new TablespoonOfFlourToOunces());
+    service.RegisterConversion(new TablespoonOfFlourToPounds());
+    service.RegisterConversion(new TeaspoonOfFlourToGrams());
+    service.RegisterConversion(new TeaspoonOfFlourToKilograms());
+    service.RegisterConversion(new TeaspoonOfFlourToOunces());
+    service.RegisterConversion(new TeaspoonOfFlourToPounds());
+    service.RegisterConversion(new GramsToCupsOfFlour());
+    service.RegisterConversion(new KilogramsToCupsOfFlour());
+    service.RegisterConversion(new OuncesToCupsOfFlour());
+    service.RegisterConversion(new PoundsToCupsOfFlour());
+    service.RegisterConversion(new GramsToTablespoonsOfFlour());
+    service.RegisterConversion(new KilogramsToTablespoonsOfFlour());
+    service.RegisterConversion(new OuncesToTablespoonsOfFlour());
+    service.RegisterConversion(new PoundsToTablespoonsOfFlour());
+    service.RegisterConversion(new GramsToTeaspoonsOfFlour());
+    service.RegisterConversion(new KilogramsToTeaspoonsOfFlour());
+    service.RegisterConversion(new OuncesToTeaspoonsOfFlour());
+    service.RegisterConversion(new PoundsToTeaspoonsOfFlour());
+
+    // Butter Conversions
+    service.RegisterConversion(new CupOfButterToGrams());
+    service.RegisterConversion(new CupOfButterToKilograms());
+    service.RegisterConversion(new CupOfButterToOunces());
+    service.RegisterConversion(new CupOfButterToPounds());
+    service.RegisterConversion(new TablespoonOfButterToGrams());
+    service.RegisterConversion(new TablespoonOfButterToKilograms());
+    service.RegisterConversion(new TablespoonOfButterToOunces());
+    service.RegisterConversion(new TablespoonOfButterToPounds());
+    service.RegisterConversion(new TeaspoonOfButterToGrams());
+    service.RegisterConversion(new TeaspoonOfButterToKilograms());
+    service.RegisterConversion(new TeaspoonOfButterToOunces());
+    service.RegisterConversion(new TeaspoonOfButterToPounds());
+    service.RegisterConversion(new GramsToCupsOfButter());
+    service.RegisterConversion(new KilogramsToCupsOfButter());
+    service.RegisterConversion(new OuncesToCupsOfButter());
+    service.RegisterConversion(new PoundsToCupsOfButter());
+    service.RegisterConversion(new GramsToTablespoonsOfButter());
+    service.RegisterConversion(new KilogramsToTablespoonsOfButter());
+    service.RegisterConversion(new OuncesToTablespoonsOfButter());
+    service.RegisterConversion(new PoundsToTablespoonsOfButter());
+    service.RegisterConversion(new GramsToTeaspoonsOfButter());
+    service.RegisterConversion(new KilogramsToTeaspoonsOfButter());
+    service.RegisterConversion(new OuncesToTeaspoonsOfButter());
+    service.RegisterConversion(new PoundsToTeaspoonsOfButter());
+
+    // Milk Conversions
+    /*
+    service.RegisterConversion(new CupOfMilkToGrams());
+    service.RegisterConversion(new CupOfMilkToKilograms());
+    service.RegisterConversion(new CupOfMilkToOunces());
+    service.RegisterConversion(new CupOfMilkToPounds());
+    service.RegisterConversion(new TablespoonOfMilkToGrams());
+    service.RegisterConversion(new TablespoonOfMilkToKilograms());
+    service.RegisterConversion(new TablespoonOfMilkToOunces());
+    service.RegisterConversion(new TablespoonOfMilkToPounds());
+    service.RegisterConversion(new TeaspoonOfMilkToGrams());
+    service.RegisterConversion(new TeaspoonOfMilkToKilograms());
+    service.RegisterConversion(new TeaspoonOfMilkToOunces());
+    service.RegisterConversion(new TeaspoonOfMilkToPounds());*/
+    service.RegisterConversion(new GramsToCupsOfMilk());
+    service.RegisterConversion(new KilogramsToCupsOfMilk());
+    service.RegisterConversion(new OuncesToCupsOfMilk());
+    service.RegisterConversion(new PoundsToCupsOfMilk());
+    service.RegisterConversion(new GramsToTablespoonsOfMilk());
+    service.RegisterConversion(new KilogramsToTablespoonsOfMilk());
+    service.RegisterConversion(new OuncesToTablespoonsOfMilk());
+    service.RegisterConversion(new PoundsToTablespoonsOfMilk());
+    service.RegisterConversion(new GramsToTeaspoonsOfMilk());
+    service.RegisterConversion(new KilogramsToTeaspoonsOfMilk());
+    service.RegisterConversion(new OuncesToTeaspoonsOfMilk());
+    service.RegisterConversion(new PoundsToTeaspoonsOfMilk());
+
+    // Rice Conversions
+    service.RegisterConversion(new CupOfRiceToGrams());
+    service.RegisterConversion(new CupOfRiceToKilograms());
+    service.RegisterConversion(new CupOfRiceToOunces());
+    service.RegisterConversion(new CupOfRiceToPounds());
+    service.RegisterConversion(new TablespoonOfRiceToGrams());
+    service.RegisterConversion(new TablespoonOfRiceToKilograms());
+    service.RegisterConversion(new TablespoonOfRiceToOunces());
+    service.RegisterConversion(new TablespoonOfRiceToPounds());
+    service.RegisterConversion(new TeaspoonOfRiceToGrams());
+    service.RegisterConversion(new TeaspoonOfRiceToKilograms());
+    service.RegisterConversion(new TeaspoonOfRiceToOunces());
+    service.RegisterConversion(new TeaspoonOfRiceToPounds());
+    service.RegisterConversion(new GramsToCupsOfRice());
+    service.RegisterConversion(new KilogramsToCupsOfRice());
+    service.RegisterConversion(new OuncesToCupsOfRice());
+    service.RegisterConversion(new PoundsToCupsOfRice());
+    service.RegisterConversion(new GramsToTablespoonsOfRice());
+    service.RegisterConversion(new KilogramsToTablespoonsOfRice());
+    service.RegisterConversion(new OuncesToTablespoonsOfRice());
+    service.RegisterConversion(new PoundsToTablespoonsOfRice());
+    service.RegisterConversion(new GramsToTeaspoonsOfRice());
+    service.RegisterConversion(new KilogramsToTeaspoonsOfRice());
+    service.RegisterConversion(new OuncesToTeaspoonsOfRice());
+    service.RegisterConversion(new PoundsToTeaspoonsOfRice());
+
+
     return service;
 });
 

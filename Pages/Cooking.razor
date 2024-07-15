@@ -1,5 +1,5 @@
-﻿@page "/food/{type}"
-@page "/food"
+﻿@page "/cooking/{type}"
+@page "/cooking"
 
 @using Microsoft.AspNetCore.Components.Web
 @using Converter_Web_Application.Service
@@ -13,7 +13,7 @@
 <div class="container-fluid" @onkeydown="HandleKeyDown">
     <div class="row">
         <div class="col-md-2">
-            <NavMenu_food />
+            <NavMenu_cooking />
         </div>
         <div class="col-md-10">
 <h1>
@@ -79,29 +79,23 @@
         ResetFields();
         switch (Type?.ToLower())
         {
-            case "length":
-                availableUnits = new List<string> { "Meters", "Centimeters", "Millimeters", "Kilometers", "Miles", "Nautical Miles", "Yards", "Feet", "Inches", "Leagues" };
+            case "sugar":
+                availableUnits = new List<string> { "Cup", "Tablespoon", "Teaspoon", "Grams", "Kilograms", "Pounds", "Ounces" };
                 break;
-            case "weight":
-                availableUnits = new List<string> { "Kilograms", "Grams", "Pounds", "Ounces", "Stones" };
+            case "flour":
+                availableUnits = new List<string> { "Cup", "Tablespoon", "Teaspoon", "Grams", "Kilograms", "Pounds", "Ounces" };
                 break;
-            case "volume":
-                availableUnits = new List<string> { "Liters", "Milliliters", "Cubic Meters", "Cubic Centimeters", "Cubic Inches" };
+            case "butter":
+                availableUnits = new List<string> { "Cup", "Tablespoon", "Teaspoon", "Grams", "Kilograms", "Pounds", "Ounces" };
                 break;
-            case "temperature":
-                availableUnits = new List<string> { "Celsius", "Fahrenheit", "Kelvin" };
+            case "rice":
+                availableUnits = new List<string> { "Cup", "Tablespoon", "Teaspoon", "Grams", "Kilograms", "Pounds", "Ounces" };
                 break;
-            case "area":
-                availableUnits = new List<string> { "Square meters", "Square feet", "Square yards", "Square miles", "Square kilometers", "Acres", "Hectares", "Square centimeters", "Square inches", "Square millimeters" };
+            case "milk":
+                availableUnits = new List<string> { "Cup", "Tablespoon", "Teaspoon", "Grams", "Kilograms", "Pounds", "Ounces" };
                 break;
-            case "time":
-                availableUnits = new List<string> { "Seconds", "Minutes", "Hours", "Days", "Weeks", "Months", "Years" };
-                break;
-            case "digital_storage":
-                availableUnits = new List<string> { "Bits", "Bytes", "Kilobits", "Kilobytes", "Megabits", "Megabytes", "Gigabits", "Gigabytes", "Terabits", "Terabytes" };
-                break;
-            case "speed":
-                availableUnits = new List<string> { "Meters per Second", "Kilometers Per Hour", "Miles per Hour", "Feet Per Second", "Knots" };
+            case "water":
+                availableUnits = new List<string> { "Cup", "Tablespoon", "Teaspoon", "Grams", "Kilograms", "Pounds", "Ounces" };
                 break;
             default:
                 availableUnits = new List<string>();
