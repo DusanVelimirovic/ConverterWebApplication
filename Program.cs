@@ -607,7 +607,7 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     service.RegisterConversion(new PoundsToTeaspoonsOfButter());
 
     // Milk Conversions
-    /*
+    
     service.RegisterConversion(new CupOfMilkToGrams());
     service.RegisterConversion(new CupOfMilkToKilograms());
     service.RegisterConversion(new CupOfMilkToOunces());
@@ -619,7 +619,7 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     service.RegisterConversion(new TeaspoonOfMilkToGrams());
     service.RegisterConversion(new TeaspoonOfMilkToKilograms());
     service.RegisterConversion(new TeaspoonOfMilkToOunces());
-    service.RegisterConversion(new TeaspoonOfMilkToPounds());*/
+    service.RegisterConversion(new TeaspoonOfMilkToPounds());
     service.RegisterConversion(new GramsToCupsOfMilk());
     service.RegisterConversion(new KilogramsToCupsOfMilk());
     service.RegisterConversion(new OuncesToCupsOfMilk());

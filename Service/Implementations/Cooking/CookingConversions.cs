@@ -511,6 +511,107 @@ namespace Converter_Web_Application.Service.Implementations
         public double Convert(double value) => value * 0.0104;
     }
 
+    // Milk
+    // Cup of milk
+    public class CupOfMilkToGrams : IConversion
+    {
+        public int Id => 51;
+        public string FromUnit => "cup";
+        public string ToUnit => "grams";
+        public double Convert(double value) => value * 240; // 1 cup of milk = 240 grams
+    }
+
+    public class CupOfMilkToKilograms : IConversion
+    {
+        public int Id => 52;
+        public string FromUnit => "cup";
+        public string ToUnit => "kilograms";
+        public double Convert(double value) => value * 0.24; // 1 cup of milk = 0.24 kilograms
+    }
+
+    public class CupOfMilkToOunces : IConversion
+    {
+        public int Id => 53;
+        public string FromUnit => "cup";
+        public string ToUnit => "ounces";
+        public double Convert(double value) => value * 8.11; // 1 cup of milk = 8.11 ounces
+    }
+
+    public class CupOfMilkToPounds : IConversion
+    {
+        public int Id => 54;
+        public string FromUnit => "cup";
+        public string ToUnit => "pounds";
+        public double Convert(double value) => value * 0.528; // 1 cup of milk = 0.528 pounds
+    }
+
+    // Tablespoon of milk
+    public class TablespoonOfMilkToGrams : IConversion
+    {
+        public int Id => 55;
+        public string FromUnit => "tablespoon";
+        public string ToUnit => "grams";
+        public double Convert(double value) => value * 15; // 1 tablespoon of milk = 15 grams
+    }
+
+    public class TablespoonOfMilkToKilograms : IConversion
+    {
+        public int Id => 56;
+        public string FromUnit => "tablespoon";
+        public string ToUnit => "kilograms";
+        public double Convert(double value) => value * 0.015; // 1 tablespoon of milk = 0.015 kilograms
+    }
+
+    public class TablespoonOfMilkToOunces : IConversion
+    {
+        public int Id => 57;
+        public string FromUnit => "tablespoon";
+        public string ToUnit => "ounces";
+        public double Convert(double value) => value * 0.507; // 1 tablespoon of milk = 0.507 ounces
+    }
+
+    public class TablespoonOfMilkToPounds : IConversion
+    {
+        public int Id => 58;
+        public string FromUnit => "tablespoon";
+        public string ToUnit => "pounds";
+        public double Convert(double value) => value * 0.03125; // 1 tablespoon of milk = 0.03125 pounds
+    }
+
+    // Teaspoon of milk
+    public class TeaspoonOfMilkToGrams : IConversion
+    {
+        public int Id => 59;
+        public string FromUnit => "teaspoon";
+        public string ToUnit => "grams";
+        public double Convert(double value) => value * 5; // 1 teaspoon of milk = 5 grams
+    }
+
+    public class TeaspoonOfMilkToKilograms : IConversion
+    {
+        public int Id => 60;
+        public string FromUnit => "teaspoon";
+        public string ToUnit => "kilograms";
+        public double Convert(double value) => value * 0.005; // 1 teaspoon of milk = 0.005 kilograms
+    }
+
+    public class TeaspoonOfMilkToOunces : IConversion
+    {
+        public int Id => 61;
+        public string FromUnit => "teaspoon";
+        public string ToUnit => "ounces";
+        public double Convert(double value) => value * 0.169; // 1 teaspoon of milk = 0.169 ounces
+    }
+
+    public class TeaspoonOfMilkToPounds : IConversion
+    {
+        public int Id => 62;
+        public string FromUnit => "teaspoon";
+        public string ToUnit => "pounds";
+        public double Convert(double value) => value * 0.0104; // 1 teaspoon of milk = 0.0104 pounds
+    }
+
+
     // Sugar - grams, kilograms, pounds, ounces to...
 
     // Cups
