@@ -1,4 +1,4 @@
-﻿namespace Converter_Web_Application.Service.Implementations
+﻿namespace Converter_Web_Application.Service.Implementations.Unit
 {
     // Celsius
     public class CelsiusToFahrenheit : IConversion

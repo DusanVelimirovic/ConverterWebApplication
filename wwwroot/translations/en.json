@@ -86,5 +86,16 @@
   "Kilometers Per Hour": "Kilometers Per Hour",
   "Miles per Hour": "Miles per Hour",
   "Feet Per Second": "Feet Per Second",
-  "Knots": "Knots"
+  "Knots": "Knots",
+
+  "Cooking_Measurements": "Cooking Measurements",
+  "Cup": "Cup",
+  "Tablespoon": "Tablespoon",
+  "Teaspoon": "Teaspoon",
+  "Sugar":  "Sugar",
+  "Flour": "Flour",
+  "Butter": "Butter",
+  "Rice": "Rice",
+  "Milk": "Milk",
+  "Water": "Water"
 }
