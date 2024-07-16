@@ -127,7 +127,8 @@
             {
                 formattedConvertedValue = convertedValue.ToString("N12").TrimEnd('0').TrimEnd('.');
             }
-            writeLine = $"{value} {fromUnit} is equal to {formattedConvertedValue} {toUnit}";
+            var resultTemplate = TranslationService.Translate("result_format");
+            writeLine = string.Format(resultTemplate, value, TranslationService.Translate(fromUnit), formattedConvertedValue, TranslationService.Translate(toUnit));
         }
         else
         {

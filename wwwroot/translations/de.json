@@ -98,5 +98,8 @@
   "Butter": "Butter",
   "Rice": "Reis",
   "Milk": "Milch",
-  "Water": "Wasser"
+  "Water": "Wasser",
+
+  "is_equal_to": "ist gleich",
+  "result_format": "{0} {1} ist gleich {2} {3}"
 }

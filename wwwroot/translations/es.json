@@ -98,5 +98,7 @@
   "Butter": "Mantequilla",
   "Rice": "Arroz",
   "Milk": "Leche",
-  "Water": "Agua"
+  "Water": "Agua",
+  "is_equal_to": "es igual a",
+  "result_format": "{0} {1} es igual a {2} {3}"
 }

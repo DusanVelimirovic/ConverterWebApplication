@@ -98,5 +98,9 @@
   "Rice": "Rice",
   "Milk": "Milk",
   "Water": "Water",
-  "Cooking": "Cooking"
+  "Cooking": "Cooking",
+
+  "is_equal_to": "is equal",
+  "result_format": "{0} {1} is equal to {2} {3}"
+
 }

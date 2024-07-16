@@ -98,5 +98,8 @@
   "Butter": "Maslac",
   "Rice": "Pirinač",
   "Milk": "Mleko",
-  "Water": "Voda"
+  "Water": "Voda",
+
+  "is_equal_to": "jednako je",
+  "result_format": "{0} {1} jednako je {2} {3}"
 }
