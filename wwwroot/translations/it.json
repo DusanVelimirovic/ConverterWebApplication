@@ -86,5 +86,16 @@
   "Kilometers Per Hour": "Chilometri all'ora",
   "Miles per Hour": "Miglia all'ora",
   "Feet Per Second": "Piedi al secondo",
-  "Knots": "Nodi"
+  "Knots": "Nodi",
+  "Cooking_Measurements": "Misure di cucina",
+  "Cooking": "Cucina",
+  "Cup": "Tazza",
+  "Tablespoon": "Cucchiaio",
+  "Teaspoon": "Cucchiaino",
+  "Sugar": "Zucchero",
+  "Flour": "Farina",
+  "Butter": "Burro",
+  "Rice": "Riso",
+  "Milk": "Latte",
+  "Water": "Acqua"
 }

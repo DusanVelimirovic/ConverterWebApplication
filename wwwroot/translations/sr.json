@@ -86,5 +86,17 @@
   "Kilometers Per Hour": "Kilometri po satu",
   "Miles per Hour": "Milje po satu",
   "Feet Per Second": "Stope po sekundi",
-  "Knots": "Čvorovi"
+  "Knots": "Čvorovi",
+
+  "Cooking_Measurements": "Mere za kuvanje",
+  "Cooking": "Kuvanje",
+  "Cup": "Šolja",
+  "Tablespoon": "Kašika",
+  "Teaspoon": "Kašičica",
+  "Sugar": "Šećer",
+  "Flour": "Brašno",
+  "Butter": "Maslac",
+  "Rice": "Pirinač",
+  "Milk": "Mleko",
+  "Water": "Voda"
 }
