@@ -101,5 +101,25 @@
   "Water": "Voda",
 
   "is_equal_to": "jednako je",
-  "result_format": "{0} {1} jednako je {2} {3}"
+  "result_format": "{0} {1} jednako je {2} {3}",
+
+  "Travel_Calculation": "Izračun putovanja",
+  "Select_Mode": "Izaberite režim",
+  "Get_Time": "Dobijte vreme",
+  "Get_Speed": "Dobijte brzinu",
+  "Select_Distance_Metric": "Izaberite jedinicu za udaljenost",
+  "Enter_Distance": "Unesite udaljenost",
+  "Select_Speed_Metric": "Izaberite jedinicu za brzinu",
+  "Enter_Speed": "Unesite brzinu",
+  "Select_Time_Metric": "Izaberite jedinicu za vreme",
+  "Enter_Time": "Unesite vreme",
+  "Calculate_Time": "Izračunaj vreme",
+  "Calculate_Speed": "Izračunaj brzinu",
+  "Distance_Unit": "km",
+  "Speed_Unit": "km/h",
+  "Time_Unit": "sati",
+  "Invalid_Speed": "Nevažeća brzina. Molimo unesite važeću brzinu.",
+  "Invalid_Time": "Nevažeće vreme. Molimo unesite važeće vreme.",
+  "result_time_format": "Ako vozite {0} {1}, preći ćete udaljenost od {2} {3} za {4} {5}.",
+  "result_speed_format": "Da biste prešli udaljenost od {0} {1} za {2} {3}, morate putovati brzinom od {4} {5}."
 }

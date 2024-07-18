@@ -100,5 +100,25 @@
   "Milk": "Leche",
   "Water": "Agua",
   "is_equal_to": "es igual a",
-  "result_format": "{0} {1} es igual a {2} {3}"
+  "result_format": "{0} {1} es igual a {2} {3}",
+
+  "Travel_Calculation": "Cálculo de viaje",
+  "Select_Mode": "Seleccionar modo",
+  "Get_Time": "Obtener tiempo",
+  "Get_Speed": "Obtener velocidad",
+  "Select_Distance_Metric": "Seleccionar unidad de distancia",
+  "Enter_Distance": "Ingresar distancia",
+  "Select_Speed_Metric": "Seleccionar unidad de velocidad",
+  "Enter_Speed": "Ingresar velocidad",
+  "Select_Time_Metric": "Seleccionar unidad de tiempo",
+  "Enter_Time": "Ingresar tiempo",
+  "Calculate_Time": "Calcular tiempo",
+  "Calculate_Speed": "Calcular velocidad",
+  "Distance_Unit": "km",
+  "Speed_Unit": "km/h",
+  "Time_Unit": "horas",
+  "Invalid_Speed": "Velocidad no válida. Por favor, ingrese una velocidad válida.",
+  "Invalid_Time": "Tiempo no válido. Por favor, ingrese un tiempo válido.",
+  "result_time_format": "Si conduces a {0} {1}, cubrirás una distancia de {2} {3} en {4} {5}.",
+  "result_speed_format": "Para cubrir una distancia de {0} {1} en {2} {3}, debes viajar a una velocidad de {4} {5}."
 }

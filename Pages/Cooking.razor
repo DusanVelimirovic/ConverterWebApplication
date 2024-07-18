@@ -108,6 +108,7 @@
     private void ConvertUnits()
     {
         var conversion = ConversionManagerService.GetAllConversions()
+            .OfType<IConversion>()
             .FirstOrDefault(c => c.FromUnit.Equals(fromUnit, StringComparison.OrdinalIgnoreCase) &&
                                  c.ToUnit.Equals(toUnit, StringComparison.OrdinalIgnoreCase));
         if (conversion != null)

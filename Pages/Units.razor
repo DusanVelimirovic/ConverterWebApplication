@@ -16,16 +16,16 @@
             <NavMenu />
         </div>
         <div class="col-md-10">
-<h1>
-    @if (!string.IsNullOrEmpty(FormatType(Type)))
-    {
-        @TranslationService.Translate(FormatType(Type))
-    }
-    else
-    {
-        @TranslationService.Translate("Select_Measurement_Type")
-    }
-</h1>
+            <h1>
+                @if (!string.IsNullOrEmpty(FormatType(Type)))
+                {
+                    @TranslationService.Translate(FormatType(Type))
+                }
+                else
+                {
+                    @TranslationService.Translate("Select_Measurement_Type")
+                }
+            </h1>
             <div class="form-group">
                 <label for="inputValue">@TranslationService.Translate("Conversion")</label>
                 <input type="number" id="inputValue" @bind="value" class="form-control" @onkeydown="HandleKeyDown" />
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary" @onclick="ConvertUnits">@TranslationService.Translate("Convert_button")</button>
+            <button class="btn btn-primary" @onclick="ConvertUnits">@TranslationService.Translate("Click_Convert")</button>
 
             <div class="form-group mt-3">
                 <label for="resultValue">@TranslationService.Translate("Result")</label>
@@ -113,7 +113,9 @@
 
     private void ConvertUnits()
     {
+        // Ensure ConversionManagerService is correctly casted to IConversion
         var conversion = ConversionManagerService.GetAllConversions()
+            .OfType<IConversion>()
             .FirstOrDefault(c => c.FromUnit.Equals(fromUnit, StringComparison.OrdinalIgnoreCase) &&
                                  c.ToUnit.Equals(toUnit, StringComparison.OrdinalIgnoreCase));
         if (conversion != null)
@@ -127,8 +129,7 @@
             {
                 formattedConvertedValue = convertedValue.ToString("N12").TrimEnd('0').TrimEnd('.');
             }
-            var resultTemplate = TranslationService.Translate("result_format");
-            writeLine = string.Format(resultTemplate, value, TranslationService.Translate(fromUnit), formattedConvertedValue, TranslationService.Translate(toUnit));
+            writeLine = string.Format(TranslationService.Translate("result_format"), value, TranslationService.Translate(fromUnit), formattedConvertedValue, TranslationService.Translate(toUnit));
         }
         else
         {

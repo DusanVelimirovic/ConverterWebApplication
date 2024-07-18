@@ -1,0 +1,153 @@
+﻿@page "/travel"
+
+@using Microsoft.AspNetCore.Components.Web
+@using Converter_Web_Application.Service
+
+@inject NavigationManager Navigation
+@inject ConversionManagerService ConversionManagerService
+@inject TranslationService TranslationService
+
+<PageTitle>Travel Calculation</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>@TranslationService.Translate("Travel_Calculation")</h1>
+            <div class="form-group">
+                <label for="modeSelect">@TranslationService.Translate("Select_Mode")</label>
+                <select id="modeSelect" class="form-control" @onchange="OnModeChange">
+                    <option value="time">@TranslationService.Translate("Get_Time")</option>
+                    <option value="speed">@TranslationService.Translate("Get_Speed")</option>
+                </select>
+            </div>
+
+            @if (mode == "time")
+            {
+                <div>
+                    <div class="form-group">
+                        <label for="distanceMetric">@TranslationService.Translate("Select_Distance_Metric")</label>
+                        <select id="distanceMetric" class="form-control" @bind="distanceMetric">
+                            <option value="km">Kilometers</option>
+                            <option value="miles">Miles</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="distance">@TranslationService.Translate("Enter_Distance")</label>
+                        <input type="number" id="distance" @bind="distance" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="speedMetric">@TranslationService.Translate("Select_Speed_Metric")</label>
+                        <select id="speedMetric" class="form-control" @bind="speedMetric">
+                            <option value="km/h">Kilometers per Hour</option>
+                            <option value="mph">Miles per Hour</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="speed">@TranslationService.Translate("Enter_Speed")</label>
+                        <input type="number" id="speed" @bind="speed" class="form-control" />
+                    </div>
+                    <button class="btn btn-primary" @onclick="CalculateTime">@TranslationService.Translate("Calculate_Time")</button>
+                </div>
+            }
+            else if (mode == "speed")
+            {
+                <div>
+                    <div class="form-group">
+                        <label for="distanceMetric">@TranslationService.Translate("Select_Distance_Metric")</label>
+                        <select id="distanceMetric" class="form-control" @bind="distanceMetric">
+                            <option value="km">Kilometers</option>
+                            <option value="miles">Miles</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="distance">@TranslationService.Translate("Enter_Distance")</label>
+                        <input type="number" id="distance" @bind="distance" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="timeMetric">@TranslationService.Translate("Select_Time_Metric")</label>
+                        <select id="timeMetric" class="form-control" @bind="timeMetric">
+                            <option value="hours">Hours</option>
+                            <option value="minutes">Minutes</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">@TranslationService.Translate("Enter_Time")</label>
+                        <input type="number" id="time" @bind="time" class="form-control" />
+                    </div>
+                    <button class="btn btn-primary" @onclick="CalculateSpeed">@TranslationService.Translate("Calculate_Speed")</button>
+                </div>
+            }
+
+            <div class="form-group mt-3">
+                <label for="resultValue">@TranslationService.Translate("Result")</label>
+                <input type="text" id="resultValue" @bind="result" class="form-control" readonly />
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string mode = "time";
+    private double speed;
+    private double distance;
+    private double time;
+    private string distanceMetric = "km";
+    private string speedMetric = "km/h";
+    private string timeMetric = "hours";
+    private string result;
+
+    private void OnModeChange(ChangeEventArgs e)
+    {
+        mode = e.Value.ToString();
+        result = string.Empty; // Clear result when mode changes
+    }
+
+    private void CalculateTime()
+    {
+        if (speed > 0)
+        {
+            var travelTime = distance / speed;
+            if (speedMetric == "mph" && distanceMetric == "km")
+            {
+                distance *= 0.621371; // Convert km to miles
+            }
+            else if (speedMetric == "km/h" && distanceMetric == "miles")
+            {
+                distance *= 1.60934; // Convert miles to km
+            }
+
+            result = string.Format(TranslationService.Translate("result_time_format"), speed, speedMetric, distance, distanceMetric, travelTime, timeMetric);
+        }
+        else
+        {
+            result = TranslationService.Translate("Invalid_Speed");
+        }
+    }
+
+    private void CalculateSpeed()
+    {
+        if (time > 0)
+        {
+            if (timeMetric == "minutes")
+            {
+                time /= 60; // Convert minutes to hours
+            }
+
+            var travelSpeed = distance / time;
+            if (speedMetric == "mph" && distanceMetric == "km")
+            {
+                travelSpeed *= 0.621371; // Convert km/h to mph
+            }
+            else if (speedMetric == "km/h" && distanceMetric == "miles")
+            {
+                travelSpeed *= 1.60934; // Convert mph to km/h
+            }
+
+            result = string.Format(TranslationService.Translate("result_speed_format"), distance, distanceMetric, time, timeMetric, travelSpeed, speedMetric);
+        }
+        else
+        {
+            result = TranslationService.Translate("Invalid_Time");
+        }
+    }
+}

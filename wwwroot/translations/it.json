@@ -100,5 +100,25 @@
   "Water": "Acqua",
 
   "is_equal_to": "è uguale a",
-  "result_format": "{0} {1} è uguale a {2} {3}"
+  "result_format": "{0} {1} è uguale a {2} {3}",
+
+  "Travel_Calculation": "Calcolo del viaggio",
+  "Select_Mode": "Seleziona modalità",
+  "Get_Time": "Ottieni tempo",
+  "Get_Speed": "Ottieni velocità",
+  "Select_Distance_Metric": "Seleziona unità di distanza",
+  "Enter_Distance": "Inserisci distanza",
+  "Select_Speed_Metric": "Seleziona unità di velocità",
+  "Enter_Speed": "Inserisci velocità",
+  "Select_Time_Metric": "Seleziona unità di tempo",
+  "Enter_Time": "Inserisci tempo",
+  "Calculate_Time": "Calcola tempo",
+  "Calculate_Speed": "Calcola velocità",
+  "Distance_Unit": "km",
+  "Speed_Unit": "km/h",
+  "Time_Unit": "ore",
+  "Invalid_Speed": "Velocità non valida. Inserisci una velocità valida.",
+  "Invalid_Time": "Tempo non valido. Inserisci un tempo valido.",
+  "result_time_format": "Se guidi a {0} {1}, coprirai una distanza di {2} {3} in {4} {5}.",
+  "result_speed_format": "Per coprire una distanza di {0} {1} in {2} {3}, devi viaggiare a una velocità di {4} {5}."
 }

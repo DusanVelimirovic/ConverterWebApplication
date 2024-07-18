@@ -92,7 +92,7 @@
   "Cup": "Cup",
   "Tablespoon": "Tablespoon",
   "Teaspoon": "Teaspoon",
-  "Sugar":  "Sugar",
+  "Sugar": "Sugar",
   "Flour": "Flour",
   "Butter": "Butter",
   "Rice": "Rice",
@@ -101,6 +101,26 @@
   "Cooking": "Cooking",
 
   "is_equal_to": "is equal",
-  "result_format": "{0} {1} is equal to {2} {3}"
+  "result_format": "{0} {1} is equal to {2} {3}",
+
+  "Travel_Calculation": "Travel Calculation",
+  "Select_Mode": "Select Mode",
+  "Get_Time": "Get Time",
+  "Get_Speed": "Get Speed",
+  "Select_Distance_Metric": "Select Distance Metric",
+  "Enter_Distance": "Enter Distance",
+  "Select_Speed_Metric": "Select Speed Metric",
+  "Enter_Speed": "Enter Speed",
+  "Select_Time_Metric": "Select Time Metric",
+  "Enter_Time": "Enter Time",
+  "Calculate_Time": "Calculate Time",
+  "Calculate_Speed": "Calculate Speed",
+  "Distance_Unit": "km",
+  "Speed_Unit": "km/h",
+  "Time_Unit": "hours",
+  "Invalid_Speed": "Invalid speed. Please enter a valid speed.",
+  "Invalid_Time": "Invalid time. Please enter a valid time.",
+  "result_time_format": "If you drive {0} {1}, you will cover a distance of {2} {3} in {4} {5}.",
+  "result_speed_format": "To cover a distance of {0} {1} in {2} {3}, you need to travel at a speed of {4} {5}."
 
 }

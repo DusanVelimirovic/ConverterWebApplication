@@ -101,5 +101,25 @@
   "Water": "Eau",
 
   "is_equal_to": "est égal à",
-  "result_format": "{0} {1} est égal à {2} {3}"
+  "result_format": "{0} {1} est égal à {2} {3}",
+
+  "Travel_Calculation": "Calcul de voyage",
+  "Select_Mode": "Sélectionnez le mode",
+  "Get_Time": "Obtenir le temps",
+  "Get_Speed": "Obtenir la vitesse",
+  "Select_Distance_Metric": "Sélectionnez l'unité de distance",
+  "Enter_Distance": "Entrez la distance",
+  "Select_Speed_Metric": "Sélectionnez l'unité de vitesse",
+  "Enter_Speed": "Entrez la vitesse",
+  "Select_Time_Metric": "Sélectionnez l'unité de temps",
+  "Enter_Time": "Entrez le temps",
+  "Calculate_Time": "Calculer le temps",
+  "Calculate_Speed": "Calculer la vitesse",
+  "Distance_Unit": "km",
+  "Speed_Unit": "km/h",
+  "Time_Unit": "heures",
+  "Invalid_Speed": "Vitesse non valide. Veuillez entrer une vitesse valide.",
+  "Invalid_Time": "Temps non valide. Veuillez entrer un temps valide.",
+  "result_time_format": "Si vous conduisez à {0} {1}, vous couvrirez une distance de {2} {3} en {4} {5}.",
+  "result_speed_format": "Pour couvrir une distance de {0} {1} en {2} {3}, vous devez voyager à une vitesse de {4} {5}."
 }
