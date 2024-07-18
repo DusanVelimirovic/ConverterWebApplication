@@ -104,50 +104,23 @@
 
     private void CalculateTime()
     {
-        if (speed > 0)
-        {
-            var travelTime = distance / speed;
-            if (speedMetric == "mph" && distanceMetric == "km")
-            {
-                distance *= 0.621371; // Convert km to miles
-            }
-            else if (speedMetric == "km/h" && distanceMetric == "miles")
-            {
-                distance *= 1.60934; // Convert miles to km
-            }
+        double distanceInKm = distanceMetric == "miles" ? ConversionManagerService.Convert("miles", "kilometers", distance) : distance;
+        double speedInKmH = speedMetric == "mph" ? ConversionManagerService.Convert("mph", "km/h", speed) : speed;
 
-            result = string.Format(TranslationService.Translate("result_time_format"), speed, speedMetric, distance, distanceMetric, travelTime, timeMetric);
-        }
-        else
-        {
-            result = TranslationService.Translate("Invalid_Speed");
-        }
+        double travelTime = distanceInKm / speedInKmH;
+        string formattedTravelTime = timeMetric == "minutes" ? (travelTime * 60).ToString("F2") : travelTime.ToString("F2");
+
+        result = string.Format(TranslationService.Translate("result_time_format"), speed, speedMetric, distance, distanceMetric, formattedTravelTime, timeMetric);
     }
 
     private void CalculateSpeed()
     {
-        if (time > 0)
-        {
-            if (timeMetric == "minutes")
-            {
-                time /= 60; // Convert minutes to hours
-            }
+        double distanceInKm = distanceMetric == "miles" ? ConversionManagerService.Convert("miles", "kilometers", distance) : distance;
+        double timeInHours = timeMetric == "minutes" ? time / 60 : time;
 
-            var travelSpeed = distance / time;
-            if (speedMetric == "mph" && distanceMetric == "km")
-            {
-                travelSpeed *= 0.621371; // Convert km/h to mph
-            }
-            else if (speedMetric == "km/h" && distanceMetric == "miles")
-            {
-                travelSpeed *= 1.60934; // Convert mph to km/h
-            }
+        double requiredSpeed = distanceInKm / timeInHours;
+        string speedUnitDisplay = speedMetric == "mph" ? "miles per hour" : "kilometers per hour";
 
-            result = string.Format(TranslationService.Translate("result_speed_format"), distance, distanceMetric, time, timeMetric, travelSpeed, speedMetric);
-        }
-        else
-        {
-            result = TranslationService.Translate("Invalid_Time");
-        }
+        result = string.Format(TranslationService.Translate("result_speed_format"), distance, distanceMetric, time, timeMetric, requiredSpeed, speedUnitDisplay);
     }
 }
