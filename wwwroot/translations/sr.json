@@ -121,5 +121,10 @@
   "Invalid_Speed": "Nevažeća brzina. Molimo unesite važeću brzinu.",
   "Invalid_Time": "Nevažeće vreme. Molimo unesite važeće vreme.",
   "result_time_format": "Ako vozite {0} {1}, preći ćete udaljenost od {2} {3} za {4} {5}.",
-  "result_speed_format": "Da biste prešli udaljenost od {0} {1} za {2} {3}, morate putovati brzinom od {4} {5}."
+  "result_speed_format": "Da biste prešli udaljenost od {0} {1} za {2} {3}, morate putovati brzinom od {4} {5}.",
+  "kilometers": "Kilometri",
+  "miles": "Milje",
+  "kilometers_per_hour": "Kilometri na sat",
+  "miles_per_hour": "Milje na sat",
+  "travel": "Putovanje"
 }

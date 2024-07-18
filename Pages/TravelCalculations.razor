@@ -94,7 +94,7 @@
     private string distanceMetric = "km";
     private string speedMetric = "km/h";
     private string timeMetric = "hours";
-    private string result;
+    private string? result;
 
     private void OnModeChange(ChangeEventArgs e)
     {
@@ -119,8 +119,18 @@
         double timeInHours = timeMetric == "minutes" ? time / 60 : time;
 
         double requiredSpeed = distanceInKm / timeInHours;
-        string speedUnitDisplay = speedMetric == "mph" ? "miles per hour" : "kilometers per hour";
+        string speedUnitDisplay = speedMetric == "mph" ? TranslationService.Translate("miles_per_hour") : TranslationService.Translate("kilometers_per_hour");
 
         result = string.Format(TranslationService.Translate("result_speed_format"), distance, distanceMetric, time, timeMetric, requiredSpeed, speedUnitDisplay);
+    }
+
+    protected override void OnInitialized()
+    {
+        TranslationService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        TranslationService.OnLanguageChanged -= StateHasChanged;
     }
 }

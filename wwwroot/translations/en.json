@@ -121,6 +121,12 @@
   "Invalid_Speed": "Invalid speed. Please enter a valid speed.",
   "Invalid_Time": "Invalid time. Please enter a valid time.",
   "result_time_format": "If you drive {0} {1}, you will cover a distance of {2} {3} in {4} {5}.",
-  "result_speed_format": "To cover a distance of {0} {1} in {2} {3}, you need to travel at a speed of {4} {5}."
+  "result_speed_format": "To cover a distance of {0} {1} in {2} {3}, you need to travel at a speed of {4} {5}.",
+
+  "kilometers": "Kilometers",
+  "miles": "Miles",
+  "kilometers_per_hour": "Kilometers per Hour",
+  "miles_per_hour": "Miles per Hour",
+  "travel": "Travel"
 
 }

@@ -121,5 +121,11 @@
   "Invalid_Speed": "Ungültige Geschwindigkeit. Bitte geben Sie eine gültige Geschwindigkeit ein.",
   "Invalid_Time": "Ungültige Zeit. Bitte geben Sie eine gültige Zeit ein.",
   "result_time_format": "Wenn Sie mit {0} {1} fahren, werden Sie eine Entfernung von {2} {3} in {4} {5} zurücklegen.",
-  "result_speed_format": "Um eine Entfernung von {0} {1} in {2} {3} zurückzulegen, müssen Sie mit einer Geschwindigkeit von {4} {5} fahren."
+  "result_speed_format": "Um eine Entfernung von {0} {1} in {2} {3} zurückzulegen, müssen Sie mit einer Geschwindigkeit von {4} {5} fahren.",
+  "kilometers": "Kilometer",
+  "miles": "Meilen",
+  "kilometers_per_hour": "Kilometer pro Stunde",
+  "miles_per_hour": "Meilen pro Stunde",
+  "travel": "Reise"
+
 }

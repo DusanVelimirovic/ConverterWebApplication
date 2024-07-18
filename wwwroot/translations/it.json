@@ -120,5 +120,10 @@
   "Invalid_Speed": "Velocità non valida. Inserisci una velocità valida.",
   "Invalid_Time": "Tempo non valido. Inserisci un tempo valido.",
   "result_time_format": "Se guidi a {0} {1}, coprirai una distanza di {2} {3} in {4} {5}.",
-  "result_speed_format": "Per coprire una distanza di {0} {1} in {2} {3}, devi viaggiare a una velocità di {4} {5}."
+  "result_speed_format": "Per coprire una distanza di {0} {1} in {2} {3}, devi viaggiare a una velocità di {4} {5}.",
+  "kilometers": "Chilometri",
+  "miles": "Miglia",
+  "kilometers_per_hour": "Chilometri all'ora",
+  "miles_per_hour": "Miglia all'ora",
+  "travel": "Viaggio"
 }

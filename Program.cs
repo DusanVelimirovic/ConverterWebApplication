@@ -61,7 +61,7 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     FlourConversions_registrations.Register(service);
 
     // Butter Conversions
-    //TravelConversions_registrations.Register(service);
+    ButterConversions_registrations.Register(service);
 
     // Milk Conversions
     MilkConversions_registrations.Register(service);
