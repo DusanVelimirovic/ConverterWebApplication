@@ -10,25 +10,25 @@
 
 <div class="container">
     <!-- Form for input values -->
-    <div class="form-group">
+    <div class="form-group spaced-form-group">
         <label for="fuelAmount">@TranslationService.Translate("Amount_of_Fuel")</label>
         <input type="number" id="fuelAmount" @bind="fuelAmount" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group spaced-form-group">
         <label for="averageConsumption">@TranslationService.Translate("Average_Consumption")</label>
         <input type="number" id="averageConsumption" @bind="averageConsumption" class="form-control" />
         <select id="consumptionUnit" class="form-control" @bind="consumptionUnit">
             <option value="litersPer100km">@TranslationService.Translate("Liters_per_100_Kilometers")</option>
         </select>
     </div>
-    <div class="form-group">
+    <div class="form-group spaced-form-group">
         <label for="fuelPrice">@TranslationService.Translate("Current_Fuel_Price")</label>
         <input type="number" id="fuelPrice" @bind="fuelPrice" class="form-control" />
     </div>
     <button class="btn btn-primary" @onclick="CalculatePossibleMileage">@TranslationService.Translate("Calculate")</button>
 
     <!-- Display result -->
-    <div class="form-group mt-3">
+    <div class="form-group spaced-form-group mt-3">
         <label for="resultMileage">@TranslationService.Translate("Possible_Mileage")</label>
         <input type="text" id="resultMileage" @bind="resultMileage" class="form-control" readonly />
     </div>

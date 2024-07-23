@@ -10,25 +10,25 @@
 
 <div class="container">
     <!-- Form for input values -->
-    <div class="form-group">
+    <div class="form-group spaced-form-group">
         <label for="fuelEfficiency">@TranslationService.Translate("Fuel_Efficiency_of_Vehicle")</label>
         <input type="number" id="fuelEfficiency" @bind="fuelEfficiency" class="form-control" />
         <select id="efficiencyUnit" class="form-control" @bind="efficiencyUnit">
             <option value="litersPer100km">@TranslationService.Translate("Liters_per_100_Kilometers")</option>
         </select>
     </div>
-    <div class="form-group">
+    <div class="form-group spaced-form-group">
         <label for="fuelPrice">@TranslationService.Translate("Fuel_Price")</label>
         <input type="number" id="fuelPrice" @bind="fuelPrice" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group spaced-form-group">
         <label for="moneyAvailable">@TranslationService.Translate("Amount_of_Money_Available")</label>
         <input type="number" id="moneyAvailable" @bind="moneyAvailable" class="form-control" />
     </div>
     <button class="btn btn-primary" @onclick="CalculateTravelDistance">@TranslationService.Translate("Calculate")</button>
 
     <!-- Display result -->
-    <div class="form-group mt-3">
+    <div class="form-group spaced-form-group mt-3">
         <label for="resultDistance">@TranslationService.Translate("Possible_Distance_to_Travel")</label>
         <input type="text" id="resultDistance" @bind="resultDistance" class="form-control" readonly />
     </div>
