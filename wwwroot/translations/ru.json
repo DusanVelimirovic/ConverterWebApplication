@@ -125,5 +125,13 @@
   "miles": "Мили",
   "kilometers_per_hour": "Километров в час",
   "miles_per_hour": "Миль в час",
-  "travel": "Путешествие"
+  "travel": "Путешествие",
+
+  "Fuel": "Топливо",
+  "Average_Fuel_Consumption": "Средний расход топлива",
+  "Distance_Traveled": "Пройденное расстояние",
+  "Fuel_Consumed": "Потребленное топливо",
+  "Miles_per_Gallon": "Мили на галлон",
+  "Calculate": "Рассчитать",
+  "Average_Fuel_Consumption_per_100": "Средний расход топлива на 100"
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Converter_Web_Application.Service.Implementations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,7 +35,7 @@ namespace Converter_Web_Application.Service
 
         public double Convert(string fromUnit, string toUnit, double value1, double value2)
         {
-            var conversion = _conversions.OfType<ITravelConversion>()
+            var conversion = _conversions.OfType<IFuelConversion>()
                 .FirstOrDefault(c => c.FromUnit.Equals(fromUnit, StringComparison.OrdinalIgnoreCase) &&
                                      c.ToUnit.Equals(toUnit, StringComparison.OrdinalIgnoreCase));
 
@@ -46,5 +47,18 @@ namespace Converter_Web_Application.Service
             throw new InvalidOperationException($"Conversion from {fromUnit} to {toUnit} not found.");
         }
 
+        public double Convert(string fromUnit, string toUnit, double value1, double value2, double value3)
+        {
+            var conversion = _conversions.OfType<IFuelConversion>()
+                .FirstOrDefault(c => c.FromUnit.Equals(fromUnit, StringComparison.OrdinalIgnoreCase) &&
+                                     c.ToUnit.Equals(toUnit, StringComparison.OrdinalIgnoreCase));
+
+            if (conversion != null)
+            {
+                return conversion.Convert(value1, value2, value3);
+            }
+
+            throw new InvalidOperationException($"Conversion from {fromUnit} to {toUnit} not found.");
+        }
     }
 }

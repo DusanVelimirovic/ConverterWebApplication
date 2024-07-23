@@ -127,6 +127,14 @@
   "miles": "Miles",
   "kilometers_per_hour": "Kilometers per Hour",
   "miles_per_hour": "Miles per Hour",
-  "travel": "Travel"
+  "travel": "Travel",
+
+  "Fuel": "Fuel",
+  "Average_Fuel_Consumption": "Average Fuel Consumption",
+  "Distance_Traveled": "Distance Traveled",
+  "Fuel_Consumed": "Fuel Consumed",
+  "Miles_per_Gallon": "Miles per Gallon",
+  "Calculate": "Calculate",
+  "Average_Fuel_Consumption_per_100": "Average Fuel Consumption per 100"
 
 }

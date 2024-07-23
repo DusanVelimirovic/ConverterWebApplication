@@ -1,0 +1,63 @@
+﻿@page "/travel-distance-with-budget"
+
+@using Converter_Web_Application.Service
+@inject ConversionManagerService ConversionManagerService
+@inject TranslationService TranslationService
+
+<PageTitle>@TranslationService.Translate("Travel_Distance_with_Budget")</PageTitle>
+
+<h2>@TranslationService.Translate("Travel_Distance_with_Budget")</h2>
+
+<div class="container">
+    <!-- Form for input values -->
+    <div class="form-group">
+        <label for="fuelEfficiency">@TranslationService.Translate("Fuel_Efficiency_of_Vehicle")</label>
+        <input type="number" id="fuelEfficiency" @bind="fuelEfficiency" class="form-control" />
+        <select id="efficiencyUnit" class="form-control" @bind="efficiencyUnit">
+            <option value="litersPer100km">@TranslationService.Translate("Liters_per_100_Kilometers")</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="fuelPrice">@TranslationService.Translate("Fuel_Price")</label>
+        <input type="number" id="fuelPrice" @bind="fuelPrice" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="moneyAvailable">@TranslationService.Translate("Amount_of_Money_Available")</label>
+        <input type="number" id="moneyAvailable" @bind="moneyAvailable" class="form-control" />
+    </div>
+    <button class="btn btn-primary" @onclick="CalculateTravelDistance">@TranslationService.Translate("Calculate")</button>
+
+    <!-- Display result -->
+    <div class="form-group mt-3">
+        <label for="resultDistance">@TranslationService.Translate("Possible_Distance_to_Travel")</label>
+        <input type="text" id="resultDistance" @bind="resultDistance" class="form-control" readonly />
+    </div>
+</div>
+
+@code {
+    private double fuelEfficiency;
+    private double fuelPrice;
+    private double moneyAvailable;
+    private string efficiencyUnit = "mpg";
+    private string? resultDistance;
+
+    private void CalculateTravelDistance()
+    {
+        double efficiencyInLPer100Km = efficiencyUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", fuelEfficiency) : fuelEfficiency;
+
+        double fuelAmount = moneyAvailable / fuelPrice;
+        double possibleDistance = (fuelAmount * 100) / efficiencyInLPer100Km;
+
+        resultDistance = $"{possibleDistance:F2}";
+    }
+
+    protected override void OnInitialized()
+    {
+        TranslationService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        TranslationService.OnLanguageChanged -= StateHasChanged;
+    }
+}

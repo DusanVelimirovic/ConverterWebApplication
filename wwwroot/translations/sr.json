@@ -126,5 +126,13 @@
   "miles": "Milje",
   "kilometers_per_hour": "Kilometri na sat",
   "miles_per_hour": "Milje na sat",
-  "travel": "Putovanje"
+  "travel": "Putovanje",
+
+  "Fuel": "Gorivo",
+  "Average_Fuel_Consumption": "Prosečna potrošnja goriva",
+  "Distance_Traveled": "Pređena udaljenost",
+  "Fuel_Consumed": "Potroseno gorivo",
+  "Miles_per_Gallon": "Milje po galonu",
+  "Calculate": "Izračunaj",
+  "Average_Fuel_Consumption_per_100": "Prosečna potrošnja goriva na 100"
 }

@@ -1,0 +1,75 @@
+﻿@page "/required-fuel-for-mileage"
+
+@using Converter_Web_Application.Service
+@inject ConversionManagerService ConversionManagerService
+@inject TranslationService TranslationService
+
+<PageTitle>@TranslationService.Translate("Required_Fuel_for_Mileage")</PageTitle>
+
+<h2>@TranslationService.Translate("Required_Fuel_for_Mileage")</h2>
+
+<div class="container">
+    <!-- Form for input values -->
+    <div class="form-group">
+        <label for="distance">@TranslationService.Translate("Distance_for_Traveling")</label>
+        <input type="number" id="distance" @bind="distance" class="form-control" />
+        <select id="distanceUnit" class="form-control" @bind="distanceUnit">
+            <option value="km">@TranslationService.Translate("Kilometers")</option>
+            <option value="miles">@TranslationService.Translate("Miles")</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="averageConsumption">@TranslationService.Translate("Average_Consumption")</label>
+        <input type="number" id="averageConsumption" @bind="averageConsumption" class="form-control" />
+        <select id="consumptionUnit" class="form-control" @bind="consumptionUnit">
+            <option value="litersPer100km">@TranslationService.Translate("Liters_per_100_Kilometers")</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="fuelPrice">@TranslationService.Translate("Current_Fuel_Price")</label>
+        <input type="number" id="fuelPrice" @bind="fuelPrice" class="form-control" />
+    </div>
+    <button class="btn btn-primary" @onclick="CalculateRequiredFuel">@TranslationService.Translate("Calculate")</button>
+
+    <!-- Display result -->
+    <div class="form-group mt-3">
+        <label for="resultFuel">@TranslationService.Translate("Required_Amount_of_Fuel")</label>
+        <input type="text" id="resultFuel" @bind="resultFuel" class="form-control" readonly />
+    </div>
+    <div class="form-group mt-3">
+        <label for="resultPrice">@TranslationService.Translate("Total_Price")</label>
+        <input type="text" id="resultPrice" @bind="resultPrice" class="form-control" readonly />
+    </div>
+</div>
+
+@code {
+    private double distance;
+    private double averageConsumption;
+    private double fuelPrice;
+    private string distanceUnit = "km";
+    private string consumptionUnit = "litersPer100km";
+    private string? resultFuel;
+    private string? resultPrice;
+
+    private void CalculateRequiredFuel()
+    {
+        double distanceInKm = distanceUnit == "miles" ? ConversionManagerService.Convert("miles", "kilometers", distance) : distance;
+        double consumptionPer100Km = consumptionUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", averageConsumption) : averageConsumption;
+
+        double requiredFuel = (distanceInKm / 100) * consumptionPer100Km;
+        double totalPrice = requiredFuel * fuelPrice;
+
+        resultFuel = $"{requiredFuel:F2}";
+        resultPrice = $"{totalPrice:F2}";
+    }
+
+    protected override void OnInitialized()
+    {
+        TranslationService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        TranslationService.OnLanguageChanged -= StateHasChanged;
+    }
+}

@@ -126,6 +126,13 @@
   "miles": "Meilen",
   "kilometers_per_hour": "Kilometer pro Stunde",
   "miles_per_hour": "Meilen pro Stunde",
-  "travel": "Reise"
+  "travel": "Reise",
 
+  "Fuel": "Kraftstoff",
+  "Average_Fuel_Consumption": "Durchschnittlicher Kraftstoffverbrauch",
+  "Distance_Traveled": "Zurückgelegte Entfernung",
+  "Fuel_Consumed": "Verbrauchter Kraftstoff",
+  "Miles_per_Gallon": "Meilen pro Gallone",
+  "Calculate": "Berechnen",
+  "Average_Fuel_Consumption_per_100": "Durchschnittlicher Kraftstoffverbrauch pro 100"
 }

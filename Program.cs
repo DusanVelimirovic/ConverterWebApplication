@@ -2,6 +2,7 @@ using Converter_Web_Application;
 using Converter_Web_Application.Service;
 using Converter_Web_Application.Service.Implementations;
 using Converter_Web_Application.Service.Registrations.Cooking;
+using Converter_Web_Application.Service.Registrations.Fuel;
 using Converter_Web_Application.Service.Registrations.Travel;
 using Converter_Web_Application.Service.Registrations.Unit;
 using Microsoft.AspNetCore.Components.Web;
@@ -72,7 +73,9 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     // Travel conversions
     TravelConversionsRegistration.Register(service);
 
-
+    // Fuel conversions
+    FuelConversionsRegistration.Register(service);
+ 
 
     return service;
 });

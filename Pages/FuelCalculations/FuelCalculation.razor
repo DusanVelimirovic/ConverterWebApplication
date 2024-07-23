@@ -1,0 +1,60 @@
+﻿@page "/fuel-calculation"
+
+@using Microsoft.AspNetCore.Components.Web
+@using Converter_Web_Application.Service
+
+@inject NavigationManager Navigation
+@inject ConversionManagerService ConversionManagerService
+@inject TranslationService TranslationService
+
+<PageTitle>Fuel Calculation</PageTitle>
+
+<h1>Fuel Calculation</h1>
+
+<div class="container">
+    <div class="form-group">
+        <label for="modeSelect">Select Mode</label>
+        <select id="modeSelect" class="form-control" @onchange="OnModeChange">
+            <option value="averageFuelConsumption">Average Fuel Consumption</option>
+            <option value="requiredFuelForMileage">Required Fuel for Mileage</option>
+            <option value="possibleMileageWithFuel">Possible Mileage with Fuel</option>
+            <option value="travelDistanceWithBudget">Travel Distance with Budget</option>
+        </select>
+    </div>
+
+    @if (mode == "averageFuelConsumption")
+    {
+        <AverageFuelConsumption />
+    }
+    else if (mode == "requiredFuelForMileage")
+    {
+        <RequiredFuelForMileage />
+    }
+    else if (mode == "possibleMileageWithFuel")
+    {
+        <PossibleMileageWithFuel />
+    }
+    else if (mode == "travelDistanceWithBudget")
+    {
+        <TravelDistanceWithBudget />
+    }
+</div>
+
+@code {
+    private string mode = "averageFuelConsumption";
+
+    private void OnModeChange(ChangeEventArgs e)
+    {
+        mode = e.Value.ToString();
+    }
+
+    protected override void OnInitialized()
+    {
+        TranslationService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        TranslationService.OnLanguageChanged -= StateHasChanged;
+    }
+}
