@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>@TranslationService.Translate("Travel_Calculation")</h1>
-            <div class="form-group">
+            <div class="form-group spaced-form-group">
                 <label for="modeSelect">@TranslationService.Translate("Select_Mode")</label>
                 <select id="modeSelect" class="form-control" @onchange="OnModeChange">
                     <option value="time">@TranslationService.Translate("Get_Time")</option>
@@ -24,61 +24,61 @@
             @if (mode == "time")
             {
                 <div>
-                    <div class="form-group">
+                    <div class="form-group spaced-form-group">
                         <label for="distanceMetric">@TranslationService.Translate("Select_Distance_Metric")</label>
                         <select id="distanceMetric" class="form-control" @bind="distanceMetric">
-                            <option value="km">Kilometers</option>
-                            <option value="miles">Miles</option>
+                            <option value="km">@TranslationService.Translate("Kilometers")</option>
+                            <option value="miles">@TranslationService.Translate("Miles")</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group spaced-form-group">
                         <label for="distance">@TranslationService.Translate("Enter_Distance")</label>
                         <input type="number" id="distance" @bind="distance" class="form-control" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group spaced-form-group">
                         <label for="speedMetric">@TranslationService.Translate("Select_Speed_Metric")</label>
                         <select id="speedMetric" class="form-control" @bind="speedMetric">
-                            <option value="km/h">Kilometers per Hour</option>
-                            <option value="mph">Miles per Hour</option>
+                            <option value="km/h">@TranslationService.Translate("Kilometers_per_Hour")</option>
+                            <option value="mph">@TranslationService.Translate("Miles_per_Hour")</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group spaced-form-group">
                         <label for="speed">@TranslationService.Translate("Enter_Speed")</label>
                         <input type="number" id="speed" @bind="speed" class="form-control" />
                     </div>
-                    <button class="btn btn-primary" @onclick="CalculateTime">@TranslationService.Translate("Calculate_Time")</button>
+                    <button class="btn btn-primary spaced-form-group" @onclick="CalculateTime">@TranslationService.Translate("Calculate_Time")</button>
                 </div>
             }
             else if (mode == "speed")
             {
                 <div>
-                    <div class="form-group">
+                    <div class="form-group spaced-form-group">
                         <label for="distanceMetric">@TranslationService.Translate("Select_Distance_Metric")</label>
                         <select id="distanceMetric" class="form-control" @bind="distanceMetric">
-                            <option value="km">Kilometers</option>
-                            <option value="miles">Miles</option>
+                            <option value="km">@TranslationService.Translate("Kilometers")</option>
+                            <option value="miles">@TranslationService.Translate("Miles")</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group spaced-form-group">
                         <label for="distance">@TranslationService.Translate("Enter_Distance")</label>
                         <input type="number" id="distance" @bind="distance" class="form-control" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group spaced-form-group">
                         <label for="timeMetric">@TranslationService.Translate("Select_Time_Metric")</label>
                         <select id="timeMetric" class="form-control" @bind="timeMetric">
-                            <option value="hours">Hours</option>
-                            <option value="minutes">Minutes</option>
+                            <option value="hours">@TranslationService.Translate("Hours")</option>
+                            <option value="minutes">@TranslationService.Translate("Minutes")</option>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group spaced-form-group">
                         <label for="time">@TranslationService.Translate("Enter_Time")</label>
                         <input type="number" id="time" @bind="time" class="form-control" />
                     </div>
-                    <button class="btn btn-primary" @onclick="CalculateSpeed">@TranslationService.Translate("Calculate_Speed")</button>
+                    <button class="btn btn-primary spaced-form-group" @onclick="CalculateSpeed">@TranslationService.Translate("Calculate_Speed")</button>
                 </div>
             }
 
-            <div class="form-group mt-3">
+            <div class="form-group spaced-form-group mt-3">
                 <label for="resultValue">@TranslationService.Translate("Result")</label>
                 <input type="text" id="resultValue" @bind="result" class="form-control" readonly />
             </div>
