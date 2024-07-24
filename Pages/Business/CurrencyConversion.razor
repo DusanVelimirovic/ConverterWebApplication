@@ -1,12 +1,62 @@
 ﻿@page "/currency-conversion"
+
+@using Microsoft.AspNetCore.Components.Forms
 @inject TranslationService TranslationService
 
-<h2>@TranslationService.Translate("Currency_Conversion")</h2>
-<p>@TranslationService.Translate("Currency_Conversion_Description")</p>
+<PageTitle>@TranslationService.Translate("Currency_Conversion")</PageTitle>
+
+<div class="container">
+    <h2>@TranslationService.Translate("Currency_Conversion")</h2>
+    <EditForm Model="@conversionModel" OnValidSubmit="@HandleValidSubmit">
+        <div class="form-group">
+            <label for="amount">@TranslationService.Translate("Amount")</label>
+            <InputNumber id="amount" @bind-Value="conversionModel.Amount" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="fromCurrency">@TranslationService.Translate("From_Currency")</label>
+            <InputSelect id="fromCurrency" @bind-Value="conversionModel.FromCurrency" class="form-control">
+                @foreach (var currency in supportedCurrencies)
+                {
+                    <option value="@currency">@currency</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="toCurrency">@TranslationService.Translate("To_Currency")</label>
+            <InputSelect id="toCurrency" @bind-Value="conversionModel.ToCurrency" class="form-control">
+                @foreach (var currency in supportedCurrencies)
+                {
+                    <option value="@currency">@currency</option>
+                }
+            </InputSelect>
+        </div>
+        <button type="submit" class="btn btn-primary">@TranslationService.Translate("Convert")</button>
+    </EditForm>
+
+    <div class="form-group mt-3">
+        <label for="convertedAmount">@TranslationService.Translate("Converted_Amount")</label>
+        <input type="text" id="convertedAmount" class="form-control" readonly value="@convertedAmount" />
+    </div>
+</div>
 
 @code {
-    // Add logic and UI elements here for currency conversion in the future
+    private ConversionModel conversionModel = new ConversionModel();
+    private string convertedAmount = string.Empty;
+    private List<string> supportedCurrencies = new List<string> { "USD", "EUR", "GBP", "JPY", "AUD" };
 
+    private void HandleValidSubmit()
+    {
+        // This will be the logic for converting the currency
+        // For now, we will just display the entered amount as the converted amount
+        convertedAmount = conversionModel.Amount.ToString();
+    }
+
+    public class ConversionModel
+    {
+        public double Amount { get; set; }
+        public string FromCurrency { get; set; } = "USD";
+        public string ToCurrency { get; set; } = "EUR";
+    }
 
     // Fatching translation
     protected override void OnInitialized()
