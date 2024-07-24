@@ -134,5 +134,11 @@
   "Fuel_Consumed": "Potroseno gorivo",
   "Miles_per_Gallon": "Milje po galonu",
   "Calculate": "Izračunaj",
-  "Average_Fuel_Consumption_per_100": "Prosečna potrošnja goriva na 100"
+  "Average_Fuel_Consumption_per_100": "Prosečna potrošnja goriva na 100",
+
+  "Business_Tools": "Poslovni Alati",
+  "Currency_Conversion": "Konverzija Valuta",
+  "Currency_List": "Spisak Valuta",
+  "Currency_Conversion_Description": "Brzo i lako konvertujte valute.",
+  "Currency_List_Description": "Pogledajte spisak podržanih valuta."
 }

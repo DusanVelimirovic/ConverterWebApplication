@@ -133,5 +133,11 @@
   "Fuel_Consumed": "Carburante consumato",
   "Miles_per_Gallon": "Miglia per gallone",
   "Calculate": "Calcolare",
-  "Average_Fuel_Consumption_per_100": "Consumo medio di carburante per 100"
+  "Average_Fuel_Consumption_per_100": "Consumo medio di carburante per 100",
+
+  "Business_Tools": "Strumenti Aziendali",
+  "Currency_Conversion": "Conversione di Valuta",
+  "Currency_List": "Elenco delle Valute",
+  "Currency_Conversion_Description": "Converti valute in modo rapido e semplice.",
+  "Currency_List_Description": "Visualizza un elenco delle valute supportate."
 }

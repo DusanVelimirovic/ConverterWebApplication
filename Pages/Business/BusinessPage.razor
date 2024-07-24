@@ -1,0 +1,53 @@
+﻿@page "/business"
+@using Converter_Web_Application.Service
+@inject NavigationManager Navigation
+@inject TranslationService TranslationService
+
+<PageTitle>@TranslationService.Translate("Business_Tools")</PageTitle>
+
+<div class="container">
+    <h1>@TranslationService.Translate("Business_Tools")</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <nav class="nav flex-column">
+                <a class="nav-link" href="#" @onclick="ShowCurrencyConversion">@TranslationService.Translate("Currency_Conversion")</a>
+                <a class="nav-link" href="#" @onclick="ShowCurrencyList">@TranslationService.Translate("Currency_List")</a>
+            </nav>
+        </div>
+        <div class="col-md-9">
+            @if (selectedTool == "conversion")
+            {
+                <CurrencyConversion />
+            }
+            else if (selectedTool == "list")
+            {
+                <CurrencyList />
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private string selectedTool = "conversion"; // Default tool to show
+
+    private void ShowCurrencyConversion()
+    {
+        selectedTool = "conversion";
+    }
+
+    private void ShowCurrencyList()
+    {
+        selectedTool = "list";
+    }
+
+    // Fatching translation
+    protected override void OnInitialized()
+    {
+        TranslationService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        TranslationService.OnLanguageChanged -= StateHasChanged;
+    }
+}

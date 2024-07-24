@@ -133,5 +133,11 @@
   "Fuel_Consumed": "Потребленное топливо",
   "Miles_per_Gallon": "Мили на галлон",
   "Calculate": "Рассчитать",
-  "Average_Fuel_Consumption_per_100": "Средний расход топлива на 100"
+  "Average_Fuel_Consumption_per_100": "Средний расход топлива на 100",
+
+  "Business_Tools": "Бизнес Инструменты",
+  "Currency_Conversion": "Конвертация Валют",
+  "Currency_List": "Список Валют",
+  "Currency_Conversion_Description": "Быстро и легко конвертируйте валюты.",
+  "Currency_List_Description": "Просмотр списка поддерживаемых валют."
 }

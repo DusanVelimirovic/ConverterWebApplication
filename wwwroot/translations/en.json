@@ -135,6 +135,12 @@
   "Fuel_Consumed": "Fuel Consumed",
   "Miles_per_Gallon": "Miles per Gallon",
   "Calculate": "Calculate",
-  "Average_Fuel_Consumption_per_100": "Average Fuel Consumption per 100"
+  "Average_Fuel_Consumption_per_100": "Average Fuel Consumption per 100",
+
+  "Business_Tools": "Business Tools",
+  "Currency_Conversion": "Currency Conversion",
+  "Currency_List": "Currency List",
+  "Currency_Conversion_Description": "Convert currencies quickly and easily.",
+  "Currency_List_Description": "View a list of supported currencies."
 
 }

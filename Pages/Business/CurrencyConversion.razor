@@ -1,0 +1,21 @@
+﻿@page "/currency-conversion"
+@inject TranslationService TranslationService
+
+<h2>@TranslationService.Translate("Currency_Conversion")</h2>
+<p>@TranslationService.Translate("Currency_Conversion_Description")</p>
+
+@code {
+    // Add logic and UI elements here for currency conversion in the future
+
+
+    // Fatching translation
+    protected override void OnInitialized()
+    {
+        TranslationService.OnLanguageChanged += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        TranslationService.OnLanguageChanged -= StateHasChanged;
+    }
+}
