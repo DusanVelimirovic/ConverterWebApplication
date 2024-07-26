@@ -140,7 +140,15 @@
   "Currency_Conversion": "Conversion de Devise",
   "Currency_List": "Liste des Devises",
   "Currency_Conversion_Description": "Convertissez les devises rapidement et facilement.",
-  "Currency_List_Description": "Voir la liste des devises prises en charge."
+  "Currency_List_Description": "Voir la liste des devises prises en charge.",
+
+  "Currency_Conversion_Info": "Utilisez cet outil pour convertir des montants d'une devise à une autre en utilisant les taux de change en temps réel. Entrez simplement le montant, sélectionnez les devises et cliquez sur 'Convertir' pour voir le montant converti.",
+  "Amount": "Montant",
+  "From_Currency": "De Devise",
+  "To_Currency": "À Devise",
+  "Convert": "Convertir",
+  "Converted_Amount": "Montant Converti",
+  "Conversion_Error": "Une erreur s'est produite lors de la conversion. Veuillez réessayer."
 
 
 }

@@ -140,5 +140,13 @@
   "Currency_Conversion": "Konverzija Valuta",
   "Currency_List": "Spisak Valuta",
   "Currency_Conversion_Description": "Brzo i lako konvertujte valute.",
-  "Currency_List_Description": "Pogledajte spisak podržanih valuta."
+  "Currency_List_Description": "Pogledajte spisak podržanih valuta.",
+
+  "Currency_Conversion_Info": "Koristite ovaj alat za konvertovanje iznosa iz jedne valute u drugu koristeći kursne liste u realnom vremenu. Jednostavno unesite iznos, odaberite valute i kliknite 'Konvertuj' da vidite konvertovani iznos.",
+  "Amount": "Iznos",
+  "From_Currency": "Iz Valute",
+  "To_Currency": "U Valutu",
+  "Convert": "Konvertuj",
+  "Converted_Amount": "Konvertovani Iznos",
+  "Conversion_Error": "Došlo je do greške tokom konverzije. Molimo pokušajte ponovo."
 }

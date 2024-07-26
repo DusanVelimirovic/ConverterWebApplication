@@ -140,5 +140,15 @@
   "Currency_Conversion": "Conversión de Moneda",
   "Currency_List": "Lista de Monedas",
   "Currency_Conversion_Description": "Convierte monedas rápida y fácilmente.",
-  "Currency_List_Description": "Ver una lista de monedas soportadas."
+  "Currency_List_Description": "Ver una lista de monedas soportadas.",
+
+  "Currency_Conversion_Info": "Utilice esta herramienta para convertir cantidades de una moneda a otra utilizando tipos de cambio en tiempo real. Simplemente ingrese el monto, seleccione las monedas y haga clic en 'Convertir' para ver el monto convertido.",
+  "Amount": "Cantidad",
+  "From_Currency": "De Moneda",
+  "To_Currency": "A Moneda",
+  "Convert": "Convertir",
+  "Converted_Amount": "Cantidad Convertida",
+  "Conversion_Error": "Ocurrió un error durante la conversión. Por favor, inténtelo de nuevo."
+
+
 }

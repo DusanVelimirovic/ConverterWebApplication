@@ -139,5 +139,13 @@
   "Currency_Conversion": "Conversione di Valuta",
   "Currency_List": "Elenco delle Valute",
   "Currency_Conversion_Description": "Converti valute in modo rapido e semplice.",
-  "Currency_List_Description": "Visualizza un elenco delle valute supportate."
+  "Currency_List_Description": "Visualizza un elenco delle valute supportate.",
+
+  "Currency_Conversion_Info": "Usa questo strumento per convertire importi da una valuta all'altra utilizzando tassi di cambio in tempo reale. Inserisci semplicemente l'importo, seleziona le valute e fai clic su 'Converti' per vedere l'importo convertito.",
+  "Amount": "Importo",
+  "From_Currency": "Da Valuta",
+  "To_Currency": "A Valuta",
+  "Convert": "Converti",
+  "Converted_Amount": "Importo Convertito",
+  "Conversion_Error": "Si è verificato un errore durante la conversione. Per favore riprova."
 }

@@ -8,13 +8,18 @@
 
 <h2>@TranslationService.Translate("Currency_Conversion")</h2>
 
+<!-- Explanatory Text -->
+<div class="alert alert-info">
+    @TranslationService.Translate("Currency_Conversion_Info")
+</div>
+
 <div class="container">
     <!-- Form for input values -->
-    <div class="form-group">
+    <div class="form-group spaced-form-group">
         <label for="amount">@TranslationService.Translate("Amount")</label>
         <input type="number" id="amount" @bind="amount" class="form-control" />
     </div>
-    <div class="form-group">
+    <div class="form-group spaced-form-group">
         <label for="fromCurrency">@TranslationService.Translate("From_Currency")</label>
         <select id="fromCurrency" class="form-control" @bind="fromCurrency">
             @foreach (var currency in supportedCurrencies)
@@ -23,7 +28,7 @@
             }
         </select>
     </div>
-    <div class="form-group">
+    <div class="form-group spaced-form-group">
         <label for="toCurrency">@TranslationService.Translate("To_Currency")</label>
         <select id="toCurrency" class="form-control" @bind="toCurrency">
             @foreach (var currency in supportedCurrencies)
@@ -32,7 +37,7 @@
             }
         </select>
     </div>
-    <button class="btn btn-primary" @onclick="ConvertCurrency">@TranslationService.Translate("Convert")</button>
+    <button class="btn btn-primary spaced-form-group" @onclick="ConvertCurrency">@TranslationService.Translate("Convert")</button>
 
     <!-- Display result -->
     <div class="form-group mt-3">
@@ -46,7 +51,7 @@
     private string fromCurrency = "USD";
     private string toCurrency = "EUR";
     private string? result;
-    private readonly string[] supportedCurrencies = { "USD", "EUR", "GBP", "JPY", "CAD", "AUD" };
+    private readonly string[] supportedCurrencies = { "USD", "EUR", "GBP", "JPY", "CAD", "AUD", "RSD", "ALL", "ARS", "AUD", "BAM", "BGN", "BRL", "CNY", "CZK", "HRK", "HUF", "MKD", "MXN", "NOK", "RUB" };
 
     private async Task ConvertCurrency()
     {

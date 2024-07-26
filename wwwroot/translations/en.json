@@ -141,6 +141,14 @@
   "Currency_Conversion": "Currency Conversion",
   "Currency_List": "Currency List",
   "Currency_Conversion_Description": "Convert currencies quickly and easily.",
-  "Currency_List_Description": "View a list of supported currencies."
+  "Currency_List_Description": "View a list of supported currencies.",
+
+  "Currency_Conversion_Info": "Use this tool to convert amounts from one currency to another using real-time exchange rates. Simply enter the amount, select the currencies, and click 'Convert' to see the converted amount.",
+  "Amount": "Amount",
+  "From_Currency": "From Currency",
+  "To_Currency": "To Currency",
+  "Convert": "Convert",
+  "Converted_Amount": "Converted Amount",
+  "Conversion_Error": "An error occurred during the conversion. Please try again."
 
 }
