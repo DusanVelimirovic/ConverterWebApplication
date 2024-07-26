@@ -23,7 +23,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // Register configuration API and Currency configuration services
-builder.Services.AddScoped<IConfigurationService, ConfigurationService>();
+builder.Services.AddSingleton<IConfigurationService, ConfigurationService>();
 builder.Services.AddScoped<ICurrencyConversionService, CurrencyConversionService>();
 
 // Register translation service
