@@ -1,0 +1,15 @@
+﻿@page "/test-api-key"
+@inject IConfigurationService ConfigurationService
+
+<h3>Test API Key</h3>
+
+<p>API Key: @apiKey</p>
+
+@code {
+    private string apiKey;
+
+    protected override void OnInitialized()
+    {
+        apiKey = ConfigurationService.ExchangeRateApiKey;
+    }
+}

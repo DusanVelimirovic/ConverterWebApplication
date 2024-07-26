@@ -1,14 +1,16 @@
-﻿namespace Converter_Web_Application.Service
+﻿using Microsoft.Extensions.Configuration;
 
+namespace Converter_Web_Application.Service
 {
-using Microsoft.Extensions.Configuration;
-    public class ConfigurationService
+    public class ConfigurationService : IConfigurationService
     {
-        public string? ExchangeRateApiKey { get; }
-
+        private readonly IConfiguration _configuration;
         public ConfigurationService(IConfiguration configuration)
         {
-            ExchangeRateApiKey = configuration["ExchangeRateApiKey"];
+            _configuration = configuration;
+            ExchangeRateApiKey = _configuration["ExchangeRateApiKey"];
         }
+
+        public string ExchangeRateApiKey { get; }
     }
 }
