@@ -1,5 +1,6 @@
 using Converter_Web_Application;
 using Converter_Web_Application.Service;
+using Converter_Web_Application.Service.Models;
 using Converter_Web_Application.Service.Implementations;
 using Converter_Web_Application.Service.Registrations.Cooking;
 using Converter_Web_Application.Service.Registrations.Fuel;

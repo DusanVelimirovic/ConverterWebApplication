@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using Converter_Web_Application.Service.Models; // Add this line
+using Converter_Web_Application.Service; // Add this line
 
 namespace Converter_Web_Application.Service
 {
@@ -55,6 +57,33 @@ namespace Converter_Web_Application.Service
         {
             var exchangeRate = await GetExchangeRateAsync(fromCurrency, toCurrency);
             return amount * exchangeRate;
+        }
+
+        public async Task<List<CurrencyInfo>> FetchEnrichedCurrencyDataAsync()
+        {
+            var apiKey = _configurationService.ExchangeRateApiKey;
+            var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/codes";
+
+            var response = await _httpClient.GetAsync(requestUri);
+            response.EnsureSuccessStatusCode();
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var jsonObject = JObject.Parse(jsonResponse);
+            var supportedCodes = jsonObject["supported_codes"].ToObject<JArray>();
+
+            var currencyInfos = new List<CurrencyInfo>();
+            foreach (var codeArray in supportedCodes)
+            {
+                var currencyInfo = new CurrencyInfo
+                {
+                    CurrencyCode = codeArray[0].ToString(),
+                    CurrencyName = codeArray[1].ToString(),
+                    FlagUrl = "" // Initialize with an empty string or a placeholder URL
+                };
+                currencyInfos.Add(currencyInfo);
+            }
+
+            return currencyInfos;
         }
     }
 }

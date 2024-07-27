@@ -1,6 +1,7 @@
 ﻿@page "/currency-conversion"
 
 @using Converter_Web_Application.Service
+@using Converter_Web_Application.Service.Models
 @inject ICurrencyConversionService CurrencyConversionService
 @inject TranslationService TranslationService
 
@@ -24,7 +25,9 @@
         <select id="fromCurrency" class="form-control" @bind="fromCurrency">
             @foreach (var currency in supportedCurrencies)
             {
-                <option value="@currency">@currency</option>
+                <option value="@currency.CurrencyCode">
+                    <img src="@currency.FlagUrl" alt="@currency.CurrencyCode" width="20" height="15" /> @currency.CurrencyCode - @currency.CurrencyName
+                </option>
             }
         </select>
     </div>
@@ -33,7 +36,9 @@
         <select id="toCurrency" class="form-control" @bind="toCurrency">
             @foreach (var currency in supportedCurrencies)
             {
-                <option value="@currency">@currency</option>
+                <option value="@currency.CurrencyCode">
+                    <img src="@currency.FlagUrl" alt="@currency.CurrencyCode" width="20" height="15" /> @currency.CurrencyCode - @currency.CurrencyName
+                </option>
             }
         </select>
     </div>
@@ -51,7 +56,12 @@
     private string fromCurrency = "USD";
     private string toCurrency = "EUR";
     private string? result;
-    private readonly string[] supportedCurrencies = { "USD", "EUR", "GBP", "JPY", "CAD", "AUD", "RSD", "ALL", "ARS", "AUD", "BAM", "BGN", "BRL", "CNY", "CZK", "HRK", "HUF", "MKD", "MXN", "NOK", "RUB" };
+    private List<CurrencyInfo> supportedCurrencies = new List<CurrencyInfo>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        supportedCurrencies = await CurrencyConversionService.FetchEnrichedCurrencyDataAsync();
+    }
 
     private async Task ConvertCurrency()
     {
