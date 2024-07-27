@@ -3,8 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
-using Converter_Web_Application.Service.Models; // Add this line
-using Converter_Web_Application.Service; // Add this line
+using Converter_Web_Application.Service.Models;
 
 namespace Converter_Web_Application.Service
 {
@@ -68,22 +67,49 @@ namespace Converter_Web_Application.Service
             response.EnsureSuccessStatusCode();
 
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            var jsonObject = JObject.Parse(jsonResponse);
-            var supportedCodes = jsonObject["supported_codes"].ToObject<JArray>();
+            var supportedCodes = JObject.Parse(jsonResponse)["supported_codes"].ToObject<List<List<string>>>();
 
-            var currencyInfos = new List<CurrencyInfo>();
-            foreach (var codeArray in supportedCodes)
+            var enrichedCurrencyData = new List<CurrencyInfo>();
+            foreach (var code in supportedCodes)
             {
+                var flagUrl = await GetCurrencyFlagUrl(code[0]);
                 var currencyInfo = new CurrencyInfo
                 {
-                    CurrencyCode = codeArray[0].ToString(),
-                    CurrencyName = codeArray[1].ToString(),
-                    FlagUrl = "" // Initialize with an empty string or a placeholder URL
+                    CurrencyCode = code[0],
+                    CurrencyName = code[1],
+                    FlagUrl = flagUrl // Fetch the flag URL separately
                 };
-                currencyInfos.Add(currencyInfo);
+                enrichedCurrencyData.Add(currencyInfo);
             }
 
-            return currencyInfos;
+            return enrichedCurrencyData;
         }
+
+
+        private async Task<string> GetCurrencyFlagUrl(string currencyCode)
+        {
+            var apiKey = _configurationService.ExchangeRateApiKey;
+            var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/enriched/RSD/{currencyCode}";
+
+            var response = await _httpClient.GetAsync(requestUri);
+            response.EnsureSuccessStatusCode();
+
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var jsonObject = JObject.Parse(jsonResponse);
+
+            if (jsonObject.TryGetValue("target_data", out JToken targetData))
+            {
+                if (targetData["flag_url"] != null)
+                {
+                    return targetData["flag_url"].ToString();
+                }
+            }
+
+            Console.WriteLine($"Flag URL not found for {currencyCode}");
+            // If flag_url is not found, return a default value or handle accordingly
+            return string.Empty;
+        }
+
+
     }
 }
