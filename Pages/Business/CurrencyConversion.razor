@@ -22,29 +22,33 @@
     <div class="form-group spaced-form-group">
         <label for="fromCurrency">@TranslationService.Translate("From_Currency")</label>
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="fromCurrencyDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @selectedFromCurrency
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <div class="dropdown-menu dropdown-scrollable" aria-labelledby="fromCurrencyDropdown">
                 @foreach (var currency in enrichedCurrencies)
                 {
-                    <li><a class="dropdown-item" @onclick="() => SelectFromCurrency(currency)"><img src="@currency.FlagUrl" alt="@currency.CurrencyCode" style="width:20px;height:15px;" /> @currency.CurrencyCode - @currency.CurrencyName</a></li>
+                    <a class="dropdown-item" href="javascript:void(0);" @onclick="() => SelectFromCurrency(currency)">
+                        <img src="@currency.FlagUrl" alt="@currency.CurrencyCode" style="width:20px;height:15px;" /> @currency.CurrencyCode - @currency.CurrencyName
+                    </a>
                 }
-            </ul>
+            </div>
         </div>
     </div>
     <div class="form-group spaced-form-group">
         <label for="toCurrency">@TranslationService.Translate("To_Currency")</label>
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="toCurrencyDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 @selectedToCurrency
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+            <div class="dropdown-menu dropdown-scrollable" aria-labelledby="toCurrencyDropdown">
                 @foreach (var currency in enrichedCurrencies)
                 {
-                    <li><a class="dropdown-item" @onclick="() => SelectToCurrency(currency)"><img src="@currency.FlagUrl" alt="@currency.CurrencyCode" style="width:20px;height:15px;" /> @currency.CurrencyCode - @currency.CurrencyName</a></li>
+                    <a class="dropdown-item" href="javascript:void(0);" @onclick="() => SelectToCurrency(currency)">
+                        <img src="@currency.FlagUrl" alt="@currency.CurrencyCode" style="width:20px;height:15px;" /> @currency.CurrencyCode - @currency.CurrencyName
+                    </a>
                 }
-            </ul>
+            </div>
         </div>
     </div>
     <button class="btn btn-primary spaced-form-group" @onclick="ConvertCurrency">@TranslationService.Translate("Convert")</button>
@@ -58,24 +62,16 @@
 
 @code {
     private decimal amount;
-    private string selectedFromCurrency = "Select From Currency";
-    private string selectedToCurrency = "Select To Currency";
     private string fromCurrency = "USD";
     private string toCurrency = "EUR";
+    private string selectedFromCurrency = "USD";
+    private string selectedToCurrency = "EUR";
     private string? result;
     private List<CurrencyInfo> enrichedCurrencies = new List<CurrencyInfo>();
 
-    private async Task ConvertCurrency()
+    protected override async Task OnInitializedAsync()
     {
-        try
-        {
-            var convertedAmount = await CurrencyConversionService.ConvertCurrencyAsync(amount, fromCurrency, toCurrency);
-            result = $"{convertedAmount:F2} {toCurrency}";
-        }
-        catch (Exception ex)
-        {
-            result = $"Error: {ex.Message}";
-        }
+        enrichedCurrencies = await CurrencyConversionService.FetchEnrichedCurrencyDataAsync();
     }
 
     private void SelectFromCurrency(CurrencyInfo currency)
@@ -90,9 +86,22 @@
         selectedToCurrency = $"{currency.CurrencyCode} - {currency.CurrencyName}";
     }
 
-    protected override async Task OnInitializedAsync()
+    private async Task ConvertCurrency()
     {
-        enrichedCurrencies = await CurrencyConversionService.FetchEnrichedCurrencyDataAsync();
+        try
+        {
+            var convertedAmount = await CurrencyConversionService.ConvertCurrencyAsync(amount, fromCurrency, toCurrency);
+            result = $"{convertedAmount:F2} {toCurrency}";
+        }
+        catch (Exception ex)
+        {
+            result = $"Error: {ex.Message}";
+        }
+    }
+
+    // Translation changes
+    protected override void OnInitialized()
+    {
         TranslationService.OnLanguageChanged += StateHasChanged;
     }
 
