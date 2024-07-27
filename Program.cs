@@ -27,6 +27,9 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddSingleton<IConfigurationService, ConfigurationService>();
 builder.Services.AddScoped<ICurrencyConversionService, CurrencyConversionService>();
 
+// Register data prefetching
+builder.Services.AddScoped<DataPrefetchService>();
+
 // Register translation service
 builder.Services.AddScoped<TranslationService>();
 
@@ -93,6 +96,9 @@ var host = builder.Build();
 //Initialize TranslationService
 var translationService = host.Services.GetRequiredService<TranslationService>();
 await translationService.InitializeAsync();
+
+var dataPrefetchService = host.Services.GetRequiredService<DataPrefetchService>();
+await dataPrefetchService.PreFetchDataAsync();
 
 await host.RunAsync();
 

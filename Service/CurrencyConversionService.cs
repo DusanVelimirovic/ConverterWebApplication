@@ -1,9 +1,10 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using Converter_Web_Application.Service.Models;
+using Microsoft.JSInterop;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Converter_Web_Application.Service
 {
@@ -11,17 +12,21 @@ namespace Converter_Web_Application.Service
     {
         private readonly HttpClient _httpClient;
         private readonly IConfigurationService _configurationService;
+        private readonly IJSRuntime _jsRuntime;
+        private List<CurrencyInfo> _currencyCache;
 
-        public CurrencyConversionService(HttpClient httpClient, IConfigurationService configurationService)
+        public CurrencyConversionService(HttpClient httpClient, IConfigurationService configurationService, IJSRuntime jsRuntime)
         {
             _httpClient = httpClient;
             _configurationService = configurationService;
+            _jsRuntime = jsRuntime;
+            _currencyCache = new List<CurrencyInfo>();
         }
 
         public async Task<Dictionary<string, decimal>> FetchExchangeRatesAsync()
         {
             var apiKey = _configurationService.ExchangeRateApiKey;
-            var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/latest/USD"; // Replace with actual endpoint
+            var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/latest/USD";
 
             var response = await _httpClient.GetAsync(requestUri);
             response.EnsureSuccessStatusCode();
@@ -60,6 +65,21 @@ namespace Converter_Web_Application.Service
 
         public async Task<List<CurrencyInfo>> FetchEnrichedCurrencyDataAsync()
         {
+            // Check in-memory cache
+            if (_currencyCache != null && _currencyCache.Count > 0)
+            {
+                return _currencyCache;
+            }
+
+            // Check local storage
+            var cachedData = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", "currencyData");
+            if (!string.IsNullOrEmpty(cachedData))
+            {
+                _currencyCache = JsonConvert.DeserializeObject<List<CurrencyInfo>>(cachedData);
+                return _currencyCache;
+            }
+
+            // Fetch from API if not available in cache
             var apiKey = _configurationService.ExchangeRateApiKey;
             var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/codes";
 
@@ -82,9 +102,12 @@ namespace Converter_Web_Application.Service
                 enrichedCurrencyData.Add(currencyInfo);
             }
 
+            // Update caches
+            _currencyCache = enrichedCurrencyData;
+            await _jsRuntime.InvokeVoidAsync("localStorage.setItem", "currencyData", JsonConvert.SerializeObject(_currencyCache));
+
             return enrichedCurrencyData;
         }
-
 
         private async Task<string> GetCurrencyFlagUrl(string currencyCode)
         {
@@ -109,7 +132,5 @@ namespace Converter_Web_Application.Service
             // If flag_url is not found, return a default value or handle accordingly
             return string.Empty;
         }
-
-
     }
 }
