@@ -8,21 +8,8 @@
 <div class="container">
     <h1>@TranslationService.Translate("Business_Tools")</h1>
     <div class="row">
-        <div class="col-md-3">
-            <nav class="nav flex-column">
-                <a class="nav-link" href="/currency-conversion" @onclick="ShowCurrencyConversion">@TranslationService.Translate("Currency_Conversion")</a>
-                <a class="nav-link" href="#" @onclick="ShowCurrencyList">@TranslationService.Translate("Daily_Currency_Rates")</a>
-            </nav>
-        </div>
         <div class="col-md-9">
-            @if (selectedTool == "conversion")
-            {
                 <CurrencyConversion />
-            }
-            else if (selectedTool == "list")
-            {
-                <DailyCurrencyRates />
-            }
         </div>
     </div>
 </div>

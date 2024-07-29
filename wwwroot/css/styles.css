@@ -18,3 +18,11 @@
     padding: 10px 0; /* Optional: Padding to ensure it looks good */
 }
 
+/* Form labels */
+.form-group label {
+    font-size: 1.2em; /* Increase font size */
+    font-weight: bold; /* Make font bold */
+    color: #333; /* Change color to dark gray */
+    margin-bottom: 0.5rem; /* Add margin for spacing */
+}
+
