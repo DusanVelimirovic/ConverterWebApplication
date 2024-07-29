@@ -21,3 +21,26 @@ public class CalculateTravelSpeed : ITravelConversion
         return distance / time;
     }
 }
+
+public class MphToKmh : IConversion
+{
+    public int Id => 1;
+    public string FromUnit => "mph";
+    public string ToUnit => "km/h";
+    public double Convert(double value)
+    {
+        return value * 1.60934; // 1 mile = 1.60934 km
+    }
+}
+
+public class KmhToMph : IConversion
+{
+    public int Id => 2;
+    public string FromUnit => "km/h";
+    public string ToUnit => "mph";
+    public double Convert(double value)
+    {
+        return value / 1.60934; // 1 km = 0.621371 miles
+    }
+}
+

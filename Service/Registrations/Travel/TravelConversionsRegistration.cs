@@ -6,6 +6,8 @@
         {
             service.RegisterConversion(new CalculateTravelTime());
             service.RegisterConversion(new CalculateTravelSpeed());
+            service.RegisterConversion(new MphToKmh());
+            service.RegisterConversion(new KmhToMph());
         }
     }
 }

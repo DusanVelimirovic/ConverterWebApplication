@@ -26,8 +26,7 @@
                 <div>
                     <div class="form-group spaced-form-group">
                         <label for="distanceMetric">@TranslationService.Translate("Select_Distance_Metric")</label>
-                        <select id="distanceMetric" class="
-form-control" @bind="distanceMetric">
+                        <select id="distanceMetric" class="form-control" @bind="distanceMetric">
                             <option value="km">@TranslationService.Translate("Kilometers")</option>
                             <option value="miles">@TranslationService.Translate("Miles")</option>
                         </select>
@@ -114,9 +113,7 @@ form-control" @bind="distanceMetric">
 
         string formattedTravelTime = $"{hours} hours and {minutes} minutes";
 
-        timeMetric = "";
-
-        result = string.Format(TranslationService.Translate("result_time_format"), speed, speedMetric, distance, distanceMetric, formattedTravelTime, timeMetric);
+        result = string.Format(TranslationService.Translate("result_time_format"), speed, speedMetric, distance, distanceMetric, formattedTravelTime, "");
     }
 
     private void CalculateSpeed()
