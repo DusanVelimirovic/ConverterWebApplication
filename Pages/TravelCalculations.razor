@@ -26,7 +26,8 @@
                 <div>
                     <div class="form-group spaced-form-group">
                         <label for="distanceMetric">@TranslationService.Translate("Select_Distance_Metric")</label>
-                        <select id="distanceMetric" class="form-control" @bind="distanceMetric">
+                        <select id="distanceMetric" class="
+form-control" @bind="distanceMetric">
                             <option value="km">@TranslationService.Translate("Kilometers")</option>
                             <option value="miles">@TranslationService.Translate("Miles")</option>
                         </select>
@@ -108,7 +109,12 @@
         double speedInKmH = speedMetric == "mph" ? ConversionManagerService.Convert("mph", "km/h", speed) : speed;
 
         double travelTime = distanceInKm / speedInKmH;
-        string formattedTravelTime = timeMetric == "minutes" ? (travelTime * 60).ToString("F2") : travelTime.ToString("F2");
+        int hours = (int)travelTime;
+        int minutes = (int)((travelTime - hours) * 60);
+
+        string formattedTravelTime = $"{hours} hours and {minutes} minutes";
+
+        timeMetric = "";
 
         result = string.Format(TranslationService.Translate("result_time_format"), speed, speedMetric, distance, distanceMetric, formattedTravelTime, timeMetric);
     }
