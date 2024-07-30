@@ -12,6 +12,7 @@ namespace Converter_Web_Application.Service
         private readonly IApiClient _apiClient;
         private readonly IConfigurationService _configurationService;
         private readonly IJSRuntime _jsRuntime;
+        private readonly Dictionary<string, ICurrencyCommand> _commands;
         private List<CurrencyInfo> _currencyCache;
 
         public CurrencyConversionService(IApiClient apiClient, IConfigurationService configurationService, IJSRuntime jsRuntime)
@@ -20,6 +21,12 @@ namespace Converter_Web_Application.Service
             _configurationService = configurationService;
             _jsRuntime = jsRuntime;
             _currencyCache = new List<CurrencyInfo>();
+
+            // Register commands
+            _commands = new Dictionary<string, ICurrencyCommand>
+            {
+                { "convert", new ConvertCurrencyCommand() }
+            };
         }
 
         public async Task<Dictionary<string, decimal>> FetchExchangeRatesAsync()
@@ -60,8 +67,8 @@ namespace Converter_Web_Application.Service
 
         public async Task<decimal> ConvertCurrencyAsync(decimal amount, string fromCurrency, string toCurrency)
         {
-            var exchangeRate = await GetExchangeRateAsync(fromCurrency, toCurrency);
-            return amount * exchangeRate;
+            var exchangeRates = await FetchExchangeRatesAsync();
+            return _commands["convert"].Execute(amount, exchangeRates, fromCurrency, toCurrency);
         }
 
         public async Task<List<CurrencyInfo>> FetchEnrichedCurrencyDataAsync()
