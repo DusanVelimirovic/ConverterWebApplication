@@ -2,6 +2,7 @@
 
 @using Microsoft.AspNetCore.Components.Web
 @using Converter_Web_Application.Service
+@using Converter_Web_Application.Service.Commands.Travel
 
 @inject NavigationManager Navigation
 @inject ConversionManagerService ConversionManagerService
@@ -107,7 +108,9 @@
         double distanceInKm = distanceMetric == "miles" ? ConversionManagerService.Convert("miles", "kilometers", distance) : distance;
         double speedInKmH = speedMetric == "mph" ? ConversionManagerService.Convert("mph", "km/h", speed) : speed;
 
-        double travelTime = distanceInKm / speedInKmH;
+        ITravelCommand command = new CalculateTravelTimeCommand();
+        double travelTime = command.Execute(distanceInKm, speedInKmH);
+
         int hours = (int)travelTime;
         int minutes = (int)((travelTime - hours) * 60);
 
@@ -121,7 +124,9 @@
         double distanceInKm = distanceMetric == "miles" ? ConversionManagerService.Convert("miles", "kilometers", distance) : distance;
         double timeInHours = timeMetric == "minutes" ? time / 60 : time;
 
-        double requiredSpeed = distanceInKm / timeInHours;
+        ITravelCommand command = new CalculateTravelSpeedCommand();
+        double requiredSpeed = command.Execute(distanceInKm, timeInHours);
+
         string speedUnitDisplay = speedMetric == "mph" ? TranslationService.Translate("miles_per_hour") : TranslationService.Translate("kilometers_per_hour");
 
         result = string.Format(TranslationService.Translate("result_speed_format"), distance, distanceMetric, time, timeMetric, requiredSpeed, speedUnitDisplay);
