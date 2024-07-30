@@ -1,5 +1,4 @@
 ﻿using Converter_Web_Application.Service.Base;
-using Microsoft.Extensions.Configuration;
 
 namespace Converter_Web_Application.Service.Configuration
 {

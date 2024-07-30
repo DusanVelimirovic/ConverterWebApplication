@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Converter_Web_Application.ApiLayer;
+﻿using Converter_Web_Application.ApiLayer;
 using Converter_Web_Application.Service.Base;
 using Converter_Web_Application.Service.Models;
 using Microsoft.JSInterop;

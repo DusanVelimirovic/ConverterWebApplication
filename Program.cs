@@ -1,17 +1,10 @@
 using Converter_Web_Application;
-using Converter_Web_Application.Service.Implementations;
 using Converter_Web_Application.Service.Registrations.Cooking;
 using Converter_Web_Application.Service.Registrations.Fuel;
 using Converter_Web_Application.Service.Registrations.Travel;
 using Converter_Web_Application.Service.Registrations.Unit;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using System.Globalization;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Net.Http;
 using Converter_Web_Application.ApiLayer;
 using Converter_Web_Application.Service.Configuration;
 using Converter_Web_Application.Service.Base;

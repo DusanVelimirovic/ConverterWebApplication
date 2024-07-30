@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Converter_Web_Application.Service
+﻿namespace Converter_Web_Application.Service
 {
     public class ConvertCurrencyCommand : ICurrencyCommand
     {
