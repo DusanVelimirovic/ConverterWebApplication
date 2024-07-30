@@ -58,7 +58,7 @@
             }
 
             double averageConsumption = (fuelInLiters / distanceInKm) * 100;
-            result = $"{averageConsumption:F2} L/100km";
+            result = $"{averageConsumption:F2} L/100 {distanceUnit}";
         }
         catch (Exception ex)
         {

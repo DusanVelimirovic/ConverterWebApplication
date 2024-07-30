@@ -40,6 +40,7 @@
     private double moneyAvailable;
     private string efficiencyUnit = "mpg";
     private string? resultDistance;
+    private string? unit;
 
     private void CalculateTravelDistance()
     {
@@ -48,7 +49,8 @@
         double fuelAmount = moneyAvailable / fuelPrice;
         double possibleDistance = (fuelAmount * 100) / efficiencyInLPer100Km;
 
-        resultDistance = $"{possibleDistance:F2}";
+        resultDistance = $"{possibleDistance:F2} kilometers";
+
     }
 
     protected override void OnInitialized()
