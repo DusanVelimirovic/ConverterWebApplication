@@ -1,4 +1,5 @@
-﻿using Converter_Web_Application.Service.Implementations;
+﻿using Converter_Web_Application.Service.Commands.Fuel;
+using Converter_Web_Application.Service.Implementations;
 
 namespace Converter_Web_Application.Service.Registrations.Fuel
 {
@@ -14,6 +15,12 @@ namespace Converter_Web_Application.Service.Registrations.Fuel
             service.RegisterConversion(new RequiredFuelForMileage());
             service.RegisterConversion(new PossibleMileageWithFuel());
             service.RegisterConversion(new TravelDistanceWithBudget());
+
+            // Register fuel commands
+            service.RegisterFuelCommand("AverageFuelConsumption", new CalculateAverageFuelConsumptionCommand());
+            service.RegisterFuelCommand("RequiredFuelForMileage", new CalculateRequiredFuelForMileageCommand());
+            service.RegisterFuelCommand("PossibleMileageWithFuel", new CalculatePossibleMileageWithFuelCommand());
+            service.RegisterFuelCommand("TravelDistanceWithBudget", new CalculateTravelDistanceWithBudgetCommand());
         }
     }
 }

@@ -38,19 +38,23 @@
     private double fuelEfficiency;
     private double fuelPrice;
     private double moneyAvailable;
-    private string efficiencyUnit = "mpg";
+    private string efficiencyUnit = "litersPer100km";
     private string? resultDistance;
-    private string? unit;
 
     private void CalculateTravelDistance()
     {
-        double efficiencyInLPer100Km = efficiencyUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", fuelEfficiency) : fuelEfficiency;
+        try
+        {
+            double efficiencyInLPer100Km = efficiencyUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", fuelEfficiency) : fuelEfficiency;
 
-        double fuelAmount = moneyAvailable / fuelPrice;
-        double possibleDistance = (fuelAmount * 100) / efficiencyInLPer100Km;
+            double possibleDistance = ConversionManagerService.ExecuteFuelCommand("TravelDistanceWithBudget", moneyAvailable, efficiencyInLPer100Km, fuelPrice);
 
-        resultDistance = $"{possibleDistance:F2} kilometers";
-
+            resultDistance = $"{possibleDistance:F2} kilometers";
+        }
+        catch (Exception ex)
+        {
+            resultDistance = $"Error: {ex.Message}";
+        }
     }
 
     protected override void OnInitialized()

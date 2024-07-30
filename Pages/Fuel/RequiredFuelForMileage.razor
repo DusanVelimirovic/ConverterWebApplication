@@ -53,14 +53,22 @@
 
     private void CalculateRequiredFuel()
     {
-        double distanceInKm = distanceUnit == "miles" ? ConversionManagerService.Convert("miles", "kilometers", distance) : distance;
-        double consumptionPer100Km = consumptionUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", averageConsumption) : averageConsumption;
+        try
+        {
+            double distanceInKm = distanceUnit == "miles" ? ConversionManagerService.Convert("miles", "kilometers", distance) : distance;
+            double consumptionPer100Km = consumptionUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", averageConsumption) : averageConsumption;
 
-        double requiredFuel = (distanceInKm / 100) * consumptionPer100Km;
-        double totalPrice = requiredFuel * fuelPrice;
+            double requiredFuel = ConversionManagerService.ExecuteFuelCommand("RequiredFuelForMileage", distanceInKm, consumptionPer100Km);
+            double totalPrice = requiredFuel * fuelPrice;
 
-        resultFuel = $"{requiredFuel:F2}";
-        resultPrice = $"{totalPrice:F2}";
+            resultFuel = $"{requiredFuel:F2}";
+            resultPrice = $"{totalPrice:F2}";
+        }
+        catch (Exception ex)
+        {
+            resultFuel = $"Error: {ex.Message}";
+            resultPrice = $"Error: {ex.Message}";
+        }
     }
 
     protected override void OnInitialized()

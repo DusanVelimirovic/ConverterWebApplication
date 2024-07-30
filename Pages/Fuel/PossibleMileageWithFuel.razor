@@ -43,11 +43,16 @@
 
     private void CalculatePossibleMileage()
     {
-        double consumptionPer100Km = consumptionUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", averageConsumption) : averageConsumption;
-
-        double possibleMileage = (fuelAmount / consumptionPer100Km) * 100;
-
-        resultMileage = $"{possibleMileage:F2}";
+        try
+        {
+            double consumptionPer100Km = consumptionUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", averageConsumption) : averageConsumption;
+            double possibleMileage = ConversionManagerService.ExecuteFuelCommand("PossibleMileageWithFuel", fuelAmount, consumptionPer100Km);
+            resultMileage = $"{possibleMileage:F2} km";
+        }
+        catch (Exception ex)
+        {
+            resultMileage = $"Error: {ex.Message}";
+        }
     }
 
     protected override void OnInitialized()
