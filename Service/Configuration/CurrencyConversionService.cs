@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Converter_Web_Application.ApiLayer;
+using Converter_Web_Application.Service.Base;
 using Converter_Web_Application.Service.Models;
 using Microsoft.JSInterop;
 using Newtonsoft.Json.Linq;
 
-namespace Converter_Web_Application.Service
+namespace Converter_Web_Application.Service.Configuration
 {
     public class CurrencyConversionService : ICurrencyConversionService
     {
@@ -41,7 +42,7 @@ namespace Converter_Web_Application.Service
             }
             else
             {
-                throw new System.Exception("Failed to fetch exchange rates");
+                throw new Exception("Failed to fetch exchange rates");
             }
         }
 

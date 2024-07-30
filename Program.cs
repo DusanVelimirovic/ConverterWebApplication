@@ -1,6 +1,4 @@
 using Converter_Web_Application;
-using Converter_Web_Application.Service;
-using Converter_Web_Application.Service.Models;
 using Converter_Web_Application.Service.Implementations;
 using Converter_Web_Application.Service.Registrations.Cooking;
 using Converter_Web_Application.Service.Registrations.Fuel;
@@ -15,6 +13,10 @@ using Microsoft.Extensions.Configuration;
 using System;
 using System.Net.Http;
 using Converter_Web_Application.ApiLayer;
+using Converter_Web_Application.Service.Configuration;
+using Converter_Web_Application.Service.Base;
+using Converter_Web_Application.Service.Localization;
+using Converter_Web_Application.Service.DataServices;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");

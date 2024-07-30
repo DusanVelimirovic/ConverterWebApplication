@@ -1,4 +1,4 @@
-﻿namespace Converter_Web_Application.Service
+﻿namespace Converter_Web_Application.Service.Base
 {
     public interface IBaseConversion
     {

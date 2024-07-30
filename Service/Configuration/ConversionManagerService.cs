@@ -1,7 +1,7 @@
 ﻿using Converter_Web_Application.Service.Commands.Fuel;
 using Converter_Web_Application.Service.Registrations.Fuel;
 using Converter_Web_Application.Service.Registrations.Travel;
-using Converter_Web_Application.Service;
+using Converter_Web_Application.Service.Base;
 
 public class ConversionManagerService
 {

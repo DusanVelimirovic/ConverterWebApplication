@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Text.Json;
 
-namespace Converter_Web_Application.Service
+namespace Converter_Web_Application.Service.Localization
 {
     public class TranslationService
     {
@@ -23,7 +23,7 @@ namespace Converter_Web_Application.Service
             foreach (var file in translationFiles)
             {
                 var culture = Path.GetFileNameWithoutExtension(file);
-               // var response = await _httpClient.GetAsync($"translations/{file}");
+                // var response = await _httpClient.GetAsync($"translations/{file}");
                 var response = await _httpClient.GetAsync($"translations/{file}?v={cacheBuster}");
                 var content = await response.Content.ReadAsStringAsync();
                 var translations = JsonSerializer.Deserialize<Dictionary<string, string>>(content);

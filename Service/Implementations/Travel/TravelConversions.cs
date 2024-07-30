@@ -1,4 +1,4 @@
-﻿using Converter_Web_Application.Service;
+﻿using Converter_Web_Application.Service.Base;
 
 public class CalculateTravelTime : ITravelConversion
 {

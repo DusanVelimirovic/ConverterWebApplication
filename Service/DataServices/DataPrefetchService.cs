@@ -3,8 +3,9 @@ using Microsoft.JSInterop;
 using System.Collections.Generic;
 using Converter_Web_Application.Service.Models;
 using Newtonsoft.Json;
+using Converter_Web_Application.Service.Base;
 
-namespace Converter_Web_Application.Service
+namespace Converter_Web_Application.Service.DataServices
 {
     public class DataPrefetchService
     {

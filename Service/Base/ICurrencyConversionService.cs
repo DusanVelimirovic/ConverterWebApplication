@@ -1,4 +1,6 @@
-﻿namespace Converter_Web_Application.Service.Models
+﻿using Converter_Web_Application.Service.Models;
+
+namespace Converter_Web_Application.Service.Base
 {
     public interface ICurrencyConversionService
     {

@@ -1,4 +1,6 @@
-﻿namespace Converter_Web_Application.Service.Implementations.Unit
+﻿using Converter_Web_Application.Service.Base;
+
+namespace Converter_Web_Application.Service.Implementations.Unit
 {
     // Grams
     public class GramsToKilograms : IConversion
