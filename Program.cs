@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Net.Http;
+using Converter_Web_Application.ApiLayer;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -25,6 +26,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 // Register configuration API and Currency configuration services
 builder.Services.AddSingleton<IConfigurationService, ConfigurationService>();
+builder.Services.AddScoped<IApiClient, ApiClient>();
 builder.Services.AddScoped<ICurrencyConversionService, CurrencyConversionService>();
 
 // Register data prefetching
@@ -88,7 +90,6 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
 
     return service;
 });
-
 
 
 var host = builder.Build();
