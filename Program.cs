@@ -10,6 +10,9 @@ using Converter_Web_Application.Service.Configuration;
 using Converter_Web_Application.Service.Base;
 using Converter_Web_Application.Service.Localization;
 using Converter_Web_Application.Service.DataServices;
+using Converter_Web_Application.Service;
+using Microsoft.Extensions.DependencyInjection;
+
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -86,8 +89,15 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     return service;
 });
 
+// Register the observer
+builder.Services.AddScoped<CurrencyConversionObserver>();
 
 var host = builder.Build();
+
+// Initialize services and attach the observer
+var currencyConversionService = host.Services.GetRequiredService<ICurrencyConversionService>();
+var currencyObserver = host.Services.GetRequiredService<CurrencyConversionObserver>();
+((CurrencyConversionService)currencyConversionService).Attach(currencyObserver);
 
 //Initialize TranslationService
 var translationService = host.Services.GetRequiredService<TranslationService>();
