@@ -101,10 +101,5 @@ namespace Converter_Web_Application.Service.Implementations
         {
             return (budget / fuelPrice) * fuelEfficiency;
         }
-
-        public double Convert(double budget, double fuelEfficiency)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
