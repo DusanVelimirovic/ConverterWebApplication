@@ -20,6 +20,19 @@ namespace Converter_Web_Application.Service.Registrations.Cooking
             service.RegisterConversion(new TeaspoonOfButterToOunces());
             service.RegisterConversion(new TeaspoonOfButterToPounds());
 
+            service.RegisterConversion(new GramsToCupsOfButter());
+            service.RegisterConversion(new KilogramsToCupsOfButter());
+            service.RegisterConversion(new OuncesToCupsOfButter());
+            service.RegisterConversion(new PoundsToCupsOfButter());
+            service.RegisterConversion(new GramsToTablespoonsOfButter());
+            service.RegisterConversion(new KilogramsToTablespoonsOfButter());
+            service.RegisterConversion(new PoundsToTablespoonsOfButter());
+            service.RegisterConversion(new OuncesToTablespoonsOfButter());
+            service.RegisterConversion(new KilogramsToTeaspoonsOfButter());
+            service.RegisterConversion(new OuncesToTeaspoonsOfButter());
+            service.RegisterConversion(new PoundsToTeaspoonsOfButter());
+            service.RegisterConversion(new GramsToTeaspoonsOfButter());
+
         }
 
     }

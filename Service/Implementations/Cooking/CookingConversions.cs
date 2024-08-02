@@ -3,7 +3,6 @@
 namespace Converter_Web_Application.Service.Implementations
 {
     // Sugar Conversions
-
     // cup of sugar
     public class CupOfSugarToGrams : IConversion
     {
@@ -12,7 +11,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 200;
     }
-
     public class CupOfSugarToKilograms : IConversion
     {
         public int Id => 2;
@@ -20,7 +18,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.2;
     }
-
     public class CupOfSugarToOunces : IConversion
     {
         public int Id => 3;
@@ -28,7 +25,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 7.05;
     }
-
     public class CupOfSugarToPounds : IConversion
     {
         public int Id => 4;
@@ -38,7 +34,6 @@ namespace Converter_Web_Application.Service.Implementations
     }
 
     // Tablespoon of sugar
-
     public class TablespoonOfSugarToGrams : IConversion
     {
         public int Id => 5;
@@ -46,7 +41,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 12.5;
     }
-
     public class TablespoonOfSugarToKilograms : IConversion
     {
         public int Id => 6;
@@ -54,7 +48,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.0125;
     }
-
     public class TablespoonOfSugarToOunces : IConversion
     {
         public int Id => 7;
@@ -62,7 +55,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.44;
     }
-
     public class TablespoonOfSugarToPounds : IConversion
     {
         public int Id => 8;
@@ -72,7 +64,6 @@ namespace Converter_Web_Application.Service.Implementations
     }
 
     // teaspoon of sugar
-
     public class TeaspoonOfSugarToGrams : IConversion
     {
         public int Id => 9;
@@ -80,7 +71,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 4.2;
     }
-
     public class TeaspoonOfSugarToKilograms : IConversion
     {
         public int Id => 10;
@@ -88,7 +78,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.0042;
     }
-
     public class TeaspoonOfSugarToOunces : IConversion
     {
         public int Id => 11;
@@ -96,7 +85,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.15;
     }
-
     public class TeaspoonOfSugarToPounds : IConversion
     {
         public int Id => 12;
@@ -106,7 +94,6 @@ namespace Converter_Web_Application.Service.Implementations
     }
 
     // Flour Conversions
-
     // Cup of flour
     public class CupOfFlourToGrams : IConversion
     {
@@ -115,7 +102,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 120;
     }
-
     public class CupOfFlourToKilograms : IConversion
     {
         public int Id => 14;
@@ -123,7 +109,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.12;
     }
-
     public class CupOfFlourToOunces : IConversion
     {
         public int Id => 15;
@@ -131,7 +116,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 4.23;
     }
-
     public class CupOfFlourToPounds : IConversion
     {
         public int Id => 16;
@@ -148,7 +132,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 7.5;
     }
-
     public class TablespoonOfFlourToKilograms : IConversion
     {
         public int Id => 18;
@@ -156,7 +139,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.0075;
     }
-
     public class TablespoonOfFlourToOunces : IConversion
     {
         public int Id => 19;
@@ -164,7 +146,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.27;
     }
-
     public class TablespoonOfFlourToPounds : IConversion
     {
         public int Id => 20;
@@ -181,7 +162,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 2.5;
     }
-
     public class TeaspoonOfFlourToKilograms : IConversion
     {
         public int Id => 22;
@@ -189,7 +169,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.0025;
     }
-
     public class TeaspoonOfFlourToOunces : IConversion
     {
         public int Id => 23;
@@ -197,7 +176,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.088;
     }
-
     public class TeaspoonOfFlourToPounds : IConversion
     {
         public int Id => 24;
@@ -216,7 +194,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 227;
     }
-
     public class CupOfButterToKilograms : IConversion
     {
         public int Id => 26;
@@ -224,7 +201,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.227;
     }
-
     public class CupOfButterToOunces : IConversion
     {
         public int Id => 27;
@@ -232,7 +208,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 8;
     }
-
     public class CupOfButterToPounds : IConversion
     {
         public int Id => 28;
@@ -249,7 +224,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 14.2;
     }
-
     public class TablespoonOfButterToKilograms : IConversion
     {
         public int Id => 30;
@@ -257,7 +231,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.0142;
     }
-
     public class TablespoonOfButterToOunces : IConversion
     {
         public int Id => 31;
@@ -265,7 +238,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.5;
     }
-
     public class TablespoonOfButterToPounds : IConversion
     {
         public int Id => 32;
@@ -282,7 +254,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 4.7;
     }
-
     public class TeaspoonOfButterToKilograms : IConversion
     {
         public int Id => 34;
@@ -290,7 +261,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.0047;
     }
-
     public class TeaspoonOfButterToOunces : IConversion
     {
         public int Id => 35;
@@ -298,7 +268,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.167;
     }
-
     public class TeaspoonOfButterToPounds : IConversion
     {
         public int Id => 36;
@@ -317,7 +286,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 185;
     }
-
     public class CupOfRiceToKilograms : IConversion
     {
         public int Id => 38;
@@ -325,7 +293,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.185;
     }
-
     public class CupOfRiceToOunces : IConversion
     {
         public int Id => 39;
@@ -333,7 +300,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 6.53;
     }
-
     public class CupOfRiceToPounds : IConversion
     {
         public int Id => 40;
@@ -350,7 +316,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 11.56;
     }
-
     public class TablespoonOfRiceToKilograms : IConversion
     {
         public int Id => 42;
@@ -358,7 +323,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.01156;
     }
-
     public class TablespoonOfRiceToOunces : IConversion
     {
         public int Id => 43;
@@ -366,7 +330,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.408;
     }
-
     public class TablespoonOfRiceToPounds : IConversion
     {
         public int Id => 44;
@@ -376,7 +339,6 @@ namespace Converter_Web_Application.Service.Implementations
     }
 
     // Teaspoon of rice
-
     public class TeaspoonOfRiceToGrams : IConversion
     {
         public int Id => 73;
@@ -384,7 +346,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 3;
     }
-
     public class TeaspoonOfRiceToKilograms : IConversion
     {
         public int Id => 74;
@@ -392,7 +353,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.003;
     }
-
     public class TeaspoonOfRiceToOunces : IConversion
     {
         public int Id => 75;
@@ -400,7 +360,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.106;
     }
-
     public class TeaspoonOfRiceToPounds : IConversion
     {
         public int Id => 76;
@@ -410,7 +369,6 @@ namespace Converter_Web_Application.Service.Implementations
     }
 
     // Water
-
     // cup of water
     public class CupOfWaterToGrams : IConversion
     {
@@ -419,7 +377,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 240; // 1 cup of water = 240 grams
     }
-
     public class CupOfWaterToKilograms : IConversion
     {
         public int Id => 78;
@@ -427,7 +384,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.24; // 1 cup of water = 0.24 kilograms
     }
-
     public class CupOfWaterToOunces : IConversion
     {
         public int Id => 79;
@@ -435,7 +391,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 8.11537; // 1 cup of water = 8.11537 ounces
     }
-
     public class CupOfWaterToPounds : IConversion
     {
         public int Id => 80;
@@ -443,9 +398,8 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "pounds";
         public double Convert(double value) => value * 0.52; // 1 cup of water = 0.52 pounds
     }
-
-    // Tablespoon
-
+  
+   // Tablespoon
     public class TablespoonOfWaterToGrams : IConversion
     {
         public int Id => 65;
@@ -453,7 +407,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 15;
     }
-
     public class TablespoonOfWaterToKilograms : IConversion
     {
         public int Id => 66;
@@ -461,7 +414,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.015;
     }
-
     public class TablespoonOfWaterToOunces : IConversion
     {
         public int Id => 67;
@@ -469,7 +421,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.507;
     }
-
     public class TablespoonOfWaterToPounds : IConversion
     {
         public int Id => 68;
@@ -477,7 +428,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "pounds";
         public double Convert(double value) => value * 0.03125;
     }
-
     // Teaspoon 
     public class TeaspoonOfWaterToGrams : IConversion
     {
@@ -486,7 +436,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 5;
     }
-
     public class TeaspoonOfWaterToKilograms : IConversion
     {
         public int Id => 70;
@@ -494,7 +443,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.005;
     }
-
     public class TeaspoonOfWaterToOunces : IConversion
     {
         public int Id => 71;
@@ -502,7 +450,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.169;
     }
-
     public class TeaspoonOfWaterToPounds : IConversion
     {
         public int Id => 72;
@@ -520,7 +467,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 240; // 1 cup of milk = 240 grams
     }
-
     public class CupOfMilkToKilograms : IConversion
     {
         public int Id => 52;
@@ -528,7 +474,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.24; // 1 cup of milk = 0.24 kilograms
     }
-
     public class CupOfMilkToOunces : IConversion
     {
         public int Id => 53;
@@ -536,7 +481,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 8.11; // 1 cup of milk = 8.11 ounces
     }
-
     public class CupOfMilkToPounds : IConversion
     {
         public int Id => 54;
@@ -544,7 +488,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "pounds";
         public double Convert(double value) => value * 0.528; // 1 cup of milk = 0.528 pounds
     }
-
     // Tablespoon of milk
     public class TablespoonOfMilkToGrams : IConversion
     {
@@ -553,7 +496,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 15; // 1 tablespoon of milk = 15 grams
     }
-
     public class TablespoonOfMilkToKilograms : IConversion
     {
         public int Id => 56;
@@ -561,7 +503,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.015; // 1 tablespoon of milk = 0.015 kilograms
     }
-
     public class TablespoonOfMilkToOunces : IConversion
     {
         public int Id => 57;
@@ -569,7 +510,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.507; // 1 tablespoon of milk = 0.507 ounces
     }
-
     public class TablespoonOfMilkToPounds : IConversion
     {
         public int Id => 58;
@@ -586,7 +526,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "grams";
         public double Convert(double value) => value * 5; // 1 teaspoon of milk = 5 grams
     }
-
     public class TeaspoonOfMilkToKilograms : IConversion
     {
         public int Id => 60;
@@ -594,7 +533,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "kilograms";
         public double Convert(double value) => value * 0.005; // 1 teaspoon of milk = 0.005 kilograms
     }
-
     public class TeaspoonOfMilkToOunces : IConversion
     {
         public int Id => 61;
@@ -602,7 +540,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "ounces";
         public double Convert(double value) => value * 0.169; // 1 teaspoon of milk = 0.169 ounces
     }
-
     public class TeaspoonOfMilkToPounds : IConversion
     {
         public int Id => 62;
@@ -890,7 +827,6 @@ namespace Converter_Web_Application.Service.Implementations
 
     // Butter Conversions
     // Cups
-
     public class GramsToCupsOfButter : IConversion
     {
         public int Id => 401;
@@ -1075,7 +1011,6 @@ namespace Converter_Web_Application.Service.Implementations
 
     // Rice Conversions
     // Cups
-
     public class GramsToCupsOfRice : IConversion
     {
         public int Id => 601;
@@ -1134,8 +1069,6 @@ namespace Converter_Web_Application.Service.Implementations
         public string ToUnit => "tablespoons";
         public double Convert(double value) => value * 32.0; // 1 pound of rice = 32 tablespoons
     }
-
-
     // Teaspone
     public class GramsToTeaspoonsOfRice : IConversion
     {
