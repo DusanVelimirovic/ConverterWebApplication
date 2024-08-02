@@ -46,20 +46,6 @@ public class ConversionManagerService
         throw new InvalidOperationException($"Conversion from {fromUnit} to {toUnit} not found.");
     }
 
-    public double Convert(string fromUnit, string toUnit, double value1, double value2)
-    {
-        var conversion = _conversions.OfType<ITravelConversion>()
-            .FirstOrDefault(c => c.FromUnit.Equals(fromUnit, StringComparison.OrdinalIgnoreCase) &&
-                                 c.ToUnit.Equals(toUnit, StringComparison.OrdinalIgnoreCase));
-
-        if (conversion != null)
-        {
-            return conversion.Convert(value1, value2);
-        }
-
-        throw new InvalidOperationException($"Conversion from {fromUnit} to {toUnit} not found.");
-    }
-
     public double ExecuteFuelCommand(string commandName, double value1, double value2 = 0, double value3 = 0)
     {
         if (_fuelCommands.TryGetValue(commandName, out var command))
