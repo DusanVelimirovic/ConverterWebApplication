@@ -87,6 +87,7 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     WaterConversions_registrations.Register(service);
 
 
+
     return service;
 });
 

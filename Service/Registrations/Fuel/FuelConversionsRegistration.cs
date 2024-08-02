@@ -15,6 +15,8 @@ namespace Converter_Web_Application.Service.Registrations.Fuel
             service.RegisterConversion(new RequiredFuelForMileage());
             service.RegisterConversion(new PossibleMileageWithFuel());
             service.RegisterConversion(new TravelDistanceWithBudget());
+            service.RegisterConversion(new MphToKmh());
+            service.RegisterConversion(new KmhToMph());
 
             // Register fuel commands
             service.RegisterFuelCommand("AverageFuelConsumption", new CalculateAverageFuelConsumptionCommand());

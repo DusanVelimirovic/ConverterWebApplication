@@ -8,15 +8,6 @@ public class ConversionManagerService
     private readonly List<IBaseConversion> _conversions = new List<IBaseConversion>();
     private readonly Dictionary<string, IFuelCommand> _fuelCommands = new Dictionary<string, IFuelCommand>();
 
-    public ConversionManagerService()
-    {
-        // Register conversions
-        RegisterConversion(new MphToKmh());
-        RegisterConversion(new KmhToMph());
-        TravelConversionsRegistration.Register(this);
-        FuelConversionsRegistration.Register(this); // Add this line to register fuel conversions
-    }
-
     public void RegisterConversion(IBaseConversion conversion)
     {
         _conversions.Add(conversion);
