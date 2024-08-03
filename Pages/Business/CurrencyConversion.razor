@@ -86,8 +86,11 @@
     /// <param name="currency">The selected currency.</param>
     private void SelectFromCurrency(CurrencyInfo currency)
     {
-        fromCurrency = currency.CurrencyCode;
-        selectedFromCurrency = $"{currency.CurrencyCode} - {currency.CurrencyName}";
+        if (currency != null)
+        {
+            fromCurrency = currency.CurrencyCode ?? string.Empty;
+            selectedFromCurrency = $"{currency.CurrencyCode ?? "Unknown"} - {currency.CurrencyName ?? "Unknown"}";
+        }
     }
 
     /// <summary>
@@ -96,8 +99,11 @@
     /// <param name="currency">The selected currency.</param>
     private void SelectToCurrency(CurrencyInfo currency)
     {
-        toCurrency = currency.CurrencyCode;
-        selectedToCurrency = $"{currency.CurrencyCode} - {currency.CurrencyName}";
+        if (currency != null)
+        {
+            toCurrency = currency.CurrencyCode ?? string.Empty;
+            selectedToCurrency = $"{currency.CurrencyCode ?? "Unknown"} - {currency.CurrencyName ?? "Unknown"}";
+        }
     }
 
     /// <summary>
