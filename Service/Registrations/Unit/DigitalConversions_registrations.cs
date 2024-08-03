@@ -2,11 +2,18 @@
 
 namespace Converter_Web_Application.Service.Registrations.Unit
 {
+    /// <summary>
+    /// Registers various digital storage conversions with the ConversionManagerService.
+    /// </summary>
     public class DigitalConversions_registrations
     {
+        /// <summary>
+        /// Registers all digital storage conversions in the provided ConversionManagerService.
+        /// </summary>
+        /// <param name="service">The ConversionManagerService where conversions will be registered.</param>
         public static void Register(ConversionManagerService service)
         {
-            // Bits
+            // Register conversions for bits
             service.RegisterConversion(new BitsToBytes());
             service.RegisterConversion(new BitsToKilobits());
             service.RegisterConversion(new BitsToKilobytes());
@@ -17,7 +24,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new BitsToTerabits());
             service.RegisterConversion(new BitsToTerabytes());
 
-            // Bytes
+            // Register conversions for bytes
             service.RegisterConversion(new BytesToBits());
             service.RegisterConversion(new BytesToKilobits());
             service.RegisterConversion(new BytesToKilobytes());
@@ -28,7 +35,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new BytesToTerabits());
             service.RegisterConversion(new BytesToTerabytes());
 
-            // Kilobits
+            // Register conversions for kilobits
             service.RegisterConversion(new KilobitsToBits());
             service.RegisterConversion(new KilobitsToBytes());
             service.RegisterConversion(new KilobitsToKilobytes());
@@ -39,7 +46,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new KilobitsToTerabits());
             service.RegisterConversion(new KilobitsToTerabytes());
 
-            // Kilobytes
+            // Register conversions for kilobytes
             service.RegisterConversion(new KilobytesToBits());
             service.RegisterConversion(new KilobytesToBytes());
             service.RegisterConversion(new KilobytesToKilobits());
@@ -50,7 +57,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new KilobytesToTerabits());
             service.RegisterConversion(new KilobytesToTerabytes());
 
-            // Megabits
+            // Register conversions for megabits
             service.RegisterConversion(new MegabitsToBits());
             service.RegisterConversion(new MegabitsToBytes());
             service.RegisterConversion(new MegabitsToKilobits());
@@ -61,7 +68,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new MegabitsToTerabits());
             service.RegisterConversion(new MegabitsToTerabytes());
 
-            // Megabytes
+            // Register conversions for megabytes
             service.RegisterConversion(new MegabytesToBits());
             service.RegisterConversion(new MegabytesToBytes());
             service.RegisterConversion(new MegabytesToKilobits());
@@ -72,7 +79,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new MegabytesToTerabits());
             service.RegisterConversion(new MegabytesToTerabytes());
 
-            // Gigabits
+            // Register conversions for gigabits
             service.RegisterConversion(new GigabitsToBits());
             service.RegisterConversion(new GigabitsToBytes());
             service.RegisterConversion(new GigabitsToKilobits());
@@ -83,7 +90,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new GigabitsToTerabits());
             service.RegisterConversion(new GigabitsToTerabytes());
 
-            // Gigabytes
+            // Register conversions for gigabytes
             service.RegisterConversion(new GigabytesToBits());
             service.RegisterConversion(new GigabytesToBytes());
             service.RegisterConversion(new GigabytesToKilobits());
@@ -94,7 +101,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new GigabytesToTerabits());
             service.RegisterConversion(new GigabytesToTerabytes());
 
-            // Terabits
+            // Register conversions for terabits
             service.RegisterConversion(new TerabitsToBits());
             service.RegisterConversion(new TerabitsToBytes());
             service.RegisterConversion(new TerabitsToKilobits());
@@ -105,7 +112,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new TerabitsToGigabytes());
             service.RegisterConversion(new TerabitsToTerabytes());
 
-            // Terabytes
+            // Register conversions for terabytes
             service.RegisterConversion(new TerabytesToBits());
             service.RegisterConversion(new TerabytesToBytes());
             service.RegisterConversion(new TerabytesToKilobits());

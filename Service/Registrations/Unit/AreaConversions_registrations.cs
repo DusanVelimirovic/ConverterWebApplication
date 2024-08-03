@@ -2,11 +2,18 @@
 
 namespace Converter_Web_Application.Service.Registrations.Unit
 {
+    /// <summary>
+    /// Registers various area conversions with the ConversionManagerService.
+    /// </summary>
     public class AreaConversions_registrations
     {
+        /// <summary>
+        /// Registers all area conversions in the provided ConversionManagerService.
+        /// </summary>
+        /// <param name="service">The ConversionManagerService where conversions will be registered.</param>
         public static void Register(ConversionManagerService service)
         {
-            // Square meters
+            // Register conversions for square meters
             service.RegisterConversion(new SquaremetersToSquareFeet());
             service.RegisterConversion(new SquaremetersToSquareYards());
             service.RegisterConversion(new SquaremetersToSquareMiles());
@@ -17,7 +24,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new SquaremetersToSquereInches());
             service.RegisterConversion(new SquaremetersToSquereMillimeters());
 
-            // Square feet
+            // Register conversions for square feet
             service.RegisterConversion(new SquareFeetToSquereMeters());
             service.RegisterConversion(new SquareFeetToSquereYards());
             service.RegisterConversion(new SquareFeetToSquereMiles());
@@ -28,7 +35,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new SquareFeetToSquareInches());
             service.RegisterConversion(new SquareFeetToSquareMillimeters());
 
-            // Square yards
+            // Register conversions for square yards
             service.RegisterConversion(new SquareYardsToSquareMeters());
             service.RegisterConversion(new SquareYardsToSquareFeet());
             service.RegisterConversion(new SquareYardsToSquareMiles());
@@ -39,7 +46,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new SquareYardsToSquareInches());
             service.RegisterConversion(new SquareYardsToSquareMillimeters());
 
-            // Square miles
+            // Register conversions for square miles
             service.RegisterConversion(new SquareMilesToSquereMeters());
             service.RegisterConversion(new SquareMilesToSquereFeet());
             service.RegisterConversion(new SquareMilesToSquereYards());
@@ -50,7 +57,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new SquareMilesToSquareInches());
             service.RegisterConversion(new SquareMilesToSquareMillimeters());
 
-            // Square kilometers
+            // Register conversions for square kilometers
             service.RegisterConversion(new SquareKilometersToSquereMeters());
             service.RegisterConversion(new SquareKilometersToSquereFeet());
             service.RegisterConversion(new SquareKilometersToSquereYards());
@@ -61,8 +68,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new SquareKilometersToInches());
             service.RegisterConversion(new SquareKilometersToMillimeters());
 
-
-            // Acres
+            // Register conversions for acres
             service.RegisterConversion(new AcresToMeters());
             service.RegisterConversion(new AcresToSquereFeet());
             service.RegisterConversion(new AcresToSquereYards());
@@ -73,7 +79,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new AcresToSquareInches());
             service.RegisterConversion(new AcresToSquareMillimeters());
 
-            // Hectares
+            // Register conversions for hectares
             service.RegisterConversion(new HectaresToSquereMeters());
             service.RegisterConversion(new HectaresToSquereFeet());
             service.RegisterConversion(new HectaresToSquereYards());
@@ -84,7 +90,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new HectaresToSquareInches());
             service.RegisterConversion(new HectaresToSquareMillimeters());
 
-            // Square centimeters
+            // Register conversions for square centimeters
             service.RegisterConversion(new SquereCentimetersToSquereInches());
             service.RegisterConversion(new SquereCentimetersToSquereMillimeters());
             service.RegisterConversion(new SquereCentimetersToSquareMeters());
@@ -94,8 +100,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new SquereCentimetersToSquareKilometers());
             service.RegisterConversion(new SquereCentimetersToAcres());
 
-
-            // Square inches
+            // Register conversions for square inches
             service.RegisterConversion(new SquereInchesToSquereCentimeters());
             service.RegisterConversion(new SquereInchesToSquereMillimeters());
             service.RegisterConversion(new SquereInchesToSquereMeters());
@@ -106,7 +111,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new SquereInchesToAcres());
             service.RegisterConversion(new SquereInchesToHectares());
 
-            // Square millimeters
+            // Register conversions for square millimeters
             service.RegisterConversion(new SquereMillimetersToSquereInches());
             service.RegisterConversion(new SquereMillimetersToSquereCentimeters());
             service.RegisterConversion(new SquereMillimetersToSquereMeters());

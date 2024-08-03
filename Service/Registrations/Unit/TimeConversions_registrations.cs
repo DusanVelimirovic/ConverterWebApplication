@@ -2,12 +2,18 @@
 
 namespace Converter_Web_Application.Service.Registrations.Unit
 {
+    /// <summary>
+    /// Registers various time conversions with the ConversionManagerService.
+    /// </summary>
     public class TimeConversions_registrations
     {
+        /// <summary>
+        /// Registers all time conversions in the provided ConversionManagerService.
+        /// </summary>
+        /// <param name="service">The ConversionManagerService where conversions will be registered.</param>
         public static void Register(ConversionManagerService service)
         {
-            // Bits
-            // Seconds
+            // Register conversions for seconds to other units
             service.RegisterConversion(new SecondsToMinutes());
             service.RegisterConversion(new SecondsToHours());
             service.RegisterConversion(new SecondsToDays());
@@ -15,7 +21,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new SecondsToMonths());
             service.RegisterConversion(new SecondsToYears());
 
-            // Minutes
+            // Register conversions for minutes to other units
             service.RegisterConversion(new MinutesToSeconds());
             service.RegisterConversion(new MinutesToHours());
             service.RegisterConversion(new MinutesToDays());
@@ -23,7 +29,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new MinutesToMonths());
             service.RegisterConversion(new MinutesToYears());
 
-            // Hours
+            // Register conversions for hours to other units
             service.RegisterConversion(new HoursToSeconds());
             service.RegisterConversion(new HoursToMinutes());
             service.RegisterConversion(new HoursToDays());
@@ -31,7 +37,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new HoursToMonths());
             service.RegisterConversion(new HoursToYears());
 
-            // Days
+            // Register conversions for days to other units
             service.RegisterConversion(new DaysToSeconds());
             service.RegisterConversion(new DaysToMinutes());
             service.RegisterConversion(new DaysToHours());
@@ -39,7 +45,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new DaysToMonths());
             service.RegisterConversion(new DaysToYears());
 
-            // Weeks
+            // Register conversions for weeks to other units
             service.RegisterConversion(new WeeksToSeconds());
             service.RegisterConversion(new WeeksToMinutes());
             service.RegisterConversion(new WeeksToHours());
@@ -47,7 +53,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new WeeksToMonths());
             service.RegisterConversion(new WeeksToYears());
 
-            // Months
+            // Register conversions for months to other units
             service.RegisterConversion(new MonthsToSeconds());
             service.RegisterConversion(new MonthsToMinutes());
             service.RegisterConversion(new MonthsToHours());
@@ -55,7 +61,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new MonthsToWeeks());
             service.RegisterConversion(new MonthsToYears());
 
-            // Years
+            // Register conversions for years to other units
             service.RegisterConversion(new YearsToSeconds());
             service.RegisterConversion(new YearsToMinutes());
             service.RegisterConversion(new YearsToHours());

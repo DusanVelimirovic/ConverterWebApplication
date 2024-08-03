@@ -2,11 +2,18 @@
 
 namespace Converter_Web_Application.Service.Registrations.Unit
 {
+    /// <summary>
+    /// Registers various length conversions with the ConversionManagerService.
+    /// </summary>
     public class LengthConversions_registrations
     {
+        /// <summary>
+        /// Registers all length conversions in the provided ConversionManagerService.
+        /// </summary>
+        /// <param name="service">The ConversionManagerService where conversions will be registered.</param>
         public static void Register(ConversionManagerService service)
         {
-            // Meters
+            // Register conversions for meters
             service.RegisterConversion(new MetersToKilometers());
             service.RegisterConversion(new MetersToMiles());
             service.RegisterConversion(new MetersToCentimeters());
@@ -17,7 +24,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new MetersToInches());
             service.RegisterConversion(new MetersToLeagues());
 
-            // Kilometers
+            // Register conversions for kilometers
             service.RegisterConversion(new KilometersToMiles());
             service.RegisterConversion(new KilometersToMeters());
             service.RegisterConversion(new KilometersToNauticalMiles());
@@ -28,7 +35,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new KilometersToInches());
             service.RegisterConversion(new KilometersToLeagues());
 
-            // Miles
+            // Register conversions for miles
             service.RegisterConversion(new MilesToKilometers());
             service.RegisterConversion(new MilesToMeters());
             service.RegisterConversion(new MilesToCentimeters());
@@ -39,7 +46,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new MilesToInches());
             service.RegisterConversion(new MilesToLeagues());
 
-            // Centimeters
+            // Register conversions for centimeters
             service.RegisterConversion(new CentimetersToInches());
             service.RegisterConversion(new CentimetersToKilometers());
             service.RegisterConversion(new CentimetersToMiles());
@@ -50,7 +57,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new CentimetersToMeters());
             service.RegisterConversion(new CentimetersToLeagues());
 
-            // Millimeters
+            // Register conversions for millimeters
             service.RegisterConversion(new MillimetersToMeters());
             service.RegisterConversion(new MillimetersToKilometers());
             service.RegisterConversion(new MillimetersToMiles());
@@ -61,7 +68,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new MillimetersToInches());
             service.RegisterConversion(new MillimetersToLeagues());
 
-            // Nautical miles
+            // Register conversions for nautical miles
             service.RegisterConversion(new NauticalMilesToKilometers());
             service.RegisterConversion(new NauticalMilesToMeters());
             service.RegisterConversion(new NauticalMilesToCentimeters());
@@ -71,7 +78,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new NauticalMilesToInches());
             service.RegisterConversion(new NauticalMilesToLeagues());
 
-            // Yards
+            // Register conversions for yards
             service.RegisterConversion(new YardsToMeters());
             service.RegisterConversion(new YardsToKilometers());
             service.RegisterConversion(new YardsToMiles());
@@ -82,7 +89,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new YardsToFeet());
             service.RegisterConversion(new YardsToLeagues());
 
-            // Feets
+            // Register conversions for feet
             service.RegisterConversion(new FeetToMeters());
             service.RegisterConversion(new FeetToKilometers());
             service.RegisterConversion(new FeetToMiles());
@@ -93,7 +100,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new FeetToInches());
             service.RegisterConversion(new FeetToLeagues());
 
-            // Inches
+            // Register conversions for inches
             service.RegisterConversion(new InchesToCentimeters());
             service.RegisterConversion(new InchesToMeters());
             service.RegisterConversion(new InchesToKilometers());
@@ -104,7 +111,7 @@ namespace Converter_Web_Application.Service.Registrations.Unit
             service.RegisterConversion(new InchesToFeet());
             service.RegisterConversion(new InchesToLeagues());
 
-            // Leagues
+            // Register conversions for leagues
             service.RegisterConversion(new LeaguesToKilometers());
             service.RegisterConversion(new LeaguesToMeters());
             service.RegisterConversion(new LeaguesToCentimeters());
