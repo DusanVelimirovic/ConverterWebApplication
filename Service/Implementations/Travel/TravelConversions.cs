@@ -1,5 +1,7 @@
 ﻿using Converter_Web_Application.Service.Base;
-
+/// <summary>
+/// Conversions strategies
+/// </summary>
 public class CalculateTravelTime : ITravelConversion
 {
     public int Id => 1;

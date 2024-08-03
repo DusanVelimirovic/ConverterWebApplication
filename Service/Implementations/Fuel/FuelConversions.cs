@@ -2,10 +2,9 @@
 
 namespace Converter_Web_Application.Service.Implementations
 {
-    public interface IFuelConversion : IBaseConversion
-    {
-        double Convert(double value1, double value2 = 0, double value3 = 0);
-    }
+    /// <summary>
+    /// Conversions strategies
+    /// </summary>
 
     public class MilesPerGallonToLitersPer100Km : IFuelConversion
     {

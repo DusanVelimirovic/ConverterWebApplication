@@ -2,6 +2,10 @@
 
 namespace Converter_Web_Application.Service.Implementations.Unit
 {
+    /// <summary>
+    /// Conversions strategies
+    /// </summary>
+
     // Meters per Second
     public class MetersPerSecondToKilometersPerHour : IConversion
     {

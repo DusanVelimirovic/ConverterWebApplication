@@ -2,6 +2,10 @@
 
 namespace Converter_Web_Application.Service.Implementations.Unit
 {
+    /// <summary>
+    /// Conversions strategies
+    /// </summary>
+
     // Bits
     public class BitsToBytes : IConversion
     {

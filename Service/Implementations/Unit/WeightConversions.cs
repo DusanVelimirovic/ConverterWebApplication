@@ -2,6 +2,11 @@
 
 namespace Converter_Web_Application.Service.Implementations.Unit
 {
+
+    /// <summary>
+    /// Conversions strategies
+    /// </summary>
+
     // Grams
     public class GramsToKilograms : IConversion
     {

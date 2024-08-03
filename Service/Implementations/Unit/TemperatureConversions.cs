@@ -2,6 +2,10 @@
 
 namespace Converter_Web_Application.Service.Implementations.Unit
 {
+    /// <summary>
+    /// Conversions strategies
+    /// </summary>
+
     // Celsius
     public class CelsiusToFahrenheit : IConversion
     {

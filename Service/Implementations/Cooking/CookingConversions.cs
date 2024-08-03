@@ -2,6 +2,10 @@
 
 namespace Converter_Web_Application.Service.Implementations
 {
+    /// <summary>
+    /// Conversions strategies
+    /// </summary>
+
     // Sugar Conversions
     // cup of sugar
     public class CupOfSugarToGrams : IConversion

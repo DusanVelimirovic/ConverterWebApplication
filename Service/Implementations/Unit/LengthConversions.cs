@@ -2,6 +2,9 @@
 
 namespace Converter_Web_Application.Service.Implementations.Unit
 {
+    /// <summary>
+    /// Conversions strategies
+    /// </summary>
 
     // Meters
     public class MetersToFeet : IConversion
