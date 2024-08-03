@@ -18,16 +18,16 @@
             <NavMenu_cooking />
         </div>
         <div class="col-md-10">
-<h1>
-    @if (!string.IsNullOrEmpty(FormatType(Type)))
-    {
-        @TranslationService.Translate(FormatType(Type))
-    }
-    else
-    {
-        @TranslationService.Translate("Select_Measurement_Type")
-    }
-</h1>
+            <h1>
+                @if (!string.IsNullOrEmpty(FormatType(Type)))
+                {
+                    @TranslationService.Translate(FormatType(Type))
+                }
+                else
+                {
+                    @TranslationService.Translate("Select_Measurement_Type")
+                }
+            </h1>
             <div class="form-group">
                 <label for="inputValue">@TranslationService.Translate("Conversion")</label>
                 <input type="number" id="inputValue" @bind="value" class="form-control" @onkeydown="HandleKeyDown" />
@@ -66,16 +66,17 @@
 </div>
 
 @code {
-    [Parameter] public string? Type { get; set; }
+    [Parameter] public string? Type { get; set; } // URL parameter to determine the type of conversion
 
-    private double value;
-    private double convertedValue;
-    private string? fromUnit;
-    private string? toUnit;
-    private List<string> availableUnits = new List<string>();
-    private string? formattedConvertedValue;
-    private string? writeLine;
+    private double value; // Input value for conversion
+    private double convertedValue; // Result of the conversion
+    private string? fromUnit; // Selected unit to convert from
+    private string? toUnit; // Selected unit to convert to
+    private List<string> availableUnits = new List<string>(); // List of available units for the selected type
+    private string? formattedConvertedValue; // Formatted string for the converted value
+    private string? writeLine; // The result text to display
 
+    // Method called when the component's parameters are set
     protected override void OnParametersSet()
     {
         ResetFields();
@@ -103,10 +104,11 @@
                 availableUnits = new List<string>();
                 break;
         }
-        fromUnit = availableUnits.FirstOrDefault();
-        toUnit = availableUnits.FirstOrDefault();
+        fromUnit = availableUnits.FirstOrDefault(); // Set default 'from' unit
+        toUnit = availableUnits.FirstOrDefault(); // Set default 'to' unit
     }
 
+    // Method to handle unit conversion
     private void ConvertUnits()
     {
         var conversion = ConversionManagerService.GetAllConversions()
@@ -115,7 +117,7 @@
                                  c.ToUnit.Equals(toUnit, StringComparison.OrdinalIgnoreCase));
         if (conversion != null)
         {
-            convertedValue = conversion.Convert(value);
+            convertedValue = conversion.Convert(value); // Perform conversion
             if (convertedValue < 1.0)
             {
                 formattedConvertedValue = convertedValue.ToString("0.############");
@@ -134,14 +136,16 @@
         }
     }
 
+    // Method to handle keydown events
     private void HandleKeyDown(KeyboardEventArgs e)
     {
         if (e.Key == "Enter")
         {
-            ConvertUnits();
+            ConvertUnits(); // Perform conversion when Enter key is pressed
         }
     }
 
+    // Method to reset input fields and results
     private void ResetFields()
     {
         value = 0;
@@ -150,6 +154,7 @@
         writeLine = string.Empty;
     }
 
+    // Method to format the conversion type for display
     private string FormatType(string? type)
     {
         if (string.IsNullOrEmpty(type))
@@ -165,13 +170,15 @@
         return string.Join(' ', words);
     }
 
+    // Method to handle initialization
     protected override void OnInitialized()
     {
-        TranslationService.OnLanguageChanged += StateHasChanged;
+        TranslationService.OnLanguageChanged += StateHasChanged; // Subscribe to language change event
     }
 
+    // Method to clean up event subscriptions
     public void Dispose()
     {
-        TranslationService.OnLanguageChanged -= StateHasChanged;
+        TranslationService.OnLanguageChanged -= StateHasChanged; // Unsubscribe from language change event
     }
 }
