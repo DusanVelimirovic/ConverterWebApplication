@@ -42,18 +42,21 @@
 </div>
 
 @code {
-    private string mode = "averageFuelConsumption";
+    private string mode = "averageFuelConsumption"; // Default mode
 
+    // Handle mode change
     private void OnModeChange(ChangeEventArgs e)
     {
         mode = e.Value.ToString();
     }
 
+    // Subscribe to language change event on initialization
     protected override void OnInitialized()
     {
         TranslationService.OnLanguageChanged += StateHasChanged;
     }
 
+    // Unsubscribe from language change event on disposal
     public void Dispose()
     {
         TranslationService.OnLanguageChanged -= StateHasChanged;

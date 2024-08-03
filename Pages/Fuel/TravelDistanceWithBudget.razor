@@ -36,33 +36,46 @@
 </div>
 
 @code {
-    private double fuelEfficiency;
-    private double fuelPrice;
-    private double moneyAvailable;
-    private string efficiencyUnit = "litersPer100km";
-    private string? resultDistance;
+    private double fuelEfficiency; // The fuel efficiency of the vehicle
+    private double fuelPrice; // The current price of fuel
+    private double moneyAvailable; // The amount of money available for fuel
+    private string efficiencyUnit = "litersPer100km"; // Unit for fuel efficiency
+    private string? resultDistance; // The calculated possible travel distance
 
+    /// <summary>
+    /// Calculate the possible travel distance based on the available money, fuel efficiency, and fuel price.
+    /// </summary>
     private void CalculateTravelDistance()
     {
         try
         {
+            // Convert fuel efficiency if necessary
             double efficiencyInLPer100Km = efficiencyUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", fuelEfficiency) : fuelEfficiency;
 
+            // Calculate the possible travel distance
             double possibleDistance = ConversionManagerService.ExecuteFuelCommand("TravelDistanceWithBudget", moneyAvailable, efficiencyInLPer100Km, fuelPrice);
 
+            // Set the result distance
             resultDistance = $"{possibleDistance:F2} kilometers";
         }
         catch (Exception ex)
         {
+            // Handle exceptions and display the error message
             resultDistance = $"Error: {ex.Message}";
         }
     }
 
+    /// <summary>
+    /// Subscribe to language change event on initialization.
+    /// </summary>
     protected override void OnInitialized()
     {
         TranslationService.OnLanguageChanged += StateHasChanged;
     }
 
+    /// <summary>
+    /// Unsubscribe from language change event on disposal.
+    /// </summary>
     public void Dispose()
     {
         TranslationService.OnLanguageChanged -= StateHasChanged;

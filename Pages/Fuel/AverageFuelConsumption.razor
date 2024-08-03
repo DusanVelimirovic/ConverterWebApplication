@@ -36,20 +36,25 @@
 </div>
 
 @code {
-    private double distance;
-    private double fuelConsumed;
-    private string distanceUnit = "km";
-    private string fuelUnit = "liters";
-    private string? result;
+    private double distance; // Input distance value
+    private double fuelConsumed; // Input fuel consumed value
+    private string distanceUnit = "km"; // Selected distance unit
+    private string fuelUnit = "liters"; // Selected fuel unit
+    private string? result; // Result of the average fuel consumption calculation
 
+    // Method to calculate average fuel consumption
     private void CalculateAverageFuelConsumption()
     {
         try
         {
+            // Convert distance to kilometers if necessary
             double distanceInKm = distanceUnit == "miles" ? ConversionManagerService.Convert("miles", "kilometers", distance) : distance;
+            // Convert fuel to liters if necessary
             double fuelInLiters = fuelUnit == "MPG" ? ConversionManagerService.Convert("MPG", "liters", fuelConsumed) : fuelConsumed;
 
+            // Execute the fuel command to calculate average fuel consumption
             double averageConsumption = ConversionManagerService.ExecuteFuelCommand("AverageFuelConsumption", distanceInKm, fuelInLiters);
+            // Format the result
             result = $"{averageConsumption:F2} L/100 {distanceUnit}";
         }
         catch (Exception ex)
@@ -58,14 +63,15 @@
         }
     }
 
-
+    // Method called on component initialization
     protected override void OnInitialized()
     {
-        TranslationService.OnLanguageChanged += StateHasChanged;
+        TranslationService.OnLanguageChanged += StateHasChanged; // Subscribe to language change event
     }
 
+    // Method to clean up event subscriptions
     public void Dispose()
     {
-        TranslationService.OnLanguageChanged -= StateHasChanged;
+        TranslationService.OnLanguageChanged -= StateHasChanged; // Unsubscribe from language change event
     }
 }

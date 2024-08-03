@@ -42,25 +42,36 @@
     private string consumptionUnit = "litersPer100km";
     private string? resultMileage;
 
+    /// <summary>
+    /// Calculate the possible mileage with the given amount of fuel and average consumption.
+    /// </summary>
     private void CalculatePossibleMileage()
     {
         try
         {
+            // Convert consumption if needed and calculate possible mileage
             double consumptionPer100Km = consumptionUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", averageConsumption) : averageConsumption;
             double possibleMileage = ConversionManagerService.ExecuteFuelCommand("PossibleMileageWithFuel", fuelAmount, consumptionPer100Km);
             resultMileage = $"{possibleMileage:F2} km";
         }
         catch (Exception ex)
         {
+            // Handle exceptions and display the error message
             resultMileage = $"Error: {ex.Message}";
         }
     }
 
+    /// <summary>
+    /// Subscribe to language change event on initialization.
+    /// </summary>
     protected override void OnInitialized()
     {
         TranslationService.OnLanguageChanged += StateHasChanged;
     }
 
+    /// <summary>
+    /// Unsubscribe from language change event on disposal.
+    /// </summary>
     public void Dispose()
     {
         TranslationService.OnLanguageChanged -= StateHasChanged;

@@ -44,39 +44,52 @@
 </div>
 
 @code {
-    private double distance;
-    private double averageConsumption;
-    private double fuelPrice;
-    private string distanceUnit = "km";
-    private string consumptionUnit = "litersPer100km";
-    private string? resultFuel;
-    private string? resultPrice;
+    private double distance; // Distance to be traveled
+    private double averageConsumption; // Average fuel consumption
+    private double fuelPrice; // Current fuel price
+    private string distanceUnit = "km"; // Unit for distance
+    private string consumptionUnit = "litersPer100km"; // Unit for fuel consumption
+    private string? resultFuel; // Resulting required fuel
+    private string? resultPrice; // Resulting total price
 
+    /// <summary>
+    /// Calculate the required fuel and total price for the given distance and average consumption.
+    /// </summary>
     private void CalculateRequiredFuel()
     {
         try
         {
+            // Convert distance and consumption if necessary
             double distanceInKm = distanceUnit == "miles" ? ConversionManagerService.Convert("miles", "kilometers", distance) : distance;
             double consumptionPer100Km = consumptionUnit == "mpg" ? ConversionManagerService.Convert("mpg", "litersPer100km", averageConsumption) : averageConsumption;
 
+            // Calculate required fuel and total price
             double requiredFuel = ConversionManagerService.ExecuteFuelCommand("RequiredFuelForMileage", distanceInKm, consumptionPer100Km);
             double totalPrice = requiredFuel * fuelPrice;
 
+            // Set result values
             resultFuel = $"{requiredFuel:F2}";
             resultPrice = $"{totalPrice:F2}";
         }
         catch (Exception ex)
         {
+            // Handle exceptions and display error messages
             resultFuel = $"Error: {ex.Message}";
             resultPrice = $"Error: {ex.Message}";
         }
     }
 
+    /// <summary>
+    /// Subscribe to language change event on initialization.
+    /// </summary>
     protected override void OnInitialized()
     {
         TranslationService.OnLanguageChanged += StateHasChanged;
     }
 
+    /// <summary>
+    /// Unsubscribe from language change event on disposal.
+    /// </summary>
     public void Dispose()
     {
         TranslationService.OnLanguageChanged -= StateHasChanged;
