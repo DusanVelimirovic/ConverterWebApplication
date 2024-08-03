@@ -92,9 +92,9 @@ var currencyObserver = host.Services.GetRequiredService<CurrencyConversionObserv
 var translationService = host.Services.GetRequiredService<TranslationService>();
 await translationService.InitializeAsync();
 
-// Prefetch data
+// Fetch currency data immediately after the app is loaded
 var dataPrefetchService = host.Services.GetRequiredService<DataPrefetchService>();
-await dataPrefetchService.PreFetchDataAsync();
+_ = dataPrefetchService.LoadCurrencyDataAsync(); // Fire and forget
 
 // Run the application
 await host.RunAsync();

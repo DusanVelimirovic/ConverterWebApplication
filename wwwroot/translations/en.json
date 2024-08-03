@@ -171,7 +171,8 @@
 
   "Fuel_Calculation": "Fuel Calculation",
   "Required_Fuel_For_Mileage": "Required Fuel for Mileage",
-  "Possible_Mileage_with_Fuel": "Possible Mileage with Fuel"
+  "Possible_Mileage_with_Fuel": "Possible Mileage with Fuel",
+  "Loading_Currency_Data": "Loading currency data, please wait..."
 
 
 }

@@ -174,5 +174,7 @@
   "Required_Fuel_For_Mileage": "Erforderlicher Kraftstoff für die Reichweite",
   "Possible_Mileage_with_Fuel": "Mögliche Reichweite mit Kraftstoff",
   "Travel_Distance_with_Budget": "Reisedistanz mit Budget",
-  "Select_Mode": "Modus auswählen"
+  "Select_Mode": "Modus auswählen",
+
+  "Loading_Currency_Data": "Lade Währungsdaten, bitte warten..."
 }

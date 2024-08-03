@@ -1,24 +1,28 @@
 ﻿using Microsoft.JSInterop;
-using Converter_Web_Application.Service.Models;
 using Newtonsoft.Json;
 using Converter_Web_Application.Service.Base;
+using Converter_Web_Application.Service.Models;
+using Converter_Web_Application.ApiLayer;
+using Converter_Web_Application.Service.Configuration;
 
 namespace Converter_Web_Application.Service.DataServices
 {
     public class DataPrefetchService
     {
-        private readonly ICurrencyConversionService _currencyConversionService;
+        private readonly ICurrencyApiService _currencyApiService;
+        private readonly IConfigurationService _configurationService;
         private readonly IJSRuntime _jsRuntime;
         private IReadOnlyList<CurrencyInfo> _currencyCache;
 
-        public DataPrefetchService(ICurrencyConversionService currencyConversionService, IJSRuntime jsRuntime)
+        public DataPrefetchService(ICurrencyApiService currencyApiService, IConfigurationService configurationService, IJSRuntime jsRuntime)
         {
-            _currencyConversionService = currencyConversionService;
+            _currencyApiService = currencyApiService;
+            _configurationService = configurationService;
             _jsRuntime = jsRuntime;
             _currencyCache = new List<CurrencyInfo>();
         }
 
-        public async Task PreFetchDataAsync()
+        public async Task LoadCurrencyDataAsync()
         {
             // Check in-memory cache
             if (_currencyCache != null && _currencyCache.Count > 0)
@@ -35,10 +39,16 @@ namespace Converter_Web_Application.Service.DataServices
             }
 
             // Fetch from API if not available in cache
-            _currencyCache = await _currencyConversionService.FetchEnrichedCurrencyDataAsync();
+            var currencyConversionService = new CurrencyConversionService(_currencyApiService, _configurationService, _jsRuntime);
+            _currencyCache = await currencyConversionService.FetchEnrichedCurrencyDataAsync();
 
             // Update local storage
             await _jsRuntime.InvokeVoidAsync("localStorage.setItem", "currencyData", JsonConvert.SerializeObject(_currencyCache));
+        }
+
+        public IReadOnlyList<CurrencyInfo> GetCachedData()
+        {
+            return _currencyCache;
         }
     }
 }
