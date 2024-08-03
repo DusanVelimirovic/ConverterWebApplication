@@ -64,31 +64,45 @@
 </div>
 
 @code {
-    private decimal amount;
-    private string fromCurrency = "USD";
-    private string toCurrency = "EUR";
-    private string selectedFromCurrency = "USD";
-    private string selectedToCurrency = "EUR";
-    private string? result;
-    private List<CurrencyInfo> enrichedCurrencies = new List<CurrencyInfo>();
+    private decimal amount;  // The amount to convert
+    private string fromCurrency = "USD";  // The source currency
+    private string toCurrency = "EUR";  // The target currency
+    private string selectedFromCurrency = "USD";  // The selected source currency for display
+    private string selectedToCurrency = "EUR";  // The selected target currency for display
+    private string? result;  // The conversion result
+    private List<CurrencyInfo> enrichedCurrencies = new List<CurrencyInfo>();  // List of enriched currency data
 
+    /// <summary>
+    /// Fetches enriched currency data when the component is initialized.
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         enrichedCurrencies = await CurrencyConversionService.FetchEnrichedCurrencyDataAsync();
     }
 
+    /// <summary>
+    /// Selects the source currency from the dropdown.
+    /// </summary>
+    /// <param name="currency">The selected currency.</param>
     private void SelectFromCurrency(CurrencyInfo currency)
     {
         fromCurrency = currency.CurrencyCode;
         selectedFromCurrency = $"{currency.CurrencyCode} - {currency.CurrencyName}";
     }
 
+    /// <summary>
+    /// Selects the target currency from the dropdown.
+    /// </summary>
+    /// <param name="currency">The selected currency.</param>
     private void SelectToCurrency(CurrencyInfo currency)
     {
         toCurrency = currency.CurrencyCode;
         selectedToCurrency = $"{currency.CurrencyCode} - {currency.CurrencyName}";
     }
 
+    /// <summary>
+    /// Converts the currency based on the selected values and amount.
+    /// </summary>
     private async Task ConvertCurrency()
     {
         try
@@ -102,12 +116,17 @@
         }
     }
 
-    // Translation changes
+    /// <summary>
+    /// Subscribes to the language change event when the component is initialized.
+    /// </summary>
     protected override void OnInitialized()
     {
         TranslationService.OnLanguageChanged += StateHasChanged;
     }
 
+    /// <summary>
+    /// Unsubscribes from the language change event when the component is disposed.
+    /// </summary>
     public void Dispose()
     {
         TranslationService.OnLanguageChanged -= StateHasChanged;
