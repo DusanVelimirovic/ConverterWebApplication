@@ -11,7 +11,7 @@ namespace Converter_Web_Application.Service.Configuration
     /// </summary>
     public class CurrencyConversionService : ICurrencyConversionService, ISubject
     {
-        private readonly IApiClient _apiClient;
+        private readonly ICurrencyApiService _currencyApiService;
         private readonly IConfigurationService _configurationService;
         private readonly IJSRuntime _jsRuntime;
         private readonly Dictionary<string, ICurrencyCommand> _commands;
@@ -22,12 +22,12 @@ namespace Converter_Web_Application.Service.Configuration
         /// <summary>
         /// Initializes a new instance of the <see cref="CurrencyConversionService"/> class.
         /// </summary>
-        /// <param name="apiClient">The API client for making HTTP requests.</param>
+        /// <param name="currencyApiService">The API service for currency data.</param>
         /// <param name="configurationService">The configuration service for accessing settings.</param>
         /// <param name="jsRuntime">The JavaScript runtime for interacting with localStorage.</param>
-        public CurrencyConversionService(IApiClient apiClient, IConfigurationService configurationService, IJSRuntime jsRuntime)
+        public CurrencyConversionService(ICurrencyApiService currencyApiService, IConfigurationService configurationService, IJSRuntime jsRuntime)
         {
-            _apiClient = apiClient;
+            _currencyApiService = currencyApiService;
             _configurationService = configurationService;
             _jsRuntime = jsRuntime;
             _currencyCache = new List<CurrencyInfo>();
@@ -41,15 +41,10 @@ namespace Converter_Web_Application.Service.Configuration
             };
         }
 
-        /// <summary>
-        /// Fetches the latest exchange rates from the API.
-        /// </summary>
-        /// <returns>A dictionary of exchange rates.</returns>
         public async Task<Dictionary<string, decimal>> FetchExchangeRatesAsync()
         {
             var apiKey = _configurationService.ExchangeRateApiKey;
-            var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/latest/USD";
-            var jsonResponse = await _apiClient.GetAsync<JObject>(requestUri);
+            var jsonResponse = await _currencyApiService.GetExchangeRatesAsync(apiKey);
 
             if (jsonResponse?["result"]?.ToString() == "success")
             {
@@ -62,12 +57,6 @@ namespace Converter_Web_Application.Service.Configuration
             throw new Exception("Failed to fetch exchange rates");
         }
 
-        /// <summary>
-        /// Gets the exchange rate between two currencies.
-        /// </summary>
-        /// <param name="fromCurrency">The currency to convert from.</param>
-        /// <param name="toCurrency">The currency to convert to.</param>
-        /// <returns>The exchange rate.</returns>
         public async Task<decimal> GetExchangeRateAsync(string fromCurrency, string toCurrency)
         {
             if (_exchangeRates == null || _exchangeRates.Count == 0)
@@ -102,23 +91,12 @@ namespace Converter_Web_Application.Service.Configuration
             throw new KeyNotFoundException($"Exchange rates for {fromCurrency} or {toCurrency} not found.");
         }
 
-        /// <summary>
-        /// Converts an amount from one currency to another.
-        /// </summary>
-        /// <param name="amount">The amount to convert.</param>
-        /// <param name="fromCurrency">The currency to convert from.</param>
-        /// <param name="toCurrency">The currency to convert to.</param>
-        /// <returns>The converted amount.</returns>
         public async Task<decimal> ConvertCurrencyAsync(decimal amount, string fromCurrency, string toCurrency)
         {
             var exchangeRates = await FetchExchangeRatesAsync();
             return _commands["convert"].Execute(amount, exchangeRates, fromCurrency, toCurrency);
         }
 
-        /// <summary>
-        /// Fetches enriched currency data, including currency codes and flag URLs.
-        /// </summary>
-        /// <returns>A list of enriched currency data.</returns>
         public async Task<IReadOnlyList<CurrencyInfo>> FetchEnrichedCurrencyDataAsync()
         {
             if (_currencyCache != null && _currencyCache.Count > 0)
@@ -135,8 +113,7 @@ namespace Converter_Web_Application.Service.Configuration
             }
 
             var apiKey = _configurationService.ExchangeRateApiKey;
-            var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/codes";
-            var jsonResponse = await _apiClient.GetAsync<JObject>(requestUri);
+            var jsonResponse = await _currencyApiService.GetSupportedCodesAsync(apiKey);
 
             if (jsonResponse?["result"]?.ToString() == "success")
             {
@@ -164,42 +141,25 @@ namespace Converter_Web_Application.Service.Configuration
             throw new Exception("Failed to fetch supported currency codes");
         }
 
-        /// <summary>
-        /// Gets the flag URL for a given currency code.
-        /// </summary>
-        /// <param name="currencyCode">The currency code.</param>
-        /// <returns>The flag URL.</returns>
         private async Task<string> GetCurrencyFlagUrl(string currencyCode)
         {
             var apiKey = _configurationService.ExchangeRateApiKey;
-            var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/enriched/RSD/{currencyCode}";
-            var jsonResponse = await _apiClient.GetAsync<JObject>(requestUri);
+            var jsonResponse = await _currencyApiService.GetCurrencyFlagUrlAsync(apiKey, currencyCode);
 
             return jsonResponse?["target_data"]?["flag_url"]?.ToString() ?? string.Empty;
         }
 
         // Implement ISubject methods
-        /// <summary>
-        /// Attaches an observer to the subject.
-        /// </summary>
-        /// <param name="observer">The observer to attach.</param>
         public void Attach(IObserver observer)
         {
             _observers.Add(observer);
         }
 
-        /// <summary>
-        /// Detaches an observer from the subject.
-        /// </summary>
-        /// <param name="observer">The observer to detach.</param>
         public void Detach(IObserver observer)
         {
             _observers.Remove(observer);
         }
 
-        /// <summary>
-        /// Notifies all attached observers of an update.
-        /// </summary>
         public void Notify()
         {
             foreach (var observer in _observers)

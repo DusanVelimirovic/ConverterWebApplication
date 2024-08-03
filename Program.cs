@@ -23,6 +23,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 // Register configuration API and Currency configuration services
 builder.Services.AddSingleton<IConfigurationService, ConfigurationService>();
 builder.Services.AddScoped<IApiClient, ApiClient>();
+builder.Services.AddScoped<ICurrencyApiService, CurrencyApiService>();
 builder.Services.AddScoped<ICurrencyConversionService, CurrencyConversionService>();
 
 // Register data prefetching service
