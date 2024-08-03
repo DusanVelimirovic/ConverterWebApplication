@@ -47,7 +47,7 @@
     // Handle mode change
     private void OnModeChange(ChangeEventArgs e)
     {
-        mode = e.Value.ToString();
+        mode = e.Value?.ToString() ?? "averageFuelConsumption";
     }
 
     // Subscribe to language change event on initialization
