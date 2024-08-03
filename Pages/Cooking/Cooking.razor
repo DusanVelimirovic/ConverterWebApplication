@@ -21,7 +21,7 @@
             <h1>
                 @if (!string.IsNullOrEmpty(FormatType(Type)))
                 {
-                    @TranslationService.Translate(FormatType(Type))
+                    @TranslationService.Translate(FormatType(Type) ?? string.Empty) <!-- Add null coalescing to prevent null reference -->
                 }
                 else
                 {
@@ -39,7 +39,7 @@
                     <select @bind="fromUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
-                            <option value="@unit">@TranslationService.Translate(unit)</option>
+                            <option value="@unit">@TranslationService.Translate(unit ?? string.Empty)</option> <!-- Add null coalescing to prevent null reference -->
                         }
                     </select>
                 </div>
@@ -49,7 +49,7 @@
                     <select @bind="toUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
-                            <option value="@unit">@TranslationService.Translate(unit)</option>
+                            <option value="@unit">@TranslationService.Translate(unit ?? string.Empty)</option> <!-- Add null coalescing to prevent null reference -->
                         }
                     </select>
                 </div>
@@ -127,7 +127,7 @@
                 formattedConvertedValue = convertedValue.ToString("N12").TrimEnd('0').TrimEnd('.');
             }
             var resultTemplate = TranslationService.Translate("result_format");
-            writeLine = string.Format(resultTemplate, value, TranslationService.Translate(fromUnit), formattedConvertedValue, TranslationService.Translate(toUnit));
+            writeLine = string.Format(resultTemplate, value, TranslationService.Translate(fromUnit ?? string.Empty), formattedConvertedValue, TranslationService.Translate(toUnit ?? string.Empty)); // Add null coalescing to prevent null reference
         }
         else
         {
