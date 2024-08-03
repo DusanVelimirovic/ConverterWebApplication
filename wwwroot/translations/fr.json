@@ -151,7 +151,30 @@
   "Conversion_Error": "Une erreur s'est produite lors de la conversion. Veuillez réessayer.",
 
   "Kilometers_per_Hour": "Kilomètres par heure",
-  "Miles_per_Hour": "Miles par heure"
+  "Miles_per_Hour": "Miles par heure",
+
+  "Liters_per_100_Kilometers": "Litres aux 100 kilomètres",
+  "Required_Fuel_for_Mileage": "Carburant nécessaire pour le kilométrage",
+  "Distance_for_Traveling": "Distance à parcourir",
+  "Average_Consumption": "Consommation moyenne",
+  "Current_Fuel_Price": "Prix actuel du carburant",
+  "Required_Amount_of_Fuel": "Quantité de carburant nécessaire",
+  "Total_Price": "Prix total",
+  "Possible_Mileage_With_Fuel": "Kilométrage possible avec le carburant",
+  "Amount_of_Fuel": "Quantité de carburant",
+  "Possible_Mileage": "Kilométrage possible",
+  "Travel_Distance_with_Budget": "Distance de voyage avec budget",
+  "Fuel_Efficiency_of_Vehicle": "Efficacité énergétique du véhicule",
+  "Fuel_Price": "Prix du carburant",
+  "Amount_of_Money_Available": "Montant d'argent disponible",
+  "Possible_Distance_to_Travel": "Distance possible à parcourir",
+
+  "Fuel_Calculation": "Calcul du carburant",
+  "Average_Fuel_Consumption": "Consommation moyenne de carburant",
+  "Required_Fuel_For_Mileage": "Carburant nécessaire pour le kilométrage",
+  "Possible_Mileage_with_Fuel": "Kilométrage possible avec le carburant",
+  "Travel_Distance_with_Budget": "Distance de voyage avec budget",
+  "Select_Mode": "Sélectionner le mode"
 
 
 }

@@ -151,5 +151,28 @@
   "Conversion_Error": "Došlo je do greške tokom konverzije. Molimo pokušajte ponovo.",
 
   "Kilometers_per_Hour": "Kilometri na sat",
-  "Miles_per_Hour": "Milje na sat"
+  "Miles_per_Hour": "Milje na sat",
+
+  "Liters_per_100_Kilometers": "Litara na 100 kilometara",
+  "Required_Fuel_for_Mileage": "Potrebno gorivo za kilometražu",
+  "Distance_for_Traveling": "Udaljenost za putovanje",
+  "Average_Consumption": "Prosečna potrošnja",
+  "Current_Fuel_Price": "Trenutna cena goriva",
+  "Required_Amount_of_Fuel": "Potrebna količina goriva",
+  "Total_Price": "Ukupna cena",
+  "Possible_Mileage_With_Fuel": "Moguća kilometraža sa gorivom",
+  "Amount_of_Fuel": "Količina goriva",
+  "Possible_Mileage": "Moguća kilometraža",
+  "Travel_Distance_with_Budget": "Udaljenost putovanja sa budžetom",
+  "Fuel_Efficiency_of_Vehicle": "Efikasnost goriva vozila",
+  "Fuel_Price": "Cena goriva",
+  "Amount_of_Money_Available": "Dostupna količina novca",
+  "Possible_Distance_to_Travel": "Moguća udaljenost za putovanje",
+
+  "Fuel_Calculation": "Izračun goriva",
+  "Average_Fuel_Consumption": "Prosečna potrošnja goriva",
+  "Required_Fuel_For_Mileage": "Potrebno gorivo za kilometražu",
+  "Possible_Mileage_with_Fuel": "Moguća kilometraža sa gorivom",
+  "Travel_Distance_with_Budget": "Udaljenost putovanja sa budžetom",
+  "Select_Mode": "Izaberi režim"
 }

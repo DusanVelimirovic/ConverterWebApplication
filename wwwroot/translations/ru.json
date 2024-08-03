@@ -150,5 +150,28 @@
   "Conversion_Error": "Произошла ошибка при конвертации. Пожалуйста, попробуйте еще раз.",
 
   "Kilometers_per_Hour": "Километры в час",
-  "Miles_per_Hour": "Мили в час"
+  "Miles_per_Hour": "Мили в час",
+
+  "Liters_per_100_Kilometers": "Литры на 100 километров",
+  "Required_Fuel_for_Mileage": "Необходимое количество топлива для пробега",
+  "Distance_for_Traveling": "Расстояние для путешествия",
+  "Average_Consumption": "Средний расход",
+  "Current_Fuel_Price": "Текущая цена на топливо",
+  "Required_Amount_of_Fuel": "Необходимое количество топлива",
+  "Total_Price": "Итоговая цена",
+  "Possible_Mileage_With_Fuel": "Возможный пробег на топливе",
+  "Amount_of_Fuel": "Количество топлива",
+  "Possible_Mileage": "Возможный пробег",
+  "Travel_Distance_with_Budget": "Расстояние для путешествия с бюджетом",
+  "Fuel_Efficiency_of_Vehicle": "Топливная эффективность автомобиля",
+  "Fuel_Price": "Цена на топливо",
+  "Amount_of_Money_Available": "Доступное количество денег",
+  "Possible_Distance_to_Travel": "Возможное расстояние для путешествия",
+
+  "Fuel_Calculation": "Расчет топлива",
+  "Average_Fuel_Consumption": "Средний расход топлива",
+  "Required_Fuel_For_Mileage": "Необходимое количество топлива для пробега",
+  "Possible_Mileage_with_Fuel": "Возможный пробег на топливе",
+  "Travel_Distance_with_Budget": "Расстояние для путешествия с бюджетом",
+  "Select_Mode": "Выберите режим"
 }

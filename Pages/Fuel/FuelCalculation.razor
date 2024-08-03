@@ -8,18 +8,18 @@
 @inject ConversionManagerService ConversionManagerService
 @inject TranslationService TranslationService
 
-<PageTitle>Fuel Calculation</PageTitle>
+<PageTitle>@TranslationService.Translate("Fuel_Calculation")</PageTitle>
 
-<h1>Fuel Calculation</h1>
+<h1>@TranslationService.Translate("Fuel_Calculation")</h1>
 
 <div class="container">
     <div class="form-group spaced-form-group">
-        <label for="modeSelect">Select Mode</label>
+        <label for="modeSelect">@TranslationService.Translate("Select_Mode")</label>
         <select id="modeSelect" class="form-control" @onchange="OnModeChange">
-            <option value="averageFuelConsumption">Average Fuel Consumption</option>
-            <option value="requiredFuelForMileage">Required Fuel for Mileage</option>
-            <option value="possibleMileageWithFuel">Possible Mileage with Fuel</option>
-            <option value="travelDistanceWithBudget">Travel Distance with Budget</option>
+            <option value="averageFuelConsumption">@TranslationService.Translate("Average_Fuel_Consumption")</option>
+            <option value="requiredFuelForMileage">@TranslationService.Translate("Required_Fuel_For_Mileage")</option>
+            <option value="possibleMileageWithFuel">@TranslationService.Translate("Possible_Mileage_with_Fuel")</option>
+            <option value="travelDistanceWithBudget">@TranslationService.Translate("Travel_Distance_with_Budget")</option>
         </select>
     </div>
 

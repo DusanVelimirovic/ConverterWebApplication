@@ -151,5 +151,28 @@
   "Conversion_Error": "Bei der Umrechnung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
 
   "Kilometers_per_Hour": "Kilometer pro Stunde",
-  "Miles_per_Hour": "Meilen pro Stunde"
+  "Miles_per_Hour": "Meilen pro Stunde",
+
+  "Liters_per_100_Kilometers": "Liter pro 100 Kilometer",
+  "Required_Fuel_for_Mileage": "Erforderlicher Kraftstoff für die Reichweite",
+  "Distance_for_Traveling": "Reisedistanz",
+  "Average_Consumption": "Durchschnittlicher Verbrauch",
+  "Current_Fuel_Price": "Aktueller Kraftstoffpreis",
+  "Required_Amount_of_Fuel": "Erforderliche Kraftstoffmenge",
+  "Total_Price": "Gesamtpreis",
+  "Possible_Mileage_With_Fuel": "Mögliche Reichweite mit Kraftstoff",
+  "Amount_of_Fuel": "Kraftstoffmenge",
+  "Possible_Mileage": "Mögliche Reichweite",
+  "Travel_Distance_with_Budget": "Reisedistanz mit Budget",
+  "Fuel_Efficiency_of_Vehicle": "Kraftstoffeffizienz des Fahrzeugs",
+  "Fuel_Price": "Kraftstoffpreis",
+  "Amount_of_Money_Available": "Verfügbarer Geldbetrag",
+  "Possible_Distance_to_Travel": "Mögliche Reisedistanz",
+
+  "Fuel_Calculation": "Kraftstoffberechnung",
+  "Average_Fuel_Consumption": "Durchschnittlicher Kraftstoffverbrauch",
+  "Required_Fuel_For_Mileage": "Erforderlicher Kraftstoff für die Reichweite",
+  "Possible_Mileage_with_Fuel": "Mögliche Reichweite mit Kraftstoff",
+  "Travel_Distance_with_Budget": "Reisedistanz mit Budget",
+  "Select_Mode": "Modus auswählen"
 }
