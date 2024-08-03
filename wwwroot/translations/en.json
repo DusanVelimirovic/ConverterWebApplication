@@ -149,6 +149,9 @@
   "To_Currency": "To Currency",
   "Convert": "Convert",
   "Converted_Amount": "Converted Amount",
-  "Conversion_Error": "An error occurred during the conversion. Please try again."
+  "Conversion_Error": "An error occurred during the conversion. Please try again.",
+  "Kilometers_per_Hour": "Kilometers per Hour",
+  "Miles_per_Hour": "Miles per Hour"
+
 
 }

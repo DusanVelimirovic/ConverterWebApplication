@@ -148,7 +148,10 @@
   "To_Currency": "A Moneda",
   "Convert": "Convertir",
   "Converted_Amount": "Cantidad Convertida",
-  "Conversion_Error": "Ocurrió un error durante la conversión. Por favor, inténtelo de nuevo."
+  "Conversion_Error": "Ocurrió un error durante la conversión. Por favor, inténtelo de nuevo.",
+
+  "Kilometers_per_Hour": "Kilómetros por hora",
+  "Miles_per_Hour": "Millas por hora"
 
 
 }

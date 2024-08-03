@@ -148,5 +148,8 @@
   "To_Currency": "U Valutu",
   "Convert": "Konvertuj",
   "Converted_Amount": "Konvertovani Iznos",
-  "Conversion_Error": "Došlo je do greške tokom konverzije. Molimo pokušajte ponovo."
+  "Conversion_Error": "Došlo je do greške tokom konverzije. Molimo pokušajte ponovo.",
+
+  "Kilometers_per_Hour": "Kilometri na sat",
+  "Miles_per_Hour": "Milje na sat"
 }

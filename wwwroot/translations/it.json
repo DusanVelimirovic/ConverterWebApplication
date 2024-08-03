@@ -147,5 +147,8 @@
   "To_Currency": "A Valuta",
   "Convert": "Converti",
   "Converted_Amount": "Importo Convertito",
-  "Conversion_Error": "Si è verificato un errore durante la conversione. Per favore riprova."
+  "Conversion_Error": "Si è verificato un errore durante la conversione. Per favore riprova.",
+
+  "Kilometers_per_Hour": "Chilometri all'ora",
+  "Miles_per_Hour": "Miglia all'ora"
 }

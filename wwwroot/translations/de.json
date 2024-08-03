@@ -148,5 +148,8 @@
   "To_Currency": "Zu Währung",
   "Convert": "Konvertieren",
   "Converted_Amount": "Umgerechneter Betrag",
-  "Conversion_Error": "Bei der Umrechnung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+  "Conversion_Error": "Bei der Umrechnung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+
+  "Kilometers_per_Hour": "Kilometer pro Stunde",
+  "Miles_per_Hour": "Meilen pro Stunde"
 }

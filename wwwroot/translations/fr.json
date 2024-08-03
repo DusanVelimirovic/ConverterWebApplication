@@ -148,7 +148,10 @@
   "To_Currency": "À Devise",
   "Convert": "Convertir",
   "Converted_Amount": "Montant Converti",
-  "Conversion_Error": "Une erreur s'est produite lors de la conversion. Veuillez réessayer."
+  "Conversion_Error": "Une erreur s'est produite lors de la conversion. Veuillez réessayer.",
+
+  "Kilometers_per_Hour": "Kilomètres par heure",
+  "Miles_per_Hour": "Miles par heure"
 
 
 }
