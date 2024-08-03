@@ -40,7 +40,7 @@
                     <select @bind="fromUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
-                            <option value="@unit">@TranslationService.Translate(unit)</option> <!-- Populate the dropdown with available units -->
+                            <option value="@unit">@TranslationService.Translate(unit ?? string.Empty)</option> <!-- Populate the dropdown with available units -->
                         }
                     </select>
                 </div>
@@ -50,7 +50,7 @@
                     <select @bind="toUnit" class="form-control">
                         @foreach (var unit in availableUnits)
                         {
-                            <option value="@unit">@TranslationService.Translate(unit)</option> <!-- Populate the dropdown with available units -->
+                            <option value="@unit">@TranslationService.Translate(unit ?? string.Empty)</option> <!-- Populate the dropdown with available units -->
                         }
                     </select>
                 </div>
@@ -132,7 +132,7 @@
             {
                 formattedConvertedValue = convertedValue.ToString("N12").TrimEnd('0').TrimEnd('.'); // Format the converted value
             }
-            writeLine = string.Format(TranslationService.Translate("result_format"), value, TranslationService.Translate(fromUnit), formattedConvertedValue, TranslationService.Translate(toUnit)); // Create result string
+            writeLine = string.Format(TranslationService.Translate("result_format"), value, TranslationService.Translate(fromUnit ?? string.Empty), formattedConvertedValue, TranslationService.Translate(toUnit ?? string.Empty)); // Create result string
         }
         else
         {
