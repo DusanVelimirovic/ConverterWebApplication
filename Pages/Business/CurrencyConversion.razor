@@ -70,7 +70,7 @@
     private string selectedFromCurrency = "USD";  // The selected source currency for display
     private string selectedToCurrency = "EUR";  // The selected target currency for display
     private string? result;  // The conversion result
-    private List<CurrencyInfo> enrichedCurrencies = new List<CurrencyInfo>();  // List of enriched currency data
+    private IReadOnlyList<CurrencyInfo> enrichedCurrencies = new List<CurrencyInfo>();  // List of enriched currency data
 
     /// <summary>
     /// Fetches enriched currency data when the component is initialized.

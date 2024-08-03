@@ -9,7 +9,7 @@ namespace Converter_Web_Application.Service.DataServices
     {
         private readonly ICurrencyConversionService _currencyConversionService;
         private readonly IJSRuntime _jsRuntime;
-        private List<CurrencyInfo> _currencyCache;
+        private IReadOnlyList<CurrencyInfo> _currencyCache;
 
         public DataPrefetchService(ICurrencyConversionService currencyConversionService, IJSRuntime jsRuntime)
         {
@@ -30,7 +30,7 @@ namespace Converter_Web_Application.Service.DataServices
             var cachedData = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", "currencyData");
             if (!string.IsNullOrEmpty(cachedData))
             {
-                _currencyCache = JsonConvert.DeserializeObject<List<CurrencyInfo>>(cachedData);
+                _currencyCache = JsonConvert.DeserializeObject<List<CurrencyInfo>>(cachedData) ?? new List<CurrencyInfo>();
                 return;
             }
 

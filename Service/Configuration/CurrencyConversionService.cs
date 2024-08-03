@@ -15,8 +15,8 @@ namespace Converter_Web_Application.Service.Configuration
         private readonly IConfigurationService _configurationService;
         private readonly IJSRuntime _jsRuntime;
         private readonly Dictionary<string, ICurrencyCommand> _commands;
+        private readonly List<IObserver> _observers;
         private List<CurrencyInfo> _currencyCache;
-        private List<IObserver> _observers;
         private Dictionary<string, decimal> _exchangeRates;
 
         /// <summary>
@@ -31,6 +31,7 @@ namespace Converter_Web_Application.Service.Configuration
             _configurationService = configurationService;
             _jsRuntime = jsRuntime;
             _currencyCache = new List<CurrencyInfo>();
+            _exchangeRates = new Dictionary<string, decimal>();  // Initialize to avoid null warnings
             _observers = new List<IObserver>();
 
             // Register commands
@@ -50,16 +51,15 @@ namespace Converter_Web_Application.Service.Configuration
             var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/latest/USD";
             var jsonResponse = await _apiClient.GetAsync<JObject>(requestUri);
 
-            if (jsonResponse["result"].ToString() == "success")
+            if (jsonResponse?["result"]?.ToString() == "success")
             {
-                _exchangeRates = jsonResponse["conversion_rates"].ToObject<Dictionary<string, decimal>>();
+                _exchangeRates = jsonResponse["conversion_rates"]?.ToObject<Dictionary<string, decimal>>()
+                                 ?? throw new Exception("Conversion rates not found in the response.");
                 Notify(); // Notify all observers about the update
                 return _exchangeRates;
             }
-            else
-            {
-                throw new Exception("Failed to fetch exchange rates");
-            }
+
+            throw new Exception("Failed to fetch exchange rates");
         }
 
         /// <summary>
@@ -77,18 +77,29 @@ namespace Converter_Web_Application.Service.Configuration
 
             if (fromCurrency == "USD")
             {
-                return _exchangeRates[toCurrency];
+                if (_exchangeRates.TryGetValue(toCurrency, out var rateToUSD))
+                {
+                    return rateToUSD;
+                }
+                throw new KeyNotFoundException($"Exchange rate for {toCurrency} not found.");
             }
-            else if (toCurrency == "USD")
+
+            if (toCurrency == "USD")
             {
-                return 1 / _exchangeRates[fromCurrency];
+                if (_exchangeRates.TryGetValue(fromCurrency, out var rateFromUSD))
+                {
+                    return 1 / rateFromUSD;
+                }
+                throw new KeyNotFoundException($"Exchange rate for {fromCurrency} not found.");
             }
-            else
+
+            if (_exchangeRates.TryGetValue(fromCurrency, out var fromRate) &&
+                _exchangeRates.TryGetValue(toCurrency, out var toRate))
             {
-                var rateFromUSD = _exchangeRates[fromCurrency];
-                var rateToUSD = _exchangeRates[toCurrency];
-                return rateToUSD / rateFromUSD;
+                return toRate / fromRate;
             }
+
+            throw new KeyNotFoundException($"Exchange rates for {fromCurrency} or {toCurrency} not found.");
         }
 
         /// <summary>
@@ -108,7 +119,7 @@ namespace Converter_Web_Application.Service.Configuration
         /// Fetches enriched currency data, including currency codes and flag URLs.
         /// </summary>
         /// <returns>A list of enriched currency data.</returns>
-        public async Task<List<CurrencyInfo>> FetchEnrichedCurrencyDataAsync()
+        public async Task<IReadOnlyList<CurrencyInfo>> FetchEnrichedCurrencyDataAsync()
         {
             if (_currencyCache != null && _currencyCache.Count > 0)
             {
@@ -118,7 +129,8 @@ namespace Converter_Web_Application.Service.Configuration
             var cachedData = await _jsRuntime.InvokeAsync<string>("localStorage.getItem", "currencyData");
             if (!string.IsNullOrEmpty(cachedData))
             {
-                _currencyCache = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CurrencyInfo>>(cachedData);
+                _currencyCache = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CurrencyInfo>>(cachedData)
+                                ?? new List<CurrencyInfo>();
                 return _currencyCache;
             }
 
@@ -126,21 +138,21 @@ namespace Converter_Web_Application.Service.Configuration
             var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/codes";
             var jsonResponse = await _apiClient.GetAsync<JObject>(requestUri);
 
-            if (jsonResponse["result"].ToString() == "success")
+            if (jsonResponse?["result"]?.ToString() == "success")
             {
-                var supportedCodes = jsonResponse["supported_codes"].ToObject<List<List<string>>>();
+                var supportedCodes = jsonResponse["supported_codes"]?.ToObject<List<List<string>>>()
+                                    ?? new List<List<string>>();
 
                 var enrichedCurrencyData = new List<CurrencyInfo>();
                 foreach (var code in supportedCodes)
                 {
                     var flagUrl = await GetCurrencyFlagUrl(code[0]);
-                    var currencyInfo = new CurrencyInfo
+                    enrichedCurrencyData.Add(new CurrencyInfo
                     {
                         CurrencyCode = code[0],
                         CurrencyName = code[1],
                         FlagUrl = flagUrl
-                    };
-                    enrichedCurrencyData.Add(currencyInfo);
+                    });
                 }
 
                 _currencyCache = enrichedCurrencyData;
@@ -148,10 +160,8 @@ namespace Converter_Web_Application.Service.Configuration
 
                 return enrichedCurrencyData;
             }
-            else
-            {
-                throw new Exception("Failed to fetch supported currency codes");
-            }
+
+            throw new Exception("Failed to fetch supported currency codes");
         }
 
         /// <summary>
@@ -165,15 +175,7 @@ namespace Converter_Web_Application.Service.Configuration
             var requestUri = $"https://v6.exchangerate-api.com/v6/{apiKey}/enriched/RSD/{currencyCode}";
             var jsonResponse = await _apiClient.GetAsync<JObject>(requestUri);
 
-            if (jsonResponse.TryGetValue("target_data", out JToken targetData))
-            {
-                if (targetData["flag_url"] != null)
-                {
-                    return targetData["flag_url"].ToString();
-                }
-            }
-
-            return string.Empty;
+            return jsonResponse?["target_data"]?["flag_url"]?.ToString() ?? string.Empty;
         }
 
         // Implement ISubject methods
