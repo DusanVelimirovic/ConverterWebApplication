@@ -13,11 +13,11 @@ using Converter_Web_Application.Service.DataServices;
 using Converter_Web_Application.Service;
 using Microsoft.Extensions.DependencyInjection;
 
-
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+// Register HttpClient with the base address of the application
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // Register configuration API and Currency configuration services
@@ -25,18 +25,18 @@ builder.Services.AddSingleton<IConfigurationService, ConfigurationService>();
 builder.Services.AddScoped<IApiClient, ApiClient>();
 builder.Services.AddScoped<ICurrencyConversionService, CurrencyConversionService>();
 
-// Register data prefetching
+// Register data prefetching service
 builder.Services.AddScoped<DataPrefetchService>();
 
 // Register translation service
 builder.Services.AddScoped<TranslationService>();
 
-
-// Register ConversionManagerService as a singleton
+// Register ConversionManagerService as a singleton and register all conversions
 builder.Services.AddSingleton<ConversionManagerService>(sp =>
 {
     var service = new ConversionManagerService();
-    // Register Lenght conversions
+
+    // Register Length conversions
     LengthConversions_registrations.Register(service);
 
     // Register Weight conversions
@@ -58,56 +58,42 @@ builder.Services.AddSingleton<ConversionManagerService>(sp =>
     DigitalConversions_registrations.Register(service);
 
     // Register Speed conversions
+    SpeedConversions_registrations.Register(service);
+
+    // Register Cooking conversions
     SugarConversions_registrations.Register(service);
-
-    // Register a Cooking conversions
-
-    // Sugar Conversions
-    SugarConversions_registrations.Register(service);
-
-    // Flour Conversions
     FlourConversions_registrations.Register(service);
-
-    // Butter Conversions
     ButterConversions_registrations.Register(service);
-
-    // Milk Conversions
     MilkConversions_registrations.Register(service);
-
-    // Rice Conversions
     RiceConversions_registrations.Register(service);
-
-    // Travel conversions
-    TravelConversionsRegistration.Register(service);
-
-    // Fuel conversions
-    FuelConversionsRegistration.Register(service);
-
-    // Water conversions
     WaterConversions_registrations.Register(service);
 
+    // Register Travel conversions
+    TravelConversionsRegistration.Register(service);
 
+    // Register Fuel conversions
+    FuelConversionsRegistration.Register(service);
 
     return service;
 });
 
-// Register the observer
+// Register the observer for currency conversion
 builder.Services.AddScoped<CurrencyConversionObserver>();
 
 var host = builder.Build();
 
-// Initialize services and attach the observer
+// Initialize services and attach the observer to the currency conversion service
 var currencyConversionService = host.Services.GetRequiredService<ICurrencyConversionService>();
 var currencyObserver = host.Services.GetRequiredService<CurrencyConversionObserver>();
 ((CurrencyConversionService)currencyConversionService).Attach(currencyObserver);
 
-//Initialize TranslationService
+// Initialize TranslationService
 var translationService = host.Services.GetRequiredService<TranslationService>();
 await translationService.InitializeAsync();
 
+// Prefetch data
 var dataPrefetchService = host.Services.GetRequiredService<DataPrefetchService>();
 await dataPrefetchService.PreFetchDataAsync();
 
+// Run the application
 await host.RunAsync();
-
-await builder.Build().RunAsync();
