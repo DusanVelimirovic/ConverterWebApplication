@@ -19,25 +19,11 @@ jobs:
         with:
           submodules: true
           lfs: false
-
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y apt-utils
-
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '8.0.x'  # Use the appropriate version of .NET Core SDK for your project
-
-      - name: Restore dependencies
-        run: dotnet restore "Converter-Web-Application/Converter\ Web\ Application.csproj"
-
-      - name: Build
-        run: dotnet build "Converter-Web-Application/Converter\ Web\ Application.csproj" --configuration Release --no-restore
-
-      - name: Publish
-        run: dotnet publish "Converter-Web-Application/Converter\ Web\ Application.csproj" --configuration Release --output ./publish --no-restore
-
-      - name: Deploy to Azure Static Web Apps
+          dotnet-version: '8.0.x' # Use the appropriate .NET version
+      - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
@@ -46,8 +32,8 @@ jobs:
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
           app_location: "/" # App source code path
-          api_location: "Api" # Api source code path - optional
-          output_location: "publish/wwwroot" # Built app content directory - this should point to the published output directory
+          api_location: "" # Api source code path - optional
+          output_location: "wwwroot" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
