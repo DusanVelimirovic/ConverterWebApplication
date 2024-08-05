@@ -24,7 +24,7 @@ jobs:
         with:
           dotnet-version: '8.0.x' # Use the appropriate .NET version
       - name: Restore Dependencies
-        run: dotnet restore "ConverterWebApplication/Converter Web Application.csproj"
+        run: dotnet restore "ConverterWebApplication/ConverterWebApplication.csproj"
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
