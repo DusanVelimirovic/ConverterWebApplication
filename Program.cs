@@ -1,4 +1,4 @@
-using Converter_Web_Application;
+using ConverterWebApplication;
 using Converter_Web_Application.Service.Registrations.Cooking;
 using Converter_Web_Application.Service.Registrations.Fuel;
 using Converter_Web_Application.Service.Registrations.Travel;
