@@ -20,6 +20,9 @@ jobs:
           submodules: true
           lfs: false
 
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y apt-utils
+
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v3
         with:
