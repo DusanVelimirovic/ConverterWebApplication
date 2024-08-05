@@ -29,13 +29,13 @@ jobs:
           dotnet-version: '8.0.x'  # Use the appropriate version of .NET Core SDK for your project
 
       - name: Restore dependencies
-        run: dotnet restore "Converter-Web-Application/Converter Web Application.csproj"
+        run: dotnet restore "Converter-Web-Application/Converter\ Web\ Application.csproj"
 
       - name: Build
-        run: dotnet build "Converter-Web-Application/Converter Web Application.csproj" --configuration Release --no-restore
+        run: dotnet build "Converter-Web-Application/Converter\ Web\ Application.csproj" --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish "Converter-Web-Application/Converter Web Application.csproj" --configuration Release --output ./publish --no-restore
+        run: dotnet publish "Converter-Web-Application/Converter\ Web\ Application.csproj" --configuration Release --output ./publish --no-restore
 
       - name: Deploy to Azure Static Web Apps
         id: builddeploy
