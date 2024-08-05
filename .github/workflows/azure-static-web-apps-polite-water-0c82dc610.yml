@@ -21,9 +21,9 @@ jobs:
           lfs: false
 
       - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'  # Use the appropriate version of .NET Core SDK for your project
+          dotnet-version: '8.0.x'  # Use the appropriate version of .NET Core SDK for your project
 
       - name: Restore dependencies
         run: dotnet restore
