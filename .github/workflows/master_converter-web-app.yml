@@ -1,74 +1,37 @@
-name: Build and deploy ASP.Net Core app to Azure Web App - converter-web-app
+name: Deploy Blazor WebAssembly to Azure Web App
 
 on:
   push:
     branches:
       - master
-  workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Set up .NET Core
-        uses: actions/setup-dotnet@v
-name: Build and deploy ASP.Net Core app to Azure Web App - converter-web-app
-
-on:
-  push:
-    branches:
-      - master
-  workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: windows-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up .NET Core
-        uses: actions/setup-dotnet@v4
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '8.x'
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release "Converter Web Application/Converter Web Application.csproj"
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{github.workspace}}/publish
+      - name: Publish with dotnet
+        run: dotnet publish --configuration Release --output ./publish "Converter Web Application/Converter Web Application.csproj"
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: .net-app
-          path: ${{github.workspace}}/publish
-
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: .net-app
-
-      - name: Login to Azure
+      - name: 'Login via Azure CLI'
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      
+
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'converter-web-app'
           slot-name: 'Production'
-          package: ${{github.workspace}}/publish
+          package: ./publish
