@@ -22,13 +22,13 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ./myapp
+        run: dotnet publish -c Release -o ./bin/Release/net8.0/publish
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-app
-          path: ./myapp
+          path: ./bin/Release/net8.0/publish
 
   deploy:
     runs-on: windows-latest
@@ -48,5 +48,5 @@ jobs:
         with:
           app-name: 'converter-web-app'
           slot-name: 'Production'
-          package: './myapp'
+          package: './bin/Release/net8.0/publish'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BEB48B86305F426B983FE945A0F4D267 }}
