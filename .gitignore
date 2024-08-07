@@ -14,7 +14,6 @@
 *.userprefs
 
 # Ignore appsettings.json to prevent exposing sensitive data
-wwwroot/appsettings.json
 
 
 
