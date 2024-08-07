@@ -1,22 +1,24 @@
-using Converter_Web_Application.ApiLayer;
-using Converter_Web_Application.Service.Base;
-using Converter_Web_Application.Service.Configuration;
-using Converter_Web_Application.Service.DataServices;
-using Converter_Web_Application.Service.Localization;
+using ConverterWebApplication;
 using Converter_Web_Application.Service.Registrations.Cooking;
 using Converter_Web_Application.Service.Registrations.Fuel;
 using Converter_Web_Application.Service.Registrations.Travel;
 using Converter_Web_Application.Service.Registrations.Unit;
-using Converter_Web_Application.Service;
-using ConverterWebApplication;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Converter_Web_Application.ApiLayer;
+using Converter_Web_Application.Service.Configuration;
+using Converter_Web_Application.Service.Base;
+using Converter_Web_Application.Service.Localization;
+using Converter_Web_Application.Service.DataServices;
+using Converter_Web_Application.Service;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-var apimBaseUrl = builder.Configuration["ApimBaseUrl"] ?? "https://converterwebapplicationapi.azure-api.net";
+var apimBaseUrl = builder.Configuration["ApimBaseUrl"] ?? "https://your-apim-instance.azure-api.net";
+var subscriptionKey = builder.Configuration["ApimSubscriptionKey"] ?? "your-subscription-key";
 
 // Register HttpClient with the base address of the application
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
@@ -24,7 +26,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 // Register configuration API and Currency configuration services
 builder.Services.AddSingleton<IConfigurationService, ConfigurationService>();
 builder.Services.AddScoped<IApiClient, ApiClient>();
-builder.Services.AddScoped<ICurrencyApiService>(sp => new CurrencyApiService(sp.GetRequiredService<IApiClient>(), apimBaseUrl));
+builder.Services.AddScoped<ICurrencyApiService>(sp => new CurrencyApiService(sp.GetRequiredService<IApiClient>(), apimBaseUrl, subscriptionKey));
 builder.Services.AddScoped<ICurrencyConversionService, CurrencyConversionService>();
 
 // Register data prefetching service

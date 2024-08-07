@@ -11,6 +11,6 @@
         /// <typeparam name="T">The type to which the response content should be deserialized.</typeparam>
         /// <param name="requestUri">The URI to send the GET request to.</param>
         /// <returns>A task that represents the asynchronous operation. The task result contains the deserialized response content.</returns>
-        Task<T> GetAsync<T>(string requestUri);
+        Task<T> GetAsync<T>(string requestUri, string subscriptionKey);
     }
 }

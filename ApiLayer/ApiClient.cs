@@ -25,19 +25,15 @@ namespace Converter_Web_Application.ApiLayer
         /// <param name="requestUri">The URI to send the GET request to.</param>
         /// <returns>The deserialized response content.</returns>
         /// <exception cref="InvalidOperationException">Thrown when deserialization fails.</exception>
-        public async Task<T> GetAsync<T>(string requestUri)
+        public async Task<T> GetAsync<T>(string requestUri, string subscriptionKey)
         {
-            var response = await _httpClient.GetAsync(requestUri); // Send the GET request
-            response.EnsureSuccessStatusCode(); // Ensure the request was successful
-            var jsonResponse = await response.Content.ReadAsStringAsync(); // Read the response content as a string
-            var deserializedResponse = JsonConvert.DeserializeObject<T>(jsonResponse); // Deserialize the JSON response to the specified type
+            var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
+            request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
-            if (deserializedResponse == null)
-            {
-                throw new InvalidOperationException("Failed to deserialize the response content.");
-            }
-
-            return deserializedResponse; // Return the deserialized response
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            var content = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(content);
         }
     }
 }
