@@ -24,7 +24,7 @@ namespace Converter_Web_Application.ApiLayer
 
         public async Task<JObject> GetSupportedCodesAsync(string apiKey)
         {
-            var requestUri = $"{_apimBaseUrl}/codes?apiKey={apiKey}";
+            var requestUri = $"{_apimBaseUrl}/currency/codes?apiKey={apiKey}";
             return await _apiClient.GetAsync<JObject>(requestUri, _subscriptionKey);
         }
 
