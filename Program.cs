@@ -17,8 +17,8 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-var apimBaseUrl = builder.Configuration["ApimBaseUrl"] ?? "https://your-apim-instance.azure-api.net";
-var subscriptionKey = builder.Configuration["ApimSubscriptionKey"] ?? "your-subscription-key";
+var apimBaseUrl = builder.Configuration["ApimBaseUrl"] ?? "https://converterwebapplicationapi.developer.azure-api.net";
+var subscriptionKey = builder.Configuration["ApimSubscriptionKey"] ?? "70a6857109ee48f189b13a169295e9ae";
 
 // Register HttpClient with the base address of the application
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
