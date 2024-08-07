@@ -36,7 +36,7 @@ namespace Converter_Web_Application.Service.Configuration
         public async Task<Dictionary<string, decimal>> FetchExchangeRatesAsync()
         {
             var apiKey = _configurationService.ExchangeRateApiKey;
-            var jsonResponse = await _currencyApiService.GetExchangeRatesAsync(apiKey);
+            var jsonResponse = await _currencyApiService.GetExchangeRatesAsync();
 
             if (jsonResponse?["result"]?.ToString() == "success")
             {
@@ -105,7 +105,7 @@ namespace Converter_Web_Application.Service.Configuration
             }
 
             var apiKey = _configurationService.ExchangeRateApiKey;
-            var jsonResponse = await _currencyApiService.GetSupportedCodesAsync(apiKey);
+            var jsonResponse = await _currencyApiService.GetSupportedCodesAsync();
 
             if (jsonResponse?["result"]?.ToString() == "success")
             {
@@ -150,7 +150,7 @@ namespace Converter_Web_Application.Service.Configuration
         private async Task<string> GetCurrencyFlagUrl(string currencyCode)
         {
             var apiKey = _configurationService.ExchangeRateApiKey;
-            var jsonResponse = await _currencyApiService.GetCurrencyFlagUrlAsync(apiKey, currencyCode);
+            var jsonResponse = await _currencyApiService.GetCurrencyFlagUrlAsync(currencyCode);
 
             return jsonResponse?["target_data"]?["flag_url"]?.ToString() ?? string.Empty;
         }

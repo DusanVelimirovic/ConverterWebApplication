@@ -16,21 +16,21 @@ namespace Converter_Web_Application.ApiLayer
             _subscriptionKey = subscriptionKey;
         }
 
-        public async Task<JObject> GetExchangeRatesAsync(string apiKey)
+        public async Task<JObject> GetExchangeRatesAsync()
         {
-            var requestUri = $"{_apimBaseUrl}/currency/latest/USD?apiKey={apiKey}";
+            var requestUri = $"{_apimBaseUrl}/currency/latest/USD";
             return await _apiClient.GetAsync<JObject>(requestUri, _subscriptionKey);
         }
 
-        public async Task<JObject> GetSupportedCodesAsync(string apiKey)
+        public async Task<JObject> GetSupportedCodesAsync()
         {
-            var requestUri = $"{_apimBaseUrl}/currency/{apiKey}/codes";
+            var requestUri = $"{_apimBaseUrl}/currency/codes";
             return await _apiClient.GetAsync<JObject>(requestUri, _subscriptionKey);
         }
 
-        public async Task<JObject> GetCurrencyFlagUrlAsync(string apiKey, string currencyCode)
+        public async Task<JObject> GetCurrencyFlagUrlAsync(string currencyCode)
         {
-            var requestUri = $"{_apimBaseUrl}/currency/enriched/RSD/{currencyCode}?apiKey={apiKey}";
+            var requestUri = $"{_apimBaseUrl}/currency/enriched/RSD/{currencyCode}";
             return await _apiClient.GetAsync<JObject>(requestUri, _subscriptionKey);
         }
     }
