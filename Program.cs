@@ -17,6 +17,10 @@ using Microsoft.Extensions.Configuration.EnvironmentVariables;
 using System.Globalization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
+
+var environment = builder.Configuration["TransletionEnv"]; // Access environment variable
+Console.WriteLine($"Environment: {environment}");
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
@@ -26,11 +30,7 @@ var subscriptionKey = builder.Configuration["ApimSubscriptionKey"] ?? "b00000482
 // Register HttpClient with the base address of the application
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-var env = Environment.GetEnvironmentVariable("ASPNETCOREENVIRONMENT");
 
-// Debugging
-Console.WriteLine("hello env" + env);
-Console.WriteLine("Hello");
 
 
 // Register configuration API and Currency configuration services
@@ -42,26 +42,9 @@ builder.Services.AddScoped<ICurrencyConversionService, CurrencyConversionService
 builder.Services.AddScoped<DataPrefetchService>();
 
 // Register translation service
-//builder.Services.AddScoped<TranslationService>();
-
-// Register dual deployment strategy
+builder.Services.AddScoped<TranslationService>();
 
 
-
-
-// Conditionally Initialize TranslationService
-
-if (env != "Serbia")
-{
-    // Register TranslationService only if the environment is not Serbia
-    builder.Services.AddScoped<TranslationService>();
-}
-else
-{
-    // Set default language to Serbian and bypass translation service
-    CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("sr");
-    CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("sr");
-}
 
 
 
