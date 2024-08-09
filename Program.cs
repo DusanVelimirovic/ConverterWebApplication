@@ -37,7 +37,7 @@ builder.Services.AddScoped<DataPrefetchService>();
 
 // Register dual deployment strategy
 
-var environment = builder.Configuration["Environment"] ?? "Production";
+var environment = builder.Configuration["Environment"] ?? "Not found";
 
 // Debugging
 Console.WriteLine(environment);
