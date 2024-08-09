@@ -18,17 +18,9 @@ using System.Globalization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-var environment = builder.Configuration["TransletionEnv"]; // Access environment variable
-Console.WriteLine($"Environment: {environment}");
+var environment = builder.Configuration["Environment"] ?? "Production";
 
-if (environment == "Serbia")
-{
-    Console.WriteLine("Hello World");
-}
-else
-{
-    Console.WriteLine("This is bad.");
-}
+Console.WriteLine(environment);
 
 
 builder.RootComponents.Add<App>("#app");
