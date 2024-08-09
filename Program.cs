@@ -29,7 +29,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 var env = Environment.GetEnvironmentVariable("ASPNETCOREENVIRONMENT");
 
 // Debugging
-Console.WriteLine(env);
+Console.WriteLine("hello env" + env);
 Console.WriteLine("Hello");
 
 
