@@ -24,7 +24,6 @@ var subscriptionKey = builder.Configuration["ApimSubscriptionKey"] ?? "b00000482
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // Register configuration API and Currency configuration services
-builder.Services.AddSingleton<IConfigurationService, ConfigurationService>();
 builder.Services.AddScoped<IApiClient, ApiClient>();
 builder.Services.AddScoped<ICurrencyApiService>(sp => new CurrencyApiService(sp.GetRequiredService<IApiClient>(), apimBaseUrl, subscriptionKey));
 builder.Services.AddScoped<ICurrencyConversionService, CurrencyConversionService>();
