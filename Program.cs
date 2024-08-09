@@ -21,6 +21,16 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 var environment = builder.Configuration["TransletionEnv"]; // Access environment variable
 Console.WriteLine($"Environment: {environment}");
 
+if (environment == "Serbia")
+{
+    Console.WriteLine("Hello World");
+}
+else
+{
+    Console.WriteLine("This is bad.");
+}
+
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
