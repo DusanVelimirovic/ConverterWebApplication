@@ -46,7 +46,7 @@ Console.WriteLine(env);
 
 // Conditionally Initialize TranslationService
 
-if (environment != "Serbia")
+if (env != "Serbia")
 {
     // Register TranslationService only if the environment is not Serbia
     builder.Services.AddScoped<TranslationService>();
