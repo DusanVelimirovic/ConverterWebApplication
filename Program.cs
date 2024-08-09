@@ -13,6 +13,7 @@ using Converter_Web_Application.Service.DataServices;
 using Converter_Web_Application.Service;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration.EnvironmentVariables;
 using System.Globalization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
