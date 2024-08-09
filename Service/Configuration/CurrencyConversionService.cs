@@ -11,17 +11,15 @@ namespace Converter_Web_Application.Service.Configuration
     public class CurrencyConversionService : ICurrencyConversionService, ISubject
     {
         private readonly ICurrencyApiService _currencyApiService;
-        private readonly IConfigurationService _configurationService;
         private readonly IJSRuntime _jsRuntime;
         private readonly Dictionary<string, ICurrencyCommand> _commands;
         private readonly List<IObserver> _observers;
         private List<CurrencyInfo> _currencyCache;
         private Dictionary<string, decimal> _exchangeRates;
 
-        public CurrencyConversionService(ICurrencyApiService currencyApiService, IConfigurationService configurationService, IJSRuntime jsRuntime)
+        public CurrencyConversionService(ICurrencyApiService currencyApiService, IJSRuntime jsRuntime)
         {
             _currencyApiService = currencyApiService;
-            _configurationService = configurationService;
             _jsRuntime = jsRuntime;
             _currencyCache = new List<CurrencyInfo>();
             _exchangeRates = new Dictionary<string, decimal>();  // Initialize to avoid null warnings
@@ -35,7 +33,6 @@ namespace Converter_Web_Application.Service.Configuration
 
         public async Task<Dictionary<string, decimal>> FetchExchangeRatesAsync()
         {
-            var apiKey = _configurationService.ExchangeRateApiKey;
             var jsonResponse = await _currencyApiService.GetExchangeRatesAsync();
 
             if (jsonResponse?["result"]?.ToString() == "success")
@@ -104,7 +101,6 @@ namespace Converter_Web_Application.Service.Configuration
                 return _currencyCache;
             }
 
-            var apiKey = _configurationService.ExchangeRateApiKey;
             var jsonResponse = await _currencyApiService.GetSupportedCodesAsync();
 
             if (jsonResponse?["result"]?.ToString() == "success")
@@ -149,7 +145,6 @@ namespace Converter_Web_Application.Service.Configuration
 
         private async Task<string> GetCurrencyFlagUrl(string currencyCode)
         {
-            var apiKey = _configurationService.ExchangeRateApiKey;
             var jsonResponse = await _currencyApiService.GetCurrencyFlagUrlAsync(currencyCode);
 
             return jsonResponse?["target_data"]?["flag_url"]?.ToString() ?? string.Empty;
