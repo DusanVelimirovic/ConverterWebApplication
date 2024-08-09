@@ -26,7 +26,7 @@ var subscriptionKey = builder.Configuration["ApimSubscriptionKey"] ?? "b00000482
 // Register HttpClient with the base address of the application
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+var env = Environment.GetEnvironmentVariable("ASPNETCOREENVIRONMENT");
 
 // Debugging
 Console.WriteLine(env);
