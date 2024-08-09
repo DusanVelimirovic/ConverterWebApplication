@@ -12,6 +12,7 @@ using Converter_Web_Application.Service.Localization;
 using Converter_Web_Application.Service.DataServices;
 using Converter_Web_Application.Service;
 using Microsoft.Extensions.DependencyInjection;
+using System.Globalization;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -32,7 +33,29 @@ builder.Services.AddScoped<ICurrencyConversionService, CurrencyConversionService
 builder.Services.AddScoped<DataPrefetchService>();
 
 // Register translation service
-builder.Services.AddScoped<TranslationService>();
+//builder.Services.AddScoped<TranslationService>();
+
+// Register dual deployment strategy
+
+var environment = builder.HostEnvironment.Environment;
+
+// Conditionally Initialize TranslationService
+
+if (environment != "Serbia")
+{
+    // Register TranslationService only if the environment is not Serbia
+    builder.Services.AddScoped<TranslationService>();
+}
+else
+{
+    // Set default language to Serbian and bypass translation service
+    CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("sr");
+    CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("sr");
+}
+
+
+
+
 
 // Register ConversionManagerService as a singleton and register all conversions
 builder.Services.AddSingleton<ConversionManagerService>(sp =>
