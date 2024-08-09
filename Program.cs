@@ -24,6 +24,12 @@ var subscriptionKey = builder.Configuration["ApimSubscriptionKey"] ?? "b00000482
 // Register HttpClient with the base address of the application
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+// Debugging
+Console.WriteLine(env);
+Console.WriteLine("Hello");
+
 
 // Register configuration API and Currency configuration services
 builder.Services.AddScoped<IApiClient, ApiClient>();
@@ -39,10 +45,7 @@ builder.Services.AddScoped<DataPrefetchService>();
 // Register dual deployment strategy
 
 
-var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
-// Debugging
-Console.WriteLine(env);
 
 // Conditionally Initialize TranslationService
 
