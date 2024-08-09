@@ -39,6 +39,9 @@ builder.Services.AddScoped<DataPrefetchService>();
 
 var environment = builder.HostEnvironment.Environment;
 
+// Debugging
+Console.WriteLine(environment);
+
 // Conditionally Initialize TranslationService
 
 if (environment != "Serbia")
