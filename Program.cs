@@ -20,9 +20,6 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 var environment = builder.Configuration["Environment"] ?? "Production";
 
-Console.WriteLine(environment);
-
-
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
