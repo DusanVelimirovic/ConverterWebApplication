@@ -100,7 +100,7 @@
   "Milk": "Leche",
   "Water": "Agua",
   "is_equal_to": "es igual a",
-  "result_format": "{0} {1} es igual a {2} {3}",
+  "result_format": "{0} {1} {2} es igual a {3} {4}",
 
   "Travel_Calculation": "Cálculo de viaje",
   "Select_Mode": "Seleccionar modo",

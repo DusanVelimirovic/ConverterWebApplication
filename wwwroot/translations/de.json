@@ -101,7 +101,7 @@
   "Water": "Wasser",
 
   "is_equal_to": "ist gleich",
-  "result_format": "{0} {1} ist gleich {2} {3}",
+  "result_format": "{0} {1} {2} ist gleich {3} {4}",
 
   "Travel_Calculation": "Reiseberechnung",
   "Select_Mode": "Modus auswählen",

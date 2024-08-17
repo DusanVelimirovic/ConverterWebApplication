@@ -101,7 +101,7 @@
   "Cooking": "Cooking",
 
   "is_equal_to": "is equal",
-  "result_format": "{0} {1} is equal to {2} {3}",
+  "result_format": "{0} {1} {2} is equal to {3} {4}",
 
   "Travel_Calculation": "Travel Calculation",
   "Select_Mode": "Select Mode",

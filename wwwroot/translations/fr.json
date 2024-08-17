@@ -101,7 +101,7 @@
   "Water": "Eau",
 
   "is_equal_to": "est égal à",
-  "result_format": "{0} {1} est égal à {2} {3}",
+  "result_format": "{0} {1} {2} est égal à {3} {4}",
 
   "Travel_Calculation": "Calcul de voyage",
   "Select_Mode": "Sélectionnez le mode",
