@@ -10,6 +10,13 @@
 @inject ConversionManagerService ConversionManagerService
 @inject TranslationService TranslationService
 
+<HeadContent>
+    <title>@TranslationService.Translate("Unit Converter - " + FormatType(Type))</title>
+    <meta name="description" content="@($"Convert {FormatType(Type)} easily with our app.")" />
+    <meta property="og:title" content="@($"Convert {FormatType(Type)}")" />
+    <meta property="og:description" content="@($"Conversion tool for {FormatType(Type)} units.")" />
+</HeadContent>
+
 <PageTitle>Food Converter</PageTitle>
 
 <div class="container-fluid" @onkeydown="HandleKeyDown">

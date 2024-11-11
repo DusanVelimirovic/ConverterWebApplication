@@ -9,6 +9,12 @@
 
 <PageTitle>@TranslationService.Translate("Currency_Conversion")</PageTitle>
 
+<HeadContent>
+    <meta name="description" content="@($"Convert currency easily with our app.")" />
+    <meta property="og:title" content="@($"Convert currency")" />
+    <meta property="og:description" content="@($"Conversion tool for currency units.")" />
+</HeadContent>
+
 @if (isLoading)
 {
     <div class="loading-container">
